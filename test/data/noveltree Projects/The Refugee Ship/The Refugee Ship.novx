@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE novx SYSTEM "novx_1_0.dtd">
+<?xml-stylesheet href="novx.css" type="text/css"?>
+<novx version="1.0" xml:lang="de-DE">
+  <PROJECT>
+    <Title>The Refugee Ship</Title>
+    <Author>Monty Grubber</Author>
+    <Desc>
+      <p>A giant alien spaceship appears in the border area of the United Solar Systems. On board: thousands of souls, persecuted for religious and political reasons, as they say. However, the mighty Star Empire calls them pirates and terrorists, and demands their return. It is said that a kidnapped princess is being held hostage on board. The Space Patrol cruiser Armadillo is to find out the truth, taking the alien ship over. Member of the boarding party: Rick Starlift, officer candidate, who must not attract negative attention from his superior once again ...</p>
+    </Desc>
+  </PROJECT>
+  <CHAPTERS>
+    <CHAPTER id="ch1">
+      <Title>Chapter 1</Title>
+    </CHAPTER>
+  </CHAPTERS>
+  <CHARACTERS />
+  <LOCATIONS />
+  <ITEMS />
+  <ARCS />
+  <PROJECTNOTES />
+  <PROGRESS>
+    <WC>
+      <Date>2020-01-16</Date>
+      <Count>483</Count>
+      <WithUnused>483</WithUnused>
+    </WC>
+    <WC>
+      <Date>2020-01-18</Date>
+      <Count>483</Count>
+      <WithUnused>483</WithUnused>
+    </WC>
+  </PROGRESS>
+</novx>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE COLLECTION SYSTEM "nvcx_1_0.dtd">
+<?xml-stylesheet href="collection.css" type="text/css"?>
+<COLLECTION version="1.0">
+  <BOOK id="bk1">
+    <Title>The Gravity Monster</Title>
+    <Desc>
+      <p>At the center of the galaxy, a strange force is at work. Having already thrown thousands of stars out into the void, it is now attracting the attention of all the tabloids of the United Solar Systems. The government must take action. Elections are coming up and time is running out. An expedition is being prepared. The commander-in-chief (and only member): Rick Starlift, youngest cadet of the glorious Space Patrol. The ship: The Arcada, a hastily converted robot freighter. The mission: Get the problem out of the picture, keep the costs down and--under any circumstances--cause no trouble with the Star Empire. Not too difficult a job for a highly motivated, ambitious officer candidate, you might think ...</p>
+    </Desc>
+    <Path>noveltree Projects/The Gravity Monster/The Gravity Monster.novx</Path>
+  </BOOK>
+  <SERIES id="sr1">
+    <Title>Rick Starlift</Title>
+  </SERIES>
+</COLLECTION>

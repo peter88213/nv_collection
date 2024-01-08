@@ -1,0 +1,96 @@
+# nv_collection Dictionary
+# Copyright (C) 2023 Peter Triesberger
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0.0\n"
+"POT-Creation-Date: 2024-01-08 20:36:06\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: LANGUAGE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: novxlib pgettext.py 0.3\n"
+
+
+msgid "Add"
+msgstr ""
+
+msgid "Add current project to the collection"
+msgstr ""
+
+msgid "Book"
+msgstr ""
+
+msgid "Cannot overwrite file"
+msgstr ""
+
+msgid "Cannot write file"
+msgstr ""
+
+msgid "Close"
+msgstr ""
+
+msgid "Collection"
+msgstr ""
+
+msgid "Collection plugin Online help"
+msgstr ""
+
+msgid "Exit"
+msgstr ""
+
+msgid "File"
+msgstr ""
+
+msgid "New"
+msgstr ""
+
+msgid "New Series"
+msgstr ""
+
+msgid "No collection found in file"
+msgstr ""
+
+msgid "No valid version found in file"
+msgstr ""
+
+msgid "Open..."
+msgstr ""
+
+msgid "Remove selected book from the collection"
+msgstr ""
+
+msgid "Remove selected series and books"
+msgstr ""
+
+msgid "Remove selected series but keep the books"
+msgstr ""
+
+msgid "Series"
+msgstr ""
+
+msgid "The collection was created with a newer plugin version."
+msgstr ""
+
+msgid "The collection was created with an outdated plugin version."
+msgstr ""
+
+msgid "There is no file for the current project. Please save first."
+msgstr ""
+
+msgid "Untitled"
+msgstr ""
+
+msgid "Untitled collection"
+msgstr ""
+
+msgid "Update book data from the current project"
+msgstr ""
+
+msgid "Update project data from the selected book"
+msgstr ""
+
+msgid "novelyst collection"
+msgstr ""

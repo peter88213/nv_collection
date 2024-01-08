@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE COLLECTION SYSTEM "nvcx_1_0.dtd">
+<?xml-stylesheet href="collection.css" type="text/css"?>
+<COLLECTION version="1.0">
+  <SERIES id="sr1">
+    <Title>Not in a series</Title>
+    <Desc>
+      <p>Books not belonging to a specific series.</p>
+    </Desc>
+  </SERIES>
+  <SERIES id="sr2">
+    <Title>Rick Starlift</Title>
+    <Desc>
+      <p>The adventures of Rick Starlift, Space Patrol cadet.</p>
+    </Desc>
+    <BOOK id="bk1">
+      <Title>The Gravity Monster</Title>
+      <Desc>
+        <p>At the center of the galaxy, a strange force is at work. Having already thrown thousands of stars out into the void, it is now attracting the attention of all the tabloids of the United Solar Systems. The government must take action. Elections are coming up and time is running out. An expedition is being prepared. The commander-in-chief (and only member): Rick Starlift, youngest cadet of the glorious Space Patrol. The ship: The Arcada, a hastily converted robot freighter. The mission: Get the problem out of the picture, keep the costs down and--under any circumstances--cause no trouble with the Star Empire. Not too difficult a job for a highly motivated, ambitious officer candidate, you might think ...</p>
+      </Desc>
+      <Path>noveltree Projects/The Gravity Monster/The Gravity Monster.novx</Path>
+    </BOOK>
+    <BOOK id="bk2">
+      <Title>The Refugee Ship</Title>
+      <Desc>
+        <p>A giant alien spaceship appears in the border area of the United Solar Systems. On board: thousands of souls, persecuted for religious and political reasons, as they say. However, the mighty Star Empire calls them pirates and terrorists, and demands their return. It is said that a kidnapped princess is being held hostage on board. The Space Patrol cruiser Armadillo is to find out the truth, taking the alien ship over. Member of the boarding party: Rick Starlift, officer candidate, who must not attract negative attention from his superior once again ...</p>
+      </Desc>
+      <Path>noveltree Projects/The Refugee Ship/The Refugee Ship.novx</Path>
+    </BOOK>
+  </SERIES>
+  <SERIES id="sr3">
+    <Title>Captain Conner</Title>
+    <Desc>
+      <p>Captain Conner, space swashbuckler and intergalactic executive, saves the free universe .. again.</p>
+    </Desc>
+  </SERIES>
+</COLLECTION>

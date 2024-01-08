@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE novx SYSTEM "novx_1_0.dtd">
+<?xml-stylesheet href="novx.css" type="text/css"?>
+<novx version="1.0" xml:lang="de-DE">
+  <PROJECT>
+    <Title>Governant Hive</Title>
+    <Author>Monty Grubber</Author>
+    <Desc>
+      <p>Many years have passed since the last engineers of mankind set off with the spaceship Governant Hive to colonize a distant planet. They were never heard from again. In the meantime, Earth is threatened with a climate catastrophe and the engineers' know-how is badly missed. Captain Conner has been assigned to locate the Governor Hive and return it to Earth. Finally he finds not only the colonists, but also a megalomaniacal android with a passion for xenobiological experiments. </p>
+      <p>Actually, Captain Conner should now put a stop to the supposed god in order to bring back humanity's last hope. But from an unexpected side he receives a call for help ...</p>
+    </Desc>
+  </PROJECT>
+  <CHAPTERS>
+    <CHAPTER id="ch1">
+      <Title>Chapter 1</Title>
+    </CHAPTER>
+  </CHAPTERS>
+  <CHARACTERS />
+  <LOCATIONS />
+  <ITEMS />
+  <ARCS />
+  <PROJECTNOTES />
+  <PROGRESS>
+    <WC>
+      <Date>2020-01-16</Date>
+      <Count>1314</Count>
+      <WithUnused>1314</WithUnused>
+    </WC>
+  </PROGRESS>
+</novx>
