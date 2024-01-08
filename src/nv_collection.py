@@ -33,8 +33,8 @@ class Plugin:
     VERSION = '@release'
     NOVELYST_API = '1.0'
     DESCRIPTION = 'A book/series collection manager'
-    URL = 'https://peter88213.github.io/novelyst_collection'
-    _HELP_URL = 'https://peter88213.github.io/novelyst_collection/usage'
+    URL = 'https://peter88213.github.io/noveltree_collection'
+    _HELP_URL = 'https://peter88213.github.io/noveltree_collection/usage'
     ICON = 'cLogo32'
 
     def install(self, model, view, controller, prefs):
