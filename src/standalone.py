@@ -1,4 +1,4 @@
-"""A standalone application for the novelyst_collection plugin.
+"""A standalone application for the noveltree_collection plugin.
 
 For further information see https://github.com/peter88213/noveltree_collection
 License: GNU GPLv3 (https://www.gnu.org/licenses/gpl-3.0.en.html)
