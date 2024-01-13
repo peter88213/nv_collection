@@ -12,7 +12,7 @@ The [noveltree](https://peter88213.github.io/noveltree/) Python program helps au
 - Each book can stand alone, or belong to a series.
 - Show book/series title and description.
 - Load the selected book into noveltree by double-click. 
-- Handle multiple collections, represented by XML files with the extension *.pwc*.
+- Handle multiple collections, represented by XML files with the extension *.nvcx*.
 
 ## Requirements
 
