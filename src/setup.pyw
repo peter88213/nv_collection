@@ -47,10 +47,10 @@ if __name__ == '__main__':
 
     # Install the plugin.
     homePath = str(Path.home()).replace('\\', '/')
-    novelystDir = f'{homePath}/.noveltree'
-    if os.path.isdir(novelystDir):
+    noveltreeDir = f'{homePath}/.noveltree'
+    if os.path.isdir(noveltreeDir):
         if os.path.isfile(f'./{PLUGIN}'):
-            pluginDir = f'{novelystDir}/plugin'
+            pluginDir = f'{noveltreeDir}/plugin'
             os.makedirs(pluginDir, exist_ok=True)
             copyfile(PLUGIN, f'{pluginDir}/{PLUGIN}')
             output(f'Sucessfully installed "{PLUGIN}" at "{os.path.normpath(pluginDir)}"')
@@ -58,11 +58,11 @@ if __name__ == '__main__':
             output(f'ERROR: file "{PLUGIN}" not found.')
 
         # Install the localization files.
-        copytree('locale', f'{novelystDir}/locale', dirs_exist_ok=True)
+        copytree('locale', f'{noveltreeDir}/locale', dirs_exist_ok=True)
         output(f'Copying "locale"')
 
     else:
-        output(f'ERROR: Cannot find a novelyst installation at "{novelystDir}"')
+        output(f'ERROR: Cannot find a noveltree installation at "{noveltreeDir}"')
 
     root.quitButton = Button(text="Quit", command=quit)
     root.quitButton.config(height=1, width=30)
