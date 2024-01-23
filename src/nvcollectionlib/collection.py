@@ -102,7 +102,7 @@ class Collection:
                             if xmlParagraph.text:
                                 paragraphs.append(xmlParagraph.text)
                         self.books[bkId].desc = '\n'.join(paragraphs)
-                        self.tree.insert(parent, 'end', bkId, text=self.books[bkId].title, open=True)
+                    self.tree.insert(parent, 'end', bkId, text=self.books[bkId].title, open=True)
 
         xmlTree = ET.parse(self.filePath)
         xmlRoot = xmlTree.getroot()
