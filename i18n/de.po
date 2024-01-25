@@ -3,9 +3,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 1.0.2\n"
-"POT-Creation-Date: 2024-01-24 18:39:53\n"
-"PO-Revision-Date: 2024-01-24 18:39:53\n"
+"Project-Id-Version: 1.1.0\n"
+"POT-Creation-Date: 2024-01-25 18:29:38\n"
+"PO-Revision-Date: 2024-01-25 18:29:38\n"
 "Last-Translator: Peter Triesberger\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -57,6 +57,9 @@ msgstr "Keine gültige Versionsangabe in der Datei gefunden"
 
 msgid "Open..."
 msgstr "Öffnen..."
+
+msgid "Quit"
+msgstr "Beenden"
 
 msgid "Remove selected book from the collection"
 msgstr "Ausgewähltes Buch aus der Sammlung entfernen"

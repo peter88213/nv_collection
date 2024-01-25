@@ -5,6 +5,7 @@ For further information see https://github.com/peter88213/noveltree_collection
 License: GNU GPLv3 (https://www.gnu.org/licenses/gpl-3.0.en.html)
 """
 import os
+import sys
 from tkinter import filedialog
 from tkinter import messagebox
 from tkinter import ttk
@@ -110,7 +111,10 @@ class CollectionManager(tk.Toplevel):
         self.fileMenu.add_command(label=_('Open...'), command=lambda: self._open_collection(''))
         self.fileMenu.add_command(label=_('Close'), command=self._close_collection)
         self.fileMenu.entryconfig(_('Close'), state='disabled')
-        self.fileMenu.add_command(label=_('Exit'), accelerator=self._KEY_QUIT_PROGRAM[1], command=self.on_quit)
+        if sys.platform == 'win32':
+            self.fileMenu.add_command(label=_('Exit'), accelerator='Alt-F4', command=self.on_quit)
+        else:
+            self.fileMenu.add_command(label=_('Quit'), accelerator=self._KEY_QUIT_PROGRAM[1], command=self.on_quit)
 
         # Series menu.
         self.seriesMenu = tk.Menu(self.mainMenu, tearoff=0)

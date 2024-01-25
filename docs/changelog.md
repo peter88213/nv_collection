@@ -4,6 +4,13 @@
 
 ## Changelog
 
+### v1.1.0
+
+- Under Windows, exit the collection manager with Alt-F4 instead of Ctrl-Q.
+
+Based on novxlib v1.0.0
+Compatibility: noveltree v1.0 API
+
 ### v1.0.2
 
 - Fix a bug where books without a description do not appear in the tree.
