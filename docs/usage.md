@@ -88,10 +88,11 @@ Either select series and hit the **Del** key, or use **Series > Remove selected 
 
 ---
 
-## Exit
+## Quit/Exit
 
-- You can exit via **File > Exit**, or with **Ctrl-Q**.
-- When exiting the program, you will be asked for applying changes.
+- Under Windows you can exit with **File > Exit** or **Alt-F4**.
+- Otherwise you can exit with **File > Quit** or **Ctrl-Q**.
+- When exiting the collection manager, you will be asked for saving the project, if it has changed.
 
 ---
 
