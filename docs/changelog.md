@@ -4,6 +4,13 @@
 
 ## Changelog
 
+### v1.1.1
+
+- Switch the online help to https://peter88213.github.io/noveltree-help/.
+
+Based on novxlib v1.0.0
+Compatibility: noveltree v1.0 API
+
 ### v1.1.0
 
 - Under Windows, exit the collection manager with Alt-F4 instead of Ctrl-Q.
