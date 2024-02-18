@@ -3,9 +3,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 1.1.1\n"
-"POT-Creation-Date: 2024-02-17 09:41:49\n"
-"PO-Revision-Date: 2024-02-17 09:41:50\n"
+"Project-Id-Version: 1.2.0\n"
+"POT-Creation-Date: 2024-02-18 16:17:10\n"
+"PO-Revision-Date: 2024-02-18 16:17:10\n"
 "Last-Translator: Peter Triesberger\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -96,4 +96,7 @@ msgstr "Projektdaten aus ausgewähltem Buch aktualisieren"
 
 msgid "novelyst collection"
 msgstr "novelyst-Sammlung"
+
+msgid "nvhelp-en"
+msgstr "nvhelp-en"
 

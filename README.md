@@ -1,16 +1,40 @@
 # nv_collection
 
-A book/series collection manager plugin for [noveltree](https://peter88213.github.io/noveltree).
+The [noveltree](https://github.com/peter88213/noveltree/) Python program helps authors organize novels.  
 
-For more information, see the [project homepage](https://peter88213.github.io/nv_collection) with description and download instructions.
+*nv_collection* is a plugin providing a book/series collection manager. 
 
-## Feedback? Ideas? Feature requests?
+![Screenshot](docs/Screenshots/screen01.png)
 
-You can go to the [noveltree "discussions" forum](https://github.com/peter88213/noveltree/discussions) and start a thread.
+## Features
+
+- Show a tree with series and books.
+- Each book can stand alone, or belong to a series.
+- Show book/series title and description.
+- Load the selected book into noveltree by double-click. 
+- Handle multiple collections, represented by XML files with the extension *.nvcx*.
+
+## Requirements
+
+- [noveltree](https://github.com/peter88213/noveltree/) version 1.8+
+
+## Download and install
+
+[Download the latest release (version 1.2.0)](https://github.com/peter88213/nv_collection/raw/main/dist/nv_collection_v1.2.0.zip)
+
+- Extract the "nv_collection_v1.2.0" folder from the downloaded zipfile "nv_collection_v1.2.0.zip".
+- Move into this new folder and launch **setup.pyw**. This installs the plugin for the local user.
+
+---
+
+[Changelog](docs/changelog.md)
+
+## Usage
+
+See the [instructions for use](docs/usage.md)
 
 ## License
 
-This is Open Source software, and the *nv_collection* plugin is licenced under GPLv3. See the
+This is Open Source software, and the *nv_collection* plugin is licensed under GPLv3. See the
 [GNU General Public License website](https://www.gnu.org/licenses/gpl-3.0.en.html) for more
 details, or consult the [LICENSE](https://github.com/peter88213/nv_collection/blob/main/LICENSE) file.
-

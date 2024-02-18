@@ -1,10 +1,10 @@
 # nv_collection
 
-The [noveltree](https://peter88213.github.io/noveltree/) Python program helps authors organize novels.  
+The [noveltree](https://github.com/peter88213/noveltree/) Python program helps authors organize novels.  
 
 *nv_collection* is a plugin providing a book/series collection manager. 
 
-![Screenshot](Screenshots/screen01.png)
+![Screenshot](docs/Screenshots/screen01.png)
 
 ## Features
 
@@ -16,22 +16,22 @@ The [noveltree](https://peter88213.github.io/noveltree/) Python program helps au
 
 ## Requirements
 
-- [noveltree](https://peter88213.github.io/noveltree/) version 1.0+
+- [noveltree](https://github.com/peter88213/noveltree/) version 1.8+
 
 ## Download and install
 
-[Download the latest release (version 1.1.1)](https://github.com/peter88213/nv_collection/raw/main/dist/nv_collection_v1.1.1.zip)
+[Download the latest release (version 0.99.0)](https://github.com/peter88213/nv_collection/raw/main/dist/nv_collection_v0.99.0.zip)
 
-- Extract the "nv_collection_v1.1.1" folder from the downloaded zipfile "nv_collection_v1.1.1.zip".
+- Extract the "nv_collection_v0.99.0" folder from the downloaded zipfile "nv_collection_v0.99.0.zip".
 - Move into this new folder and launch **setup.pyw**. This installs the plugin for the local user.
 
 ---
 
-[Changelog](changelog)
+[Changelog](docs/changelog.md)
 
 ## Usage
 
-See the [instructions for use](usage)
+See the [instructions for use](docs/usage.md)
 
 ## License
 

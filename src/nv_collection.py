@@ -31,10 +31,10 @@ DEFAULT_FILE = 'collection.pwc'
 class Plugin:
     """novelyst collection manager plugin class."""
     VERSION = '@release'
-    NOVELTREE_API = '1.0'
+    NOVELTREE_API = '1.8'
     DESCRIPTION = 'A book/series collection manager'
-    URL = 'https://peter88213.github.io/nv_collection'
-    _HELP_URL = 'https://peter88213.github.io/noveltree-help/nv_collection/'
+    URL = 'https://github.com/peter88213/nv_collection'
+    _HELP_URL = f'https://peter88213.github.io/{_("nvhelp-en")}/nv_collection/'
     ICON = 'cLogo32'
 
     def install(self, model, view, controller, prefs):
