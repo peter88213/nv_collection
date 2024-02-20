@@ -31,7 +31,7 @@ DEFAULT_FILE = 'collection.pwc'
 class Plugin:
     """novelyst collection manager plugin class."""
     VERSION = '@release'
-    NOVELTREE_API = '1.8'
+    API_VERSION = '2.0'
     DESCRIPTION = 'A book/series collection manager'
     URL = 'https://github.com/peter88213/nv_collection'
     _HELP_URL = f'https://peter88213.github.io/{_("nvhelp-en")}/nv_collection/'
@@ -79,7 +79,7 @@ class Plugin:
         windowGeometry = f'+{int(x)+offset}+{int(y)+offset}'
         try:
             homeDir = str(Path.home()).replace('\\', '/')
-            configDir = f'{homeDir}/.noveltree/config'
+            configDir = f'{homeDir}/.novx/config'
         except:
             configDir = '.'
         self._collectionManager = CollectionManager(self._mdl, self._ui, self._ctrl, windowGeometry, configDir)
