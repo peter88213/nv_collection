@@ -1,12 +1,12 @@
 [![Download the latest release](docs/img/download-button.png)](https://github.com/peter88213/nv_collection/raw/main/dist/nv_collection_v2.0.0.zip)
 [![Changelog](docs/img/changelog-button.png)](docs/changelog.md)
-[![News](docs/img/news-button.png)](https://github.com/peter88213/noveltree/discussions/1)
+[![News](docs/img/news-button.png)](https://github.com/peter88213/novelibre/discussions/1)
 [![Online help](docs/img/help-button.png)](https://peter88213.github.io/nvhelp-en/nv_collection/)
 
 
 # nv_collection
 
-The [noveltree](https://github.com/peter88213/noveltree/) Python program helps authors organize novels.  
+The [novelibre](https://github.com/peter88213/novelibre/) Python program helps authors organize novels.  
 
 *nv_collection* is a plugin providing a book/series collection manager. 
 
@@ -17,12 +17,12 @@ The [noveltree](https://github.com/peter88213/noveltree/) Python program helps a
 - Show a tree with series and books.
 - Each book can stand alone, or belong to a series.
 - Show book/series title and description.
-- Load the selected book into noveltree by double-click. 
+- Load the selected book into novelibre by double-click. 
 - Handle multiple collections, represented by XML files with the extension *.nvcx*.
 
 ## Requirements
 
-- [noveltree](https://github.com/peter88213/noveltree/) version 2.0+
+- [novelibre](https://github.com/peter88213/novelibre/) version 2.0+
 
 ## Download and install
 

@@ -61,7 +61,7 @@ if __name__ == '__main__':
         copytree('locale', f'{applicationDir}/locale', dirs_exist_ok=True)
         output(f'Copying "locale"')
     else:
-        output(f'ERROR: Cannot find a noveltree installation at "{applicationDir}"')
+        output(f'ERROR: Cannot find a novelibre installation at "{applicationDir}"')
 
     root.quitButton = Button(text="Quit", command=quit)
     root.quitButton.config(height=1, width=30)
