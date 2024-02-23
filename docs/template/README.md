@@ -4,7 +4,7 @@
 [![Online help](docs/img/help-button.png)](https://peter88213.github.io/nvhelp-en/nv_collection/)
 
 
-# nv_collection
+# ![C](icons/cLogo32.png) nv_collection
 
 The [novelibre](https://github.com/peter88213/novelibre/) Python program helps authors organize novels.  
 
@@ -38,6 +38,12 @@ The [novelibre](https://github.com/peter88213/novelibre/) Python program helps a
 ## Usage
 
 See the [instructions for use](docs/usage.md)
+
+---
+
+## Credits
+
+- The logo is made using the free *Pusab* font by Ryoichi Tsunekawa, [Flat-it](http://flat-it.com/).
 
 ## License
 
