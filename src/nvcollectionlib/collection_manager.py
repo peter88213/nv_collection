@@ -53,7 +53,8 @@ class CollectionManager(tk.Toplevel):
         self.lift()
         self.focus()
         self.protocol("WM_DELETE_WINDOW", self.on_quit)
-        self.bind(self._KEY_QUIT_PROGRAM[0], self.on_quit)
+        if sys.platform != 'win32':
+            self.bind(self._KEY_QUIT_PROGRAM[0], self.on_quit)
 
         #--- Main menu.
         self.mainMenu = tk.Menu(self)

@@ -4,6 +4,13 @@
 
 ## Changelog
 
+### v3.0.1
+
+- On Windows, do not assign the Ctrl Q shortcut. 
+
+Based on novxlib v2.0.1
+Compatibility: novelibre v3.0 API
+
 ### v3.0.0
 
 - Refactor the code for v3.0 API.
