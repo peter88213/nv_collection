@@ -248,10 +248,10 @@ class Collection:
             bookTitle = self.books[bkId].title
             del self.books[bkId]
             self.tree.delete(bkId)
-            message = f'Book "{bookTitle}" removed from the collection.'
+            message = f'{_("Book removed from the collection")}: "{bookTitle}".'
             return message
         except:
-            raise Error(f'Cannot remove "{bookTitle}".')
+            raise Error(f'{_("Cannot remove book")}: "{bookTitle}".')
 
     def add_series(self, seriesTitle, index='end'):
         """Instantiate a Series object.
@@ -274,7 +274,7 @@ class Collection:
         self.tree.delete(srId)
         return f'"{seriesTitle}" series removed from the collection.'
 
-        raise Error(f'Cannot remove "{seriesTitle}" series from the collection.')
+        raise Error(f'{_("Cannot remove series")}: "{seriesTitle}".')
 
     def remove_series_with_books(self, srId):
         """Delete a Series object with all its members.
@@ -289,7 +289,7 @@ class Collection:
         self.tree.delete(srId)
         return f'"{seriesTitle}" series removed from the collection.'
 
-        raise Error(f'Cannot remove "{seriesTitle}" series from the collection.')
+        raise Error(f'{_("Cannot remove series")}: "{seriesTitle}".')
 
     def _postprocess_xml_file(self, filePath):
         """Postprocess an xml file created by ElementTree.

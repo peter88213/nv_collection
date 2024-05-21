@@ -99,6 +99,7 @@ class CollectionManager(tk.Toplevel):
         # Status bar.
         self.statusBar = tk.Label(self, text='', anchor='w', padx=5, pady=2)
         self.statusBar.pack(expand=False, fill='both')
+        self.statusBar.bind('<Button-1>', self._restore_status)
 
         # Path bar.
         self.pathBar = tk.Label(self, text='', anchor='w', padx=5, pady=3)
@@ -110,8 +111,8 @@ class CollectionManager(tk.Toplevel):
         self.mainMenu.add_cascade(label=_('File'), menu=self.fileMenu)
         self.fileMenu.add_command(label=_('New'), command=self._new_collection)
         self.fileMenu.add_command(label=_('Open...'), command=lambda: self._open_collection(''))
-        self.fileMenu.add_command(label=_('Close'), command=self._close_collection)
-        self.fileMenu.entryconfig(_('Close'), state='disabled')
+        self.fileMenu.add_command(label=_('Save'), state='disabled', command=self._save_collection)
+        self.fileMenu.add_command(label=_('Close'), state='disabled', command=self._close_collection)
         if sys.platform == 'win32':
             self.fileMenu.add_command(label=_('Exit'), accelerator='Alt-F4', command=self.on_quit)
         else:
@@ -279,7 +280,7 @@ class CollectionManager(tk.Toplevel):
             selection = ''
         book = self._mdl.prjFile
         if not self._mdl.prjFile.novel.title:
-            self._set_status(f'!This project has no title.')
+            self._set_status(f'!{_("This project has no title")}.')
             return
 
         parent = ''
@@ -300,9 +301,9 @@ class CollectionManager(tk.Toplevel):
                 self._set_status(f'!{str(ex)}')
             else:
                 if bkId is not None:
-                    self._set_status(f'"{book.novel.title}" added to the collection.')
+                    self._set_status(f'{_("Book added to the collection")}: "{book.novel.title}".')
                 else:
-                    self._set_status(f'!"{book.novel.title}" already exists.')
+                    self._set_status(f'!{_("Book already exists")}: "{book.novel.title}".')
 
     def _update_collection(self, event=None):
         if self._mdl.novel is None:
@@ -484,6 +485,7 @@ class CollectionManager(tk.Toplevel):
 
         self._show_path(f'{norm_path(self.collection.filePath)}')
         self._set_title()
+        self.fileMenu.entryconfig(_('Save'), state='normal')
         self.fileMenu.entryconfig(_('Close'), state='normal')
         return True
 
@@ -506,14 +508,30 @@ class CollectionManager(tk.Toplevel):
         self.kwargs['last_open'] = fileName
         self._show_path(f'{norm_path(self.collection.filePath)}')
         self._set_title()
+        self.fileMenu.entryconfig(_('Save'), state='normal')
         self.fileMenu.entryconfig(_('Close'), state='normal')
         return True
+
+    def _save_collection(self, event=None):
+        """Save the collection."""
+        try:
+            if self.collection is not None:
+                if self.isModified:
+                    self.collection.write()
+        except Exception as ex:
+            self._show_info(str(ex))
+            return
+
+        self.isModified = False
+        self._set_status(_('Collection saved.'))
 
     def _close_collection(self, event=None):
         """Close the collection without saving and reset the user interface.
         
         To be extended by subclasses.
         """
+        if self.isModified and self._ui.ask_yes_no(_('Save changes?')):
+            self._save_collection()
         self._get_element_view()
         self.indexCard.title.set('')
         self.indexCard.bodyBox.clear()
@@ -522,7 +540,10 @@ class CollectionManager(tk.Toplevel):
         self.title('')
         self._show_status('')
         self._show_path('')
+        self.fileMenu.entryconfig(_('Save'), state='disabled')
         self.fileMenu.entryconfig(_('Close'), state='disabled')
+        self.lift()
+        self.focus()
 
     def _set_title(self):
         """Set the main window title. 

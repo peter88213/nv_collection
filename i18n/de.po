@@ -3,9 +3,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 4.0.0\n"
-"POT-Creation-Date: 2024-05-17 13:15:21\n"
-"PO-Revision-Date: 2024-05-17 13:15:23\n"
+"Project-Id-Version: 4.0.1\n"
+"POT-Creation-Date: 2024-05-21 21:04:55\n"
+"PO-Revision-Date: 2024-05-21 21:04:55\n"
 "Last-Translator: Peter Triesberger\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -22,8 +22,23 @@ msgstr "Aktuelles Projekt zur Sammlung hinzufügen"
 msgid "Book"
 msgstr "Buch"
 
+msgid "Book added to the collection"
+msgstr "Buch zur Sammlung hinzugefügt"
+
+msgid "Book already exists"
+msgstr "Buch existiert schon"
+
+msgid "Book removed from the collection"
+msgstr "Buch aus der Sammlung entfernt"
+
 msgid "Cannot overwrite file"
 msgstr "Kann Datei nicht überschreiben"
+
+msgid "Cannot remove book"
+msgstr "Kann Buch nicht entfernen"
+
+msgid "Cannot remove series"
+msgstr "Kann Serie nicht entfernen"
 
 msgid "Cannot write file"
 msgstr "Kann Datei nicht schreiben"
@@ -36,6 +51,9 @@ msgstr "Sammlung"
 
 msgid "Collection plugin Online help"
 msgstr "Sammlung-Plugin Online-Hilfe"
+
+msgid "Collection saved."
+msgstr "Sammlung gespeichert."
 
 msgid "Exit"
 msgstr "Beenden"
@@ -70,6 +88,12 @@ msgstr "Ausgewählte Serie mitsamt den Büchern entfernen"
 msgid "Remove selected series but keep the books"
 msgstr "Ausgewählte Serie entfernen, aber die Bücher behalten"
 
+msgid "Save"
+msgstr "Speichern"
+
+msgid "Save changes?"
+msgstr "Änderungen speichern?"
+
 msgid "Series"
 msgstr "Serie"
 
@@ -81,6 +105,9 @@ msgstr "Die Sammlung wurde mit einer veralteten Version des Plugins erstellt."
 
 msgid "There is no file for the current project. Please save first."
 msgstr "Es gibt keine Datei für das aktuelle Projekt. Bitte zuerst speichern."
+
+msgid "This project has no title"
+msgstr "Dieses Projekt hat keinen Titel"
 
 msgid "Untitled"
 msgstr "Unbenannt"

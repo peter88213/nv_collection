@@ -3,8 +3,8 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 4.0.0\n"
-"POT-Creation-Date: 2024-05-17 13:15:21\n"
+"Project-Id-Version: 4.0.1\n"
+"POT-Creation-Date: 2024-05-21 21:04:55\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: LANGUAGE\n"
@@ -23,7 +23,22 @@ msgstr ""
 msgid "Book"
 msgstr ""
 
+msgid "Book added to the collection"
+msgstr ""
+
+msgid "Book already exists"
+msgstr ""
+
+msgid "Book removed from the collection"
+msgstr ""
+
 msgid "Cannot overwrite file"
+msgstr ""
+
+msgid "Cannot remove book"
+msgstr ""
+
+msgid "Cannot remove series"
 msgstr ""
 
 msgid "Cannot write file"
@@ -36,6 +51,9 @@ msgid "Collection"
 msgstr ""
 
 msgid "Collection plugin Online help"
+msgstr ""
+
+msgid "Collection saved."
 msgstr ""
 
 msgid "Exit"
@@ -71,6 +89,12 @@ msgstr ""
 msgid "Remove selected series but keep the books"
 msgstr ""
 
+msgid "Save"
+msgstr ""
+
+msgid "Save changes?"
+msgstr ""
+
 msgid "Series"
 msgstr ""
 
@@ -81,6 +105,9 @@ msgid "The collection was created with an outdated plugin version."
 msgstr ""
 
 msgid "There is no file for the current project. Please save first."
+msgstr ""
+
+msgid "This project has no title"
 msgstr ""
 
 msgid "Untitled"

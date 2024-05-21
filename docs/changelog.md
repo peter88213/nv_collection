@@ -4,9 +4,13 @@
 
 ## Changelog
 
-### v4.0.0
+### v4.0.1
 
-Compatibility: novelibre v4.0 API
+- Make sure that changes aren't lost when closing the collection.
+- Add a "File>Save" menu entry.
+- Reset the status bar by clicking on it.
+
+Compatibility: novelibre v4.1 API
 
 ### v3.0.1
 
