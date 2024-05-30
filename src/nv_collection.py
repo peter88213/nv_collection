@@ -42,8 +42,10 @@ class Plugin(PluginBase):
         """Add a submenu to the 'File' menu.
         
         Positional arguments:
-            controller -- reference to the main controller instance of the application.
+            model -- reference to the main model instance of the application.
             view -- reference to the main view instance of the application.
+            controller -- reference to the main controller instance of the application.
+            prefs -- (deprecated) reference to the application's global dictionary with settings and options.
         
         Overrides the superclass method.
         """
