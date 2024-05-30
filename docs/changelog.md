@@ -4,6 +4,13 @@
 
 ## Changelog
 
+### v4.1.0
+
+- Refactor the code for better maintainability.
+
+Compatibility: novelibre v4.3 API
+Based on novxlib v4.1.0
+
 ### v4.0.1
 
 - Make sure that changes aren't lost when closing the collection.

@@ -23,15 +23,16 @@ import webbrowser
 from nvcollectionlib.collection_manager import CollectionManager
 from nvcollectionlib.nvcollection_globals import APPLICATION
 from nvcollectionlib.nvcollection_globals import _
+from nvlib.plugin.plugin_base import PluginBase
 import tkinter as tk
 
 DEFAULT_FILE = 'collection.pwc'
 
 
-class Plugin:
+class Plugin(PluginBase):
     """novelyst collection manager plugin class."""
     VERSION = '@release'
-    API_VERSION = '4.1'
+    API_VERSION = '4.3'
     DESCRIPTION = 'A book/series collection manager'
     URL = 'https://github.com/peter88213/nv_collection'
     _HELP_URL = f'https://peter88213.github.io/{_("nvhelp-en")}/nv_collection/'
@@ -43,6 +44,8 @@ class Plugin:
         Positional arguments:
             controller -- reference to the main controller instance of the application.
             view -- reference to the main view instance of the application.
+        
+        Overrides the superclass method.
         """
         self._mdl = model
         self._ui = view
@@ -67,6 +70,15 @@ class Plugin:
         except:
             self._icon = None
 
+    def on_quit(self):
+        """Write back the configuration file.
+        
+        Overrides the superclass method.
+        """
+        if self._collectionManager:
+            if self._collectionManager.isOpen:
+                self._collectionManager.on_quit()
+
     def _start_manager(self):
         if self._collectionManager:
             if self._collectionManager.isOpen:
@@ -85,8 +97,3 @@ class Plugin:
         self._collectionManager = CollectionManager(self._mdl, self._ui, self._ctrl, windowGeometry, configDir)
         self._collectionManager.iconphoto(False, self._icon)
 
-    def on_quit(self):
-        """Write back the configuration file."""
-        if self._collectionManager:
-            if self._collectionManager.isOpen:
-                self._collectionManager.on_quit()
