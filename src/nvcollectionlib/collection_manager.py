@@ -5,12 +5,11 @@ For further information see https://github.com/peter88213/nv_collection
 License: GNU GPLv3 (https://www.gnu.org/licenses/gpl-3.0.en.html)
 """
 import os
-import sys
+import platform
 from tkinter import filedialog
 from tkinter import messagebox
 from tkinter import ttk
 
-from nvlib.widgets.index_card import IndexCard
 from nvcollectionlib.collection import Collection
 from nvcollectionlib.configuration import Configuration
 from nvcollectionlib.nvcollection_globals import APPLICATION
@@ -20,6 +19,7 @@ from nvcollectionlib.nvcollection_globals import PLUGIN
 from nvcollectionlib.nvcollection_globals import SERIES_PREFIX
 from nvcollectionlib.nvcollection_globals import _
 from nvcollectionlib.nvcollection_globals import norm_path
+from nvlib.widgets.index_card import IndexCard
 import tkinter as tk
 
 SETTINGS = dict(
@@ -53,7 +53,7 @@ class CollectionManager(tk.Toplevel):
         self.lift()
         self.focus()
         self.protocol("WM_DELETE_WINDOW", self.on_quit)
-        if sys.platform != 'win32':
+        if platform.system() != 'Windows':
             self.bind(self._KEY_QUIT_PROGRAM[0], self.on_quit)
 
         #--- Main menu.
@@ -113,7 +113,7 @@ class CollectionManager(tk.Toplevel):
         self.fileMenu.add_command(label=_('Open...'), command=lambda: self._open_collection(''))
         self.fileMenu.add_command(label=_('Save'), state='disabled', command=self._save_collection)
         self.fileMenu.add_command(label=_('Close'), state='disabled', command=self._close_collection)
-        if sys.platform == 'win32':
+        if platform.system() == 'Windows':
             self.fileMenu.add_command(label=_('Exit'), accelerator='Alt-F4', command=self.on_quit)
         else:
             self.fileMenu.add_command(label=_('Quit'), accelerator=self._KEY_QUIT_PROGRAM[1], command=self.on_quit)
