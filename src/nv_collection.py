@@ -86,6 +86,8 @@ class Plugin(PluginBase):
     def _start_manager(self):
         if self._collectionManager:
             if self._collectionManager.isOpen:
+                if self._collectionManager.state() == 'iconic':
+                    self._collectionManager.state('normal')
                 self._collectionManager.lift()
                 self._collectionManager.focus()
                 return

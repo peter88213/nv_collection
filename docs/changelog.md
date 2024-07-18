@@ -4,6 +4,13 @@
 
 ## Changelog
 
+### v4.1.2
+
+- Handle minimized window.
+
+Compatibility: novelibre v4.3 API
+Based on novxlib v4.4.0
+
 ### v4.1.1
 
 - Refactor the code for future API update,
