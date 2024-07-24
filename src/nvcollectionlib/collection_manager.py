@@ -20,6 +20,7 @@ from nvcollectionlib.nvcollection_globals import SERIES_PREFIX
 from nvcollectionlib.nvcollection_globals import _
 from nvcollectionlib.nvcollection_globals import norm_path
 from nvlib.widgets.index_card import IndexCard
+from nvcollectionlib.nvcollection_globals import open_help
 import tkinter as tk
 
 SETTINGS = dict(
@@ -133,7 +134,13 @@ class CollectionManager(tk.Toplevel):
         self.bookMenu.add_command(label=_('Update book data from the current project'), command=self._update_collection)
         self.bookMenu.add_command(label=_('Update project data from the selected book'), command=self._update_project)
 
+        # Help
+        self.helpMenu = tk.Menu(self.mainMenu, tearoff=0)
+        self.mainMenu.add_cascade(label=_('Help'), menu=self.helpMenu)
+        self.helpMenu.add_command(label=_('Online help'), accelerator='F1', command=open_help)
+
         #--- Event bindings.
+        self.bind('<F1>', open_help)
         self.bind('<Escape>', self._restore_status)
 
         self.isModified = False

@@ -4,10 +4,11 @@ Copyright (c) 2024 Peter Triesberger
 For further information see https://github.com/peter88213/nv_collection
 License: GNU GPLv3 (https://www.gnu.org/licenses/gpl-3.0.en.html)
 """
-import os
-import sys
 import gettext
 import locale
+import os
+import sys
+import webbrowser
 
 
 class Error(Exception):
@@ -34,6 +35,7 @@ APPLICATION = _('Collection')
 PLUGIN = f'{APPLICATION} plugin v@release'
 SERIES_PREFIX = 'sr'
 BOOK_PREFIX = 'bk'
+HELP_URL = f'https://peter88213.github.io/{_("nvhelp-en")}/nv_collection/'
 
 
 def norm_path(path):
@@ -41,3 +43,7 @@ def norm_path(path):
         path = ''
     return os.path.normpath(path)
 
+
+def open_help(event=None):
+    """Show the online help page specified by HELP_URL."""
+    webbrowser.open(HELP_URL)

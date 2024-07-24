@@ -18,15 +18,13 @@ GNU General Public License for more details.
 import os
 from pathlib import Path
 import sys
-import webbrowser
 
 from nvcollectionlib.collection_manager import CollectionManager
 from nvcollectionlib.nvcollection_globals import APPLICATION
 from nvcollectionlib.nvcollection_globals import _
+from nvcollectionlib.nvcollection_globals import open_help
 from nvlib.plugin.plugin_base import PluginBase
 import tkinter as tk
-
-DEFAULT_FILE = 'collection.pwc'
 
 
 class Plugin(PluginBase):
@@ -35,7 +33,6 @@ class Plugin(PluginBase):
     API_VERSION = '4.3'
     DESCRIPTION = 'A book/series collection manager'
     URL = 'https://github.com/peter88213/nv_collection'
-    _HELP_URL = f'https://peter88213.github.io/{_("nvhelp-en")}/nv_collection/'
     ICON = 'cLogo32'
 
     def install(self, model, view, controller, prefs=None):
@@ -62,7 +59,7 @@ class Plugin(PluginBase):
         self._ui.fileMenu.entryconfig(APPLICATION, state='normal')
 
         # Add an entry to the Help menu.
-        self._ui.helpMenu.add_command(label=_('Collection plugin Online help'), command=lambda: webbrowser.open(self._HELP_URL))
+        self._ui.helpMenu.add_command(label=_('Collection plugin Online help'), command=open_help)
 
         # Set window icon.
         self.sectionEditors = {}

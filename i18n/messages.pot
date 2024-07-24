@@ -3,8 +3,8 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 4.1.2\n"
-"POT-Creation-Date: 2024-07-18 10:57:40\n"
+"Project-Id-Version: 4.2.0\n"
+"POT-Creation-Date: 2024-07-24 17:52:32\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: LANGUAGE\n"
@@ -62,6 +62,9 @@ msgstr ""
 msgid "File"
 msgstr ""
 
+msgid "Help"
+msgstr ""
+
 msgid "New"
 msgstr ""
 
@@ -72,6 +75,9 @@ msgid "No collection found in file"
 msgstr ""
 
 msgid "No valid version found in file"
+msgstr ""
+
+msgid "Online help"
 msgstr ""
 
 msgid "Open..."

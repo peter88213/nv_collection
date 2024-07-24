@@ -3,9 +3,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 4.1.2\n"
-"POT-Creation-Date: 2024-07-18 10:57:40\n"
-"PO-Revision-Date: 2024-07-18 10:57:40\n"
+"Project-Id-Version: 4.2.0\n"
+"POT-Creation-Date: 2024-07-24 17:52:32\n"
+"PO-Revision-Date: 2024-07-24 17:52:32\n"
 "Last-Translator: Peter Triesberger\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -61,6 +61,9 @@ msgstr "Beenden"
 msgid "File"
 msgstr "Datei"
 
+msgid "Help"
+msgstr "Hilfe"
+
 msgid "New"
 msgstr "Neu"
 
@@ -72,6 +75,9 @@ msgstr "Keine Sammlung gefunden in Datei"
 
 msgid "No valid version found in file"
 msgstr "Keine gültige Versionsangabe in der Datei gefunden"
+
+msgid "Online help"
+msgstr "Online-Hilfe"
 
 msgid "Open..."
 msgstr "Öffnen..."
