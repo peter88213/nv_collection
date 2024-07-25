@@ -1,4 +1,4 @@
-"""Provide a class representing a collection of novelyst projects.
+"""Provide a class representing a collection of novelibre projects.
 
 Copyright (c) 2024 Peter Triesberger
 For further information see https://github.com/peter88213/nv_collection
@@ -20,7 +20,7 @@ import xml.etree.ElementTree as ET
 
 
 class Collection:
-    """Represent a collection of novelyst projects. 
+    """Represent a collection of novelibre projects. 
     
     - A collection has books and series.
     - Books can be members of a series.
@@ -301,7 +301,7 @@ class Collection:
         Raise the "Error" exception in case of error. 
         
         Note: The path is given as an argument rather than using self.filePath. 
-        So this routine can be used for novelyst-generated xml files other than .nvcx as well. 
+        So this routine can be used for novelibre-generated xml files other than .nvcx as well. 
         """
         with open(filePath, 'r', encoding='utf-8') as f:
             text = f.read()

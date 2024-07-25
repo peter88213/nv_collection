@@ -3,8 +3,8 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 4.2.0\n"
-"POT-Creation-Date: 2024-07-24 17:52:32\n"
+"Project-Id-Version: 4.2.1\n"
+"POT-Creation-Date: 2024-07-25 10:24:26\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: LANGUAGE\n"
@@ -128,7 +128,7 @@ msgstr ""
 msgid "Update project data from the selected book"
 msgstr ""
 
-msgid "novelyst collection"
+msgid "novelibre collection"
 msgstr ""
 
 msgid "nvhelp-en"

@@ -71,7 +71,7 @@ class CollectionManager(tk.Toplevel):
 
         #--- The collection itself.
         self.collection = None
-        self._fileTypes = [(_('novelyst collection'), Collection.EXTENSION)]
+        self._fileTypes = [(_('novelibre collection'), Collection.EXTENSION)]
 
         #--- Tree for book selection.
         self.treeView = ttk.Treeview(self.treeWindow, selectmode='browse')

@@ -1,4 +1,4 @@
-"""Provide a class for novelyst book series representation.
+"""Provide a class for novelibre book series representation.
 
 Copyright (c) 2024 Peter Triesberger
 For further information see https://github.com/peter88213/nv_collection

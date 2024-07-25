@@ -4,6 +4,13 @@
 
 ## Changelog
 
+### v4.2.1
+
+- Update the wording.
+
+Compatibility: novelibre v4.3 API
+Based on novxlib v4.4.0
+
 ### v4.2.0
 
 - Provide context sensitive help via menu and F1 key.

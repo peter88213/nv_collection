@@ -1,4 +1,4 @@
-"""A project collection manager plugin for novelyst.
+"""A project collection manager plugin for novelibre.
 
 Requires Python 3.6+
 Copyright (c) 2024 Peter Triesberger
@@ -28,7 +28,7 @@ import tkinter as tk
 
 
 class Plugin(PluginBase):
-    """novelyst collection manager plugin class."""
+    """novelibre collection manager plugin class."""
     VERSION = '@release'
     API_VERSION = '4.3'
     DESCRIPTION = 'A book/series collection manager'
