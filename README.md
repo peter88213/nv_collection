@@ -1,4 +1,4 @@
-[![Download the latest release](docs/img/download-button.png)](https://github.com/peter88213/nv_collection/raw/main/dist/nv_collection_v4.2.1.pyzw)
+[![Download the latest release](docs/img/download-button.png)](https://github.com/peter88213/nv_collection/raw/main/dist/nv_collection_v4.2.2.pyzw)
 [![Changelog](docs/img/changelog-button.png)](docs/changelog.md)
 [![News](docs/img/news-button.png)](https://github.com/peter88213/novelibre/discussions/1)
 [![Online help](docs/img/help-button.png)](https://peter88213.github.io/nvhelp-en/nv_collection/)
@@ -28,10 +28,10 @@ The [novelibre](https://github.com/peter88213/novelibre/) Python program helps a
 
 ### Default: Executable Python zip archive
 
-Download the latest release [nv_collection_v4.2.1.pyzw](https://github.com/peter88213/nv_collection/raw/main/dist/nv_collection_v4.2.1.pyzw)
+Download the latest release [nv_collection_v4.2.2.pyzw](https://github.com/peter88213/nv_collection/raw/main/dist/nv_collection_v4.2.2.pyzw)
 
-- Launch *nv_collection_v4.2.1.pyzw* by double-clicking (Windows/Linux desktop),
-- or execute `python nv_collection_v4.2.1.pyzw` (Windows), resp. `python3 nv_collection_v4.2.1.pyzw` (Linux) on the command line.
+- Launch *nv_collection_v4.2.2.pyzw* by double-clicking (Windows/Linux desktop),
+- or execute `python nv_collection_v4.2.2.pyzw` (Windows), resp. `python3 nv_collection_v4.2.2.pyzw` (Linux) on the command line.
 
 #### Important
 
@@ -47,9 +47,9 @@ the zip file.
 
 ### Alternative: Zip file
 
-The package is also available in zip format: [nv_collection_v4.2.1.zip](https://github.com/peter88213/nv_collection/raw/main/dist/nv_collection_v4.2.1.zip)
+The package is also available in zip format: [nv_collection_v4.2.2.zip](https://github.com/peter88213/nv_collection/raw/main/dist/nv_collection_v4.2.2.zip)
 
-- Extract the *nv_collection_v4.2.1* folder from the downloaded zipfile "nv_collection_v4.2.1.zip".
+- Extract the *nv_collection_v4.2.2* folder from the downloaded zipfile "nv_collection_v4.2.2.zip".
 - Move into this new folder and launch *setup.pyw* by double-clicking (Windows/Linux desktop), 
 - or execute `python setup.pyw` (Windows), resp. `python3 setup.pyw` (Linux) on the command line.
 
