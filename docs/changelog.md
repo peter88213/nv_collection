@@ -4,6 +4,14 @@
 
 ## Changelog
 
+### Version 4.2.3
+
+- Use new routine for safe XML reading.
+- Stripping illegal xml characters during post-processing.
+
+Compatibility: novelibre 4.3 API
+Based on novxlib 4.6.2
+
 ### Version 4.2.2
 
 - Refactor for future Python versions.

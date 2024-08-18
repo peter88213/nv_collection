@@ -3,8 +3,8 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 4.2.2\n"
-"POT-Creation-Date: 2024-08-17 19:00:50\n"
+"Project-Id-Version: 4.2.3\n"
+"POT-Creation-Date: 2024-08-18 11:13:19\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: LANGUAGE\n"
@@ -33,6 +33,12 @@ msgid "Book removed from the collection"
 msgstr ""
 
 msgid "Cannot overwrite file"
+msgstr ""
+
+msgid "Cannot process file"
+msgstr ""
+
+msgid "Cannot read file"
 msgstr ""
 
 msgid "Cannot remove book"

@@ -3,9 +3,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 4.2.2\n"
-"POT-Creation-Date: 2024-08-17 19:00:50\n"
-"PO-Revision-Date: 2024-08-17 19:00:50\n"
+"Project-Id-Version: 4.2.3\n"
+"POT-Creation-Date: 2024-08-18 11:13:19\n"
+"PO-Revision-Date: 2024-08-18 11:13:19\n"
 "Last-Translator: Peter Triesberger\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -33,6 +33,12 @@ msgstr "Buch aus der Sammlung entfernt"
 
 msgid "Cannot overwrite file"
 msgstr "Kann Datei nicht überschreiben"
+
+msgid "Cannot process file"
+msgstr "Kann Datei nicht verarbeiten"
+
+msgid "Cannot read file"
+msgstr "Kann Datei nicht lesen"
 
 msgid "Cannot remove book"
 msgstr "Kann Buch nicht entfernen"

@@ -7,7 +7,9 @@ License: GNU GPLv3 (https://www.gnu.org/licenses/gpl-3.0.en.html)
 import os
 
 from novxlib.model.id_generator import create_id
+from novxlib.xml.xml_filter import strip_illegal_characters
 from novxlib.xml.xml_indent import indent
+from novxlib.xml.xml_open import get_xml_root
 from nvcollectionlib.book import Book
 from nvcollectionlib.nvcollection_globals import BOOK_PREFIX
 from nvcollectionlib.nvcollection_globals import Error
@@ -104,8 +106,7 @@ class Collection:
                         self.books[bkId].desc = '\n'.join(paragraphs)
                     self.tree.insert(parent, 'end', bkId, text=self.books[bkId].title, open=True)
 
-        xmlTree = ET.parse(self.filePath)
-        xmlRoot = xmlTree.getroot()
+        xmlRoot = get_xml_root(self.filePath)
         if not xmlRoot.tag == 'COLLECTION':
             raise Error(f'{_("No collection found in file")}: "{norm_path(self.filePath)}".')
 
@@ -305,6 +306,7 @@ class Collection:
         """
         with open(filePath, 'r', encoding='utf-8') as f:
             text = f.read()
+            text = strip_illegal_characters(text)
         try:
             with open(filePath, 'w', encoding='utf-8') as f:
                 f.write(f'{self.XML_HEADER}{text}')
