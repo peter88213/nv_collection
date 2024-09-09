@@ -4,6 +4,13 @@
 
 ## Changelog
 
+### Version 4.2.5
+
+- Refactor: Change import order for a quick start.
+
+Compatibility: novelibre 4.3 API
+Based on novxlib 4.6.3
+
 ### Version 4.2.4
 
 - Rejecting malformed .nvcx files.

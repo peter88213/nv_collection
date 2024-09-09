@@ -19,9 +19,9 @@ import os
 from pathlib import Path
 import sys
 
+from nvcollectionlib.nvcollection_globals import _
 from nvcollectionlib.collection_manager import CollectionManager
 from nvcollectionlib.nvcollection_globals import APPLICATION
-from nvcollectionlib.nvcollection_globals import _
 from nvcollectionlib.nvcollection_globals import open_help
 from nvlib.plugin.plugin_base import PluginBase
 import tkinter as tk
