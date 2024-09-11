@@ -11,7 +11,7 @@
 - Automatically resize the setup window.
 
 Compatibility: novelibre 4.3 API
-Based on novxlib 4.6.3
+Based on novxlib 4.6.4
 
 ### Version 4.2.5
 
