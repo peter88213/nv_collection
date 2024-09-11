@@ -5,7 +5,6 @@ For further information see https://github.com/peter88213/nv_collection
 License: GNU GPLv3 (https://www.gnu.org/licenses/gpl-3.0.en.html)
 """
 import os
-import platform
 from tkinter import filedialog
 from tkinter import messagebox
 from tkinter import ttk
@@ -64,8 +63,11 @@ class CollectionManager(tk.Toplevel):
         self.geometry(position)
         self.lift()
         self.focus()
+
+        #--- Event bindings.
         self.protocol("WM_DELETE_WINDOW", self.on_quit)
-        self.bind(self.keys.QUIT_PROGRAM[0], self.on_quit)
+        if PLATFORM != 'win':
+            self.bind(self.keys.QUIT_PROGRAM[0], self.on_quit)
 
         #--- Main menu.
         self.mainMenu = tk.Menu(self)
@@ -124,7 +126,7 @@ class CollectionManager(tk.Toplevel):
         self.fileMenu.add_command(label=_('Open...'), command=lambda: self._open_collection(''))
         self.fileMenu.add_command(label=_('Save'), state='disabled', command=self._save_collection)
         self.fileMenu.add_command(label=_('Close'), state='disabled', command=self._close_collection)
-        if platform.system() == 'Windows':
+        if PLATFORM == 'win':
             self.fileMenu.add_command(label=_('Exit'), accelerator=self.keys.QUIT_PROGRAM[1], command=self.on_quit)
         else:
             self.fileMenu.add_command(label=_('Quit'), accelerator=self.keys.QUIT_PROGRAM[1], command=self.on_quit)
