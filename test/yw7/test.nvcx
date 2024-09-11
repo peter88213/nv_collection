@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE COLLECTION SYSTEM "nvcx_1_0.dtd">
+<?xml-stylesheet href="collection.css" type="text/css"?>
+<COLLECTION version="1.0">
+  <BOOK id="bk1">
+    <Title>Fatale Wahl</Title>
+    <Desc>
+      <p>Die Partei "Freunde des Volkes" steht kurz vor dem Wahlsieg. Durch Zufall gerät der kleine Angestellte Martin Falters in eine Versammlung, wo ihre Pläne zur Errichtung einer Diktatur besprochen werden. Mit Hilfe eines Handy-Videos will Martin die Öffentlichkeit warnen, doch er wird zunächst nicht ernst genommen. Dann geschehen seltsame Dinge. Computer stürzen ab, Daten gehen verloren, tödliche Unfälle ereignen sich, Wohnungen gehen in Flammen auf, Menschen verschwinden. Etwas Unglaubliches passiert: Eine schöne Frau taucht aus dem Nichts auf und zieht bei Martin ein.</p>
+    </Desc>
+    <Path>C:/Users/Peter/git/novxlib/test/work/Fehler.novx</Path>
+  </BOOK>
+</COLLECTION>

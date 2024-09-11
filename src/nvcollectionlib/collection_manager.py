@@ -12,15 +12,19 @@ from tkinter import ttk
 
 from nvcollectionlib.collection import Collection
 from nvcollectionlib.configuration import Configuration
+from nvcollectionlib.generic_keys import GenericKeys
+from nvcollectionlib.mac_keys import MacKeys
 from nvcollectionlib.nvcollection_globals import APPLICATION
 from nvcollectionlib.nvcollection_globals import BOOK_PREFIX
 from nvcollectionlib.nvcollection_globals import Error
+from nvcollectionlib.nvcollection_globals import PLATFORM
 from nvcollectionlib.nvcollection_globals import PLUGIN
 from nvcollectionlib.nvcollection_globals import SERIES_PREFIX
 from nvcollectionlib.nvcollection_globals import _
 from nvcollectionlib.nvcollection_globals import norm_path
-from nvlib.widgets.index_card import IndexCard
 from nvcollectionlib.nvcollection_globals import open_help
+from nvcollectionlib.windows_keys import WindowsKeys
+from nvlib.widgets.index_card import IndexCard
 import tkinter as tk
 
 SETTINGS = dict(
@@ -31,13 +35,20 @@ OPTIONS = {}
 
 
 class CollectionManager(tk.Toplevel):
-    _KEY_QUIT_PROGRAM = ('<Control-q>', 'Ctrl-Q')
 
     def __init__(self, model, view, controller, position, configDir):
         self._mdl = model
         self._ui = view
         self._ctrl = controller
         super().__init__()
+
+        #--- Select platform specific keys.
+        if PLATFORM == 'win':
+            self.keys = WindowsKeys()
+        elif PLATFORM == 'mac':
+            self.keys = MacKeys()
+        else:
+            self.keys = GenericKeys()
 
         #--- Load configuration.
         self.iniFile = f'{configDir}/collection.ini'
@@ -54,8 +65,7 @@ class CollectionManager(tk.Toplevel):
         self.lift()
         self.focus()
         self.protocol("WM_DELETE_WINDOW", self.on_quit)
-        if platform.system() != 'Windows':
-            self.bind(self._KEY_QUIT_PROGRAM[0], self.on_quit)
+        self.bind(self.keys.QUIT_PROGRAM[0], self.on_quit)
 
         #--- Main menu.
         self.mainMenu = tk.Menu(self)
@@ -86,7 +96,7 @@ class CollectionManager(tk.Toplevel):
         self.treeView.bind('<Return>', self._open_book)
         self.treeView.bind('<Delete>', self._remove_node)
         self.treeView.bind('<Shift-Delete>', self._remove_series_with_books)
-        self.treeView.bind('<Alt-B1-Motion>', self._move_node)
+        self.treeView.bind(self.keys.MOVE_NODE, self._move_node)
 
         #--- "Index card" in the right frame.
         self.indexCard = IndexCard(self.treeWindow, bd=2, relief='ridge')
@@ -100,7 +110,7 @@ class CollectionManager(tk.Toplevel):
         # Status bar.
         self.statusBar = tk.Label(self, text='', anchor='w', padx=5, pady=2)
         self.statusBar.pack(expand=False, fill='both')
-        self.statusBar.bind('<Button-1>', self._restore_status)
+        self.statusBar.bind(self.keys.LEFT_CLICK, self._restore_status)
 
         # Path bar.
         self.pathBar = tk.Label(self, text='', anchor='w', padx=5, pady=3)
@@ -115,9 +125,9 @@ class CollectionManager(tk.Toplevel):
         self.fileMenu.add_command(label=_('Save'), state='disabled', command=self._save_collection)
         self.fileMenu.add_command(label=_('Close'), state='disabled', command=self._close_collection)
         if platform.system() == 'Windows':
-            self.fileMenu.add_command(label=_('Exit'), accelerator='Alt-F4', command=self.on_quit)
+            self.fileMenu.add_command(label=_('Exit'), accelerator=self.keys.QUIT_PROGRAM[1], command=self.on_quit)
         else:
-            self.fileMenu.add_command(label=_('Quit'), accelerator=self._KEY_QUIT_PROGRAM[1], command=self.on_quit)
+            self.fileMenu.add_command(label=_('Quit'), accelerator=self.keys.QUIT_PROGRAM[1], command=self.on_quit)
 
         # Series menu.
         self.seriesMenu = tk.Menu(self.mainMenu, tearoff=0)
@@ -140,7 +150,7 @@ class CollectionManager(tk.Toplevel):
         self.helpMenu.add_command(label=_('Online help'), accelerator='F1', command=open_help)
 
         #--- Event bindings.
-        self.bind('<F1>', open_help)
+        self.bind(self.keys.OPEN_HELP[0], open_help)
         self.bind('<Escape>', self._restore_status)
 
         self.isModified = False

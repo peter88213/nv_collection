@@ -4,6 +4,15 @@
 
 ## Changelog
 
+### Version 4.3.0
+
+- Provide shortcuts and key bindings for Mac OS.
+- Update and move the standalone script.
+- Automatically resize the setup window.
+
+Compatibility: novelibre 4.3 API
+Based on novxlib 4.6.3
+
 ### Version 4.2.5
 
 - Refactor: Change import order for a quick start.

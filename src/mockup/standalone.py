@@ -24,7 +24,7 @@ class CollectionTk(MainTk):
         self.helpMenu = tk.Menu(self.mainMenu, tearoff=0)
         self.mainMenu.add_cascade(label=_('Help'), menu=self.helpMenu)
         plugin = Plugin()
-        plugin.install(self)
+        plugin.install(self, self, self)
 
 
 if __name__ == '__main__':
