@@ -11,16 +11,17 @@ from tkinter import ttk
 
 from nvcollectionlib.collection import Collection
 from nvcollectionlib.configuration import Configuration
-from nvcollectionlib.key_definitions import KEYS
 from nvcollectionlib.nvcollection_globals import APPLICATION
 from nvcollectionlib.nvcollection_globals import BOOK_PREFIX
 from nvcollectionlib.nvcollection_globals import Error
-from nvcollectionlib.nvcollection_globals import PLATFORM
 from nvcollectionlib.nvcollection_globals import PLUGIN
 from nvcollectionlib.nvcollection_globals import SERIES_PREFIX
 from nvcollectionlib.nvcollection_globals import _
 from nvcollectionlib.nvcollection_globals import norm_path
 from nvcollectionlib.nvcollection_globals import open_help
+from nvcollectionlib.platform_settings import KEYS
+from nvcollectionlib.platform_settings import MOUSE
+from nvcollectionlib.platform_settings import PLATFORM
 from nvlib.widgets.index_card import IndexCard
 import tkinter as tk
 
@@ -88,7 +89,7 @@ class CollectionManager(tk.Toplevel):
         self.treeView.bind('<Return>', self._open_book)
         self.treeView.bind('<Delete>', self._remove_node)
         self.treeView.bind('<Shift-Delete>', self._remove_series_with_books)
-        self.treeView.bind(KEYS.MOVE_NODE, self._move_node)
+        self.treeView.bind(MOUSE.MOVE_NODE, self._move_node)
 
         #--- "Index card" in the right frame.
         self.indexCard = IndexCard(self.treeWindow, bd=2, relief='ridge')
@@ -102,7 +103,7 @@ class CollectionManager(tk.Toplevel):
         # Status bar.
         self.statusBar = tk.Label(self, text='', anchor='w', padx=5, pady=2)
         self.statusBar.pack(expand=False, fill='both')
-        self.statusBar.bind(KEYS.LEFT_CLICK, self._restore_status)
+        self.statusBar.bind(MOUSE.LEFT_CLICK, self._restore_status)
 
         # Path bar.
         self.pathBar = tk.Label(self, text='', anchor='w', padx=5, pady=3)

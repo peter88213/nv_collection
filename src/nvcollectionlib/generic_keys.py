@@ -12,5 +12,3 @@ class GenericKeys:
     OPEN_HELP = ('<F1>', 'F1')
     QUIT_PROGRAM = ('<Control-q>', f'{_("Ctrl")}-Q')
 
-    LEFT_CLICK = '<Button-1>'
-    MOVE_NODE = '<Alt-B1-Motion>'

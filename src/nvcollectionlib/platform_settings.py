@@ -4,16 +4,27 @@ Copyright (c) 2024 Peter Triesberger
 For further information see https://github.com/peter88213/nv_collection
 License: GNU GPLv3 (https://www.gnu.org/licenses/gpl-3.0.en.html)
 """
-from nvcollectionlib.nvcollection_globals import PLATFORM
+import platform
+
 from nvcollectionlib.generic_keys import GenericKeys
+from nvcollectionlib.generic_mouse import GenericMouse
 from nvcollectionlib.mac_keys import MacKeys
 from nvcollectionlib.windows_keys import WindowsKeys
 
-if PLATFORM == 'win':
+if platform.system() == 'Windows':
+    PLATFORM = 'win'
     KEYS = WindowsKeys()
-elif PLATFORM == 'ix':
+    MOUSE = GenericMouse
+elif platform.system() in ('Linux', 'FreeBSD'):
+    PLATFORM = 'ix'
     KEYS = GenericKeys()
-elif PLATFORM == 'mac':
+    MOUSE = GenericMouse
+elif platform.system() == 'Darwin':
+    PLATFORM = 'mac'
     KEYS = MacKeys()
+    MOUSE = GenericMouse
 else:
+    PLATFORM = ''
     KEYS = GenericKeys()
+    MOUSE = GenericMouse
+
