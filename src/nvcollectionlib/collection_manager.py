@@ -11,8 +11,7 @@ from tkinter import ttk
 
 from nvcollectionlib.collection import Collection
 from nvcollectionlib.configuration import Configuration
-from nvcollectionlib.generic_keys import GenericKeys
-from nvcollectionlib.mac_keys import MacKeys
+from nvcollectionlib.key_definitions import KEYS
 from nvcollectionlib.nvcollection_globals import APPLICATION
 from nvcollectionlib.nvcollection_globals import BOOK_PREFIX
 from nvcollectionlib.nvcollection_globals import Error
@@ -22,7 +21,6 @@ from nvcollectionlib.nvcollection_globals import SERIES_PREFIX
 from nvcollectionlib.nvcollection_globals import _
 from nvcollectionlib.nvcollection_globals import norm_path
 from nvcollectionlib.nvcollection_globals import open_help
-from nvcollectionlib.windows_keys import WindowsKeys
 from nvlib.widgets.index_card import IndexCard
 import tkinter as tk
 
@@ -40,14 +38,6 @@ class CollectionManager(tk.Toplevel):
         self._ui = view
         self._ctrl = controller
         super().__init__()
-
-        #--- Select platform specific keys.
-        if PLATFORM == 'win':
-            self.keys = WindowsKeys()
-        elif PLATFORM == 'mac':
-            self.keys = MacKeys()
-        else:
-            self.keys = GenericKeys()
 
         #--- Load configuration.
         self.iniFile = f'{configDir}/collection.ini'
@@ -67,7 +57,7 @@ class CollectionManager(tk.Toplevel):
         #--- Event bindings.
         self.protocol("WM_DELETE_WINDOW", self.on_quit)
         if PLATFORM != 'win':
-            self.bind(self.keys.QUIT_PROGRAM[0], self.on_quit)
+            self.bind(KEYS.QUIT_PROGRAM[0], self.on_quit)
 
         #--- Main menu.
         self.mainMenu = tk.Menu(self)
@@ -98,7 +88,7 @@ class CollectionManager(tk.Toplevel):
         self.treeView.bind('<Return>', self._open_book)
         self.treeView.bind('<Delete>', self._remove_node)
         self.treeView.bind('<Shift-Delete>', self._remove_series_with_books)
-        self.treeView.bind(self.keys.MOVE_NODE, self._move_node)
+        self.treeView.bind(KEYS.MOVE_NODE, self._move_node)
 
         #--- "Index card" in the right frame.
         self.indexCard = IndexCard(self.treeWindow, bd=2, relief='ridge')
@@ -112,7 +102,7 @@ class CollectionManager(tk.Toplevel):
         # Status bar.
         self.statusBar = tk.Label(self, text='', anchor='w', padx=5, pady=2)
         self.statusBar.pack(expand=False, fill='both')
-        self.statusBar.bind(self.keys.LEFT_CLICK, self._restore_status)
+        self.statusBar.bind(KEYS.LEFT_CLICK, self._restore_status)
 
         # Path bar.
         self.pathBar = tk.Label(self, text='', anchor='w', padx=5, pady=3)
@@ -127,9 +117,9 @@ class CollectionManager(tk.Toplevel):
         self.fileMenu.add_command(label=_('Save'), state='disabled', command=self._save_collection)
         self.fileMenu.add_command(label=_('Close'), state='disabled', command=self._close_collection)
         if PLATFORM == 'win':
-            self.fileMenu.add_command(label=_('Exit'), accelerator=self.keys.QUIT_PROGRAM[1], command=self.on_quit)
+            self.fileMenu.add_command(label=_('Exit'), accelerator=KEYS.QUIT_PROGRAM[1], command=self.on_quit)
         else:
-            self.fileMenu.add_command(label=_('Quit'), accelerator=self.keys.QUIT_PROGRAM[1], command=self.on_quit)
+            self.fileMenu.add_command(label=_('Quit'), accelerator=KEYS.QUIT_PROGRAM[1], command=self.on_quit)
 
         # Series menu.
         self.seriesMenu = tk.Menu(self.mainMenu, tearoff=0)
@@ -152,7 +142,7 @@ class CollectionManager(tk.Toplevel):
         self.helpMenu.add_command(label=_('Online help'), accelerator='F1', command=open_help)
 
         #--- Event bindings.
-        self.bind(self.keys.OPEN_HELP[0], open_help)
+        self.bind(KEYS.OPEN_HELP[0], open_help)
         self.bind('<Escape>', self._restore_status)
 
         self.isModified = False

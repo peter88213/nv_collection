@@ -4,6 +4,13 @@
 
 ## Changelog
 
+### Version 4.3.2
+
+- Refactor event bindings.
+
+Compatibility: novelibre 4.3 API
+Based on novxlib 4.6.4
+
 ### Version 4.3.1
 
 - Refactor platform detection.
