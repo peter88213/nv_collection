@@ -19,9 +19,9 @@ from nvcollectionlib.nvcollection_globals import SERIES_PREFIX
 from nvcollectionlib.nvcollection_globals import _
 from nvcollectionlib.nvcollection_globals import norm_path
 from nvcollectionlib.nvcollection_globals import open_help
-from nvcollectionlib.platform_settings import KEYS
-from nvcollectionlib.platform_settings import MOUSE
-from nvcollectionlib.platform_settings import PLATFORM
+from nvcollectionlib.platform.platform_settings import KEYS
+from nvcollectionlib.platform.platform_settings import MOUSE
+from nvcollectionlib.platform.platform_settings import PLATFORM
 from nvlib.widgets.index_card import IndexCard
 import tkinter as tk
 
