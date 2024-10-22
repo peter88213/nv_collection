@@ -25,14 +25,15 @@ from nvcollectionlib.platform.platform_settings import PLATFORM
 from nvlib.widgets.index_card import IndexCard
 import tkinter as tk
 
-SETTINGS = dict(
-    last_open='',
-    tree_width='300',
-)
-OPTIONS = {}
-
 
 class CollectionManager(tk.Toplevel):
+
+    INI_FILENAME = 'collection.ini'
+    SETTINGS = dict(
+        last_open='',
+        tree_width='300',
+    )
+    OPTIONS = {}
 
     def __init__(self, model, view, controller, position, configDir):
         self._mdl = model
@@ -41,8 +42,8 @@ class CollectionManager(tk.Toplevel):
         super().__init__()
 
         #--- Load configuration.
-        self.iniFile = f'{configDir}/collection.ini'
-        self.configuration = Configuration(SETTINGS, OPTIONS)
+        self.iniFile = f'{configDir}/{self.INI_FILENAME}'
+        self.configuration = Configuration(self.SETTINGS, self.OPTIONS)
         self.configuration.read(self.iniFile)
         self.kwargs = {}
         self.kwargs.update(self.configuration.settings)

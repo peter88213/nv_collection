@@ -35,6 +35,8 @@ class Plugin(PluginBase):
     URL = 'https://github.com/peter88213/nv_collection'
     ICON = 'cLogo32'
 
+    INI_FILEPATH = '.novx/config'
+
     def install(self, model, view, controller, prefs=None):
         """Add a submenu to the 'File' menu.
         
@@ -94,7 +96,7 @@ class Plugin(PluginBase):
         windowGeometry = f'+{int(x)+offset}+{int(y)+offset}'
         try:
             homeDir = str(Path.home()).replace('\\', '/')
-            configDir = f'{homeDir}/.novx/config'
+            configDir = f'{homeDir}/{self.INI_FILEPATH}'
         except:
             configDir = '.'
         self._collectionManager = CollectionManager(self._mdl, self._ui, self._ctrl, windowGeometry, configDir)
