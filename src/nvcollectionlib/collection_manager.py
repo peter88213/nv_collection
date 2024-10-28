@@ -9,6 +9,7 @@ from tkinter import filedialog
 from tkinter import messagebox
 from tkinter import ttk
 
+from apptk.widgets.index_card import IndexCard
 from nvcollectionlib.collection import Collection
 from nvcollectionlib.configuration import Configuration
 from nvcollectionlib.nvcollection_globals import APPLICATION
@@ -22,7 +23,6 @@ from nvcollectionlib.nvcollection_globals import open_help
 from nvcollectionlib.platform.platform_settings import KEYS
 from nvcollectionlib.platform.platform_settings import MOUSE
 from nvcollectionlib.platform.platform_settings import PLATFORM
-from nvlib.widgets.index_card import IndexCard
 import tkinter as tk
 
 
