@@ -21,7 +21,7 @@ import sys
 
 from nvcollectionlib.nvcollection_globals import _
 from nvcollectionlib.collection_manager import CollectionManager
-from nvcollectionlib.nvcollection_globals import APPLICATION
+from nvcollectionlib.nvcollection_globals import FEATURE
 from nvcollectionlib.nvcollection_globals import open_help
 from nvlib.plugin.plugin_base import PluginBase
 import tkinter as tk
@@ -56,9 +56,9 @@ class Plugin(PluginBase):
         self._collectionManager = None
 
         # Create a submenu.
-        self._ui.fileMenu.insert_command(0, label=APPLICATION, command=self._start_manager)
+        self._ui.fileMenu.insert_command(0, label=FEATURE, command=self._start_manager)
         self._ui.fileMenu.insert_separator(1)
-        self._ui.fileMenu.entryconfig(APPLICATION, state='normal')
+        self._ui.fileMenu.entryconfig(FEATURE, state='normal')
 
         # Add an entry to the Help menu.
         self._ui.helpMenu.add_command(label=_('Collection plugin Online help'), command=open_help)

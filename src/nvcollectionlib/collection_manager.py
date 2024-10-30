@@ -12,10 +12,9 @@ from tkinter import ttk
 from apptk.widgets.index_card import IndexCard
 from nvcollectionlib.collection import Collection
 from nvcollectionlib.configuration import Configuration
-from nvcollectionlib.nvcollection_globals import APPLICATION
+from nvcollectionlib.nvcollection_globals import FEATURE
 from nvcollectionlib.nvcollection_globals import BOOK_PREFIX
 from nvcollectionlib.nvcollection_globals import Error
-from nvcollectionlib.nvcollection_globals import PLUGIN
 from nvcollectionlib.nvcollection_globals import SERIES_PREFIX
 from nvcollectionlib.nvcollection_globals import _
 from nvcollectionlib.nvcollection_globals import norm_path
@@ -49,7 +48,7 @@ class CollectionManager(tk.Toplevel):
         self.kwargs.update(self.configuration.settings)
         # Read the file path from the configuration file.
 
-        self.title(PLUGIN)
+        self.title(FEATURE)
         self._statusText = ''
 
         self.geometry(position)
@@ -217,9 +216,9 @@ class CollectionManager(tk.Toplevel):
     def _show_info(self, message):
         if message.startswith('!'):
             message = message.split('!', maxsplit=1)[1].strip()
-            messagebox.showerror(APPLICATION, message=message, parent=self)
+            messagebox.showerror(FEATURE, message=message, parent=self)
         else:
-            messagebox.showinfo(APPLICATION, message=message, parent=self)
+            messagebox.showinfo(FEATURE, message=message, parent=self)
         self.lift()
         self.focus()
 
@@ -350,7 +349,7 @@ class CollectionManager(tk.Toplevel):
             message = ''
             try:
                 if nodeId.startswith(BOOK_PREFIX):
-                    if messagebox.askyesno(APPLICATION, message=f'{_("Remove selected book from the collection")}?', parent=self):
+                    if messagebox.askyesno(FEATURE, message=f'{_("Remove selected book from the collection")}?', parent=self):
                         if self.collection.tree.prev(nodeId):
                             self.collection.tree.selection_set(self.collection.tree.prev(nodeId))
                         elif self.collection.tree.parent(nodeId):
@@ -388,7 +387,7 @@ class CollectionManager(tk.Toplevel):
             message = ''
             try:
                 if nodeId.startswith(SERIES_PREFIX):
-                    if messagebox.askyesno(APPLICATION, message=f'{_("Remove selected series but keep the books")}?', parent=self):
+                    if messagebox.askyesno(FEATURE, message=f'{_("Remove selected series but keep the books")}?', parent=self):
                         if self.collection.tree.prev(nodeId):
                             self.collection.tree.selection_set(self.collection.tree.prev(nodeId))
                         elif self.collection.tree.parent(nodeId):
@@ -411,7 +410,7 @@ class CollectionManager(tk.Toplevel):
             message = ''
             try:
                 if nodeId.startswith(SERIES_PREFIX):
-                    if messagebox.askyesno(APPLICATION, message=f'{_("Remove selected series and books")}?', parent=self):
+                    if messagebox.askyesno(FEATURE, message=f'{_("Remove selected series and books")}?', parent=self):
                         if self.collection.tree.prev(nodeId):
                             self.collection.tree.selection_set(self.collection.tree.prev(nodeId))
                         elif self.collection.tree.parent(nodeId):
@@ -565,5 +564,5 @@ class CollectionManager(tk.Toplevel):
             collectionTitle = self.collection.title
         else:
             collectionTitle = _('Untitled collection')
-        self.title(f'{collectionTitle} - {PLUGIN}')
+        self.title(f'{collectionTitle} - {FEATURE}')
 
