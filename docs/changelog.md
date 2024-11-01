@@ -5,6 +5,21 @@
 ## Changelog
 
 
+### Version 4.3.4
+
+- Change the window title.
+
+Refactor the code for better maintainability:
+
+- Move platform-specific modules to their own package.
+- Replace global constants with class constants.
+- Make the config file/path class constants.
+- Link the source code to the new "apptk" GUI library.
+
+Compatibility: novelibre 4.3 API
+Based on novxlib 5.0.0
+Based on apptk 2.2.0
+
 ### Version 4.3.3
 
 Refactor:
