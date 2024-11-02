@@ -9,12 +9,12 @@ from tkinter import filedialog
 from tkinter import messagebox
 from tkinter import ttk
 
-from apptk.widgets.index_card import IndexCard
+from mvclib.widgets.index_card import IndexCard
 from nvcollectionlib.collection import Collection
 from nvcollectionlib.configuration import Configuration
-from nvcollectionlib.nvcollection_globals import FEATURE
 from nvcollectionlib.nvcollection_globals import BOOK_PREFIX
 from nvcollectionlib.nvcollection_globals import Error
+from nvcollectionlib.nvcollection_globals import FEATURE
 from nvcollectionlib.nvcollection_globals import SERIES_PREFIX
 from nvcollectionlib.nvcollection_globals import _
 from nvcollectionlib.nvcollection_globals import norm_path
