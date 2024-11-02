@@ -37,7 +37,7 @@ class Plugin(PluginBase):
 
     INI_FILEPATH = '.novx/config'
 
-    def install(self, model, view, controller, prefs=None):
+    def install(self, model, view, controller):
         """Add a submenu to the 'File' menu.
         
         Positional arguments:
