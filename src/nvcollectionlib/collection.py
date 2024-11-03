@@ -6,10 +6,10 @@ License: GNU GPLv3 (https://www.gnu.org/licenses/gpl-3.0.en.html)
 """
 import os
 
-from novxlib.model.id_generator import create_id
-from novxlib.xml.xml_filter import strip_illegal_characters
-from novxlib.xml.xml_indent import indent
-from novxlib.xml.xml_open import get_xml_root
+from nvlib.model.data.id_generator import create_id
+from nvlib.model.xml.xml_filter import strip_illegal_characters
+from nvlib.model.xml.xml_indent import indent
+from nvlib.model.xml.xml_open import get_xml_root
 from nvcollectionlib.book import Book
 from nvcollectionlib.nvcollection_globals import BOOK_PREFIX
 from nvcollectionlib.nvcollection_globals import Error

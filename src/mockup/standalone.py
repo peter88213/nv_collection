@@ -3,7 +3,7 @@
 For further information see https://github.com/peter88213/nv_collection
 License: GNU GPLv3 (https://www.gnu.org/licenses/gpl-3.0.en.html)
 """
-from novxlib.novx_globals import _
+from nvlib.novx_globals import _
 from novxlib.ui.main_tk import MainTk
 from nv_collection import Plugin
 import tkinter as tk

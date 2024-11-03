@@ -13,7 +13,7 @@ from shutil import rmtree
 from tkinter import ttk
 
 from nvcollectionlib.collection import Collection
-from novxlib.novx.novx_file import NovxFile
+from nvlib.model.novx.novx_file import NovxFile
 from novxlib.model.novel import Novel
 from novxlib.model.nv_tree import NvTree
 
