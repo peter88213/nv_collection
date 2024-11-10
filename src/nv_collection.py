@@ -30,7 +30,7 @@ import tkinter as tk
 class Plugin(PluginBase):
     """novelibre collection manager plugin class."""
     VERSION = '@release'
-    API_VERSION = '4.3'
+    API_VERSION = '5.0'
     DESCRIPTION = 'A book/series collection manager'
     URL = 'https://github.com/peter88213/nv_collection'
     ICON = 'cLogo32'
