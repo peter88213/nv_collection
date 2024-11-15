@@ -34,7 +34,7 @@ except:
 FEATURE = _('Collection')
 SERIES_PREFIX = 'sr'
 BOOK_PREFIX = 'bk'
-HELP_URL = f'https://peter88213.github.io/{_("nvhelp-en")}/nv_collection/'
+HELP_URL = f'{_("https://peter88213.github.io/nvhelp-en")}/nv_collection/'
 
 
 def norm_path(path):
