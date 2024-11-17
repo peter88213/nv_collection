@@ -7,15 +7,15 @@ License: GNU GPLv3 (https://www.gnu.org/licenses/gpl-3.0.en.html)
 """
 
 import os
-import unittest
 from shutil import copyfile
 from shutil import rmtree
 from tkinter import ttk
+import unittest
 
 from nvcollectionlib.collection import Collection
+from nvlib.model.data.novel import Novel
+from nvlib.model.data.nv_tree import NvTree
 from nvlib.model.novx.novx_file import NovxFile
-from novxlib.model.novel import Novel
-from novxlib.model.nv_tree import NvTree
 
 DATA_PATH = '../data'
 TEST_FILE = 'collection.nvcx'
