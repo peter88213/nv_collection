@@ -3,9 +3,9 @@
 For further information see https://github.com/peter88213/nv_collection
 License: GNU GPLv3 (https://www.gnu.org/licenses/gpl-3.0.en.html)
 """
-from nvlib.novx_globals import _
-from novxlib.ui.main_tk import MainTk
+from mvclib.user_interface.main_tk import MainTk
 from nv_collection import Plugin
+from nvlib.novx_globals import _
 import tkinter as tk
 
 APPLICATION = 'Collection'
