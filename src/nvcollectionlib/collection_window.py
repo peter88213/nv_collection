@@ -25,7 +25,7 @@ from nvcollectionlib.platform.platform_settings import PLATFORM
 import tkinter as tk
 
 
-class CollectionManager(tk.Toplevel):
+class CollectionWindow(tk.Toplevel):
 
     INI_FILENAME = 'collection.ini'
     SETTINGS = dict(
@@ -35,10 +35,11 @@ class CollectionManager(tk.Toplevel):
     OPTIONS = {}
 
     def __init__(self, model, view, controller, position, configDir):
+        super().__init__()
+
         self._mdl = model
         self._ui = view
         self._ctrl = controller
-        super().__init__()
 
         #--- Load configuration.
         self.iniFile = f'{configDir}/{self.INI_FILENAME}'
