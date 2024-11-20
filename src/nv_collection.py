@@ -19,11 +19,11 @@ import os
 from pathlib import Path
 import sys
 
-from nvcollectionlib.nvcollection_globals import _
 from nvcollectionlib.collection_window import CollectionWindow
 from nvcollectionlib.nvcollection_globals import FEATURE
+from nvcollectionlib.nvcollection_globals import _
 from nvcollectionlib.nvcollection_globals import open_help
-from nvlib.plugin.plugin_base import PluginBase
+from nvlib.controller.plugin.plugin_base import PluginBase
 import tkinter as tk
 
 

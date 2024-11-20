@@ -3,9 +3,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 4.3.4\n"
-"POT-Creation-Date: 2024-11-01 06:27:53\n"
-"PO-Revision-Date: 2024-11-01 06:27:53\n"
+"Project-Id-Version: 5.0.0\n"
+"POT-Creation-Date: 2024-11-20 14:34:52\n"
+"PO-Revision-Date: 2024-11-20 14:34:52\n"
 "Last-Translator: Peter Triesberger\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -133,9 +133,9 @@ msgstr "Buchdaten aus aktuellem Projekt aktualisieren"
 msgid "Update project data from the selected book"
 msgstr "Projektdaten aus ausgewähltem Buch aktualisieren"
 
+msgid "https://peter88213.github.io/nvhelp-en"
+msgstr "https://peter88213.github.io/nvhelp-de"
+
 msgid "novelibre collection"
 msgstr "novelibre-Sammlung"
-
-msgid "nvhelp-en"
-msgstr "nvhelp-de"
 

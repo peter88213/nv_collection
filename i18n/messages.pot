@@ -3,8 +3,8 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 4.3.4\n"
-"POT-Creation-Date: 2024-11-01 06:27:53\n"
+"Project-Id-Version: 5.0.0\n"
+"POT-Creation-Date: 2024-11-20 14:34:52\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: LANGUAGE\n"
@@ -134,8 +134,8 @@ msgstr ""
 msgid "Update project data from the selected book"
 msgstr ""
 
-msgid "novelibre collection"
+msgid "https://peter88213.github.io/nvhelp-en"
 msgstr ""
 
-msgid "nvhelp-en"
+msgid "novelibre collection"
 msgstr ""
