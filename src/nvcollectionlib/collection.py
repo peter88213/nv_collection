@@ -6,7 +6,7 @@ License: GNU GPLv3 (https://www.gnu.org/licenses/gpl-3.0.en.html)
 """
 import os
 
-from nvlib.model.data.id_generator import create_id
+from nvlib.model.data.id_generator import new_id
 from nvlib.model.xml.xml_filter import strip_illegal_characters
 from nvlib.model.xml.xml_indent import indent
 from nvlib.model.xml.xml_open import get_xml_root
@@ -77,6 +77,40 @@ class Collection:
         if filePath.lower().endswith(self.EXTENSION):
             self._filePath = filePath
             self.title, __ = os.path.splitext(os.path.basename(self.filePath))
+
+    def add_new_book(self, book, parent='', index='end'):
+        """Add an existing project file as book to the collection. 
+        
+        Return the book ID, if book is added to the collection.
+        Return None, if novel is already a member.
+        Raise the "Error" exception in case of error.
+        """
+        if book.filePath is None:
+            raise Error(_('There is no file for the current project. Please save first.'))
+
+        if not os.path.isfile(book.filePath):
+            raise Error(f'"{norm_path(book.filePath)}" not found.')
+
+        for bkId in self.books:
+            if book.filePath == self.books[bkId].filePath:
+                return None
+
+        bkId = new_id(self.books, prefix=BOOK_PREFIX)
+        self.books[bkId] = Book(book.filePath)
+        self.books[bkId].pull_metadata(book.novel)
+        self.tree.insert(parent, index, bkId, text=self.books[bkId].title, open=True)
+        return bkId
+
+    def add_new_series(self, seriesTitle, index='end'):
+        """Instantiate a Series object.
+        
+        Return the series ID.
+        """
+        srId = new_id(self.series, prefix=SERIES_PREFIX)
+        self.series[srId] = Series()
+        self.series[srId].title = seriesTitle
+        self.tree.insert('', index, srId, text=self.series[srId].title, tags='SERIES', open=True)
+        return srId
 
     def read(self):
         """Parse the pwc XML file located at filePath, fetching the Collection attributes.
@@ -154,6 +188,57 @@ class Collection:
             self.write()
         return f'{len(self.books)} Books found in "{norm_path(self.filePath)}".'
 
+    def remove_book(self, bkId):
+        """Remove a book from the collection.
+
+        Return a message.
+        Raise the "Error" exception in case of error.
+        """
+        bookTitle = bkId
+        try:
+            bookTitle = self.books[bkId].title
+            del self.books[bkId]
+            self.tree.delete(bkId)
+            message = f'{_("Book removed from the collection")}: "{bookTitle}".'
+            return message
+        except:
+            raise Error(f'{_("Cannot remove book")}: "{bookTitle}".')
+
+    def remove_series(self, srId):
+        """Delete a Series object but keep the books.
+        
+        Return a message.
+        Raise the "Error" exception in case of error.
+        """
+        seriesTitle = self.series[srId].title
+        for bookNode in self.tree.get_children(srId):
+            self.tree.move(bookNode, '', 'end')
+        del(self.series[srId])
+        self.tree.delete(srId)
+        return f'"{seriesTitle}" series removed from the collection.'
+
+        raise Error(f'{_("Cannot remove series")}: "{seriesTitle}".')
+
+    def remove_series_with_books(self, srId):
+        """Delete a Series object with all its members.
+        
+        Return a message.
+        Raise the "Error" exception in case of error.
+        """
+        seriesTitle = self.series[srId].title
+        for bkId in self.tree.get_children(srId):
+            del self.books[bkId]
+        del(self.series[srId])
+        self.tree.delete(srId)
+        return f'"{seriesTitle}" series removed from the collection.'
+
+        raise Error(f'{_("Cannot remove series")}: "{seriesTitle}".')
+
+    def reset_tree(self):
+        """Clear the displayed tree."""
+        for child in self.tree.get_children(''):
+            self.tree.delete(child)
+
     def write(self):
         """Write the collection's attributes to a pwc XML file located at filePath. 
         
@@ -215,83 +300,6 @@ class Collection:
 
         return f'"{norm_path(self.filePath)}" written.'
 
-    def add_book(self, book, parent='', index='end'):
-        """Add an existing project file as book to the collection. 
-        
-        Return the book ID, if book is added to the collection.
-        Return None, if vovel is already a member.
-        Raise the "Error" exception in case of error.
-        """
-        if book.filePath is None:
-            raise Error(_('There is no file for the current project. Please save first.'))
-
-        if not os.path.isfile(book.filePath):
-            raise Error(f'"{norm_path(book.filePath)}" not found.')
-
-        for bkId in self.books:
-            if book.filePath == self.books[bkId].filePath:
-                return None
-
-        bkId = create_id(self.books, prefix=BOOK_PREFIX)
-        self.books[bkId] = Book(book.filePath)
-        self.books[bkId].pull_metadata(book.novel)
-        self.tree.insert(parent, index, bkId, text=self.books[bkId].title, open=True)
-        return bkId
-
-    def remove_book(self, bkId):
-        """Remove a book from the collection.
-
-        Return a message.
-        Raise the "Error" exception in case of error.
-        """
-        bookTitle = bkId
-        try:
-            bookTitle = self.books[bkId].title
-            del self.books[bkId]
-            self.tree.delete(bkId)
-            message = f'{_("Book removed from the collection")}: "{bookTitle}".'
-            return message
-        except:
-            raise Error(f'{_("Cannot remove book")}: "{bookTitle}".')
-
-    def add_series(self, seriesTitle, index='end'):
-        """Instantiate a Series object.
-        """
-        srId = create_id(self.series, prefix=SERIES_PREFIX)
-        self.series[srId] = Series()
-        self.series[srId].title = seriesTitle
-        self.tree.insert('', index, srId, text=self.series[srId].title, tags='SERIES', open=True)
-
-    def remove_series(self, srId):
-        """Delete a Series object but keep the books.
-        
-        Return a message.
-        Raise the "Error" exception in case of error.
-        """
-        seriesTitle = self.series[srId].title
-        for bookNode in self.tree.get_children(srId):
-            self.tree.move(bookNode, '', 'end')
-        del(self.series[srId])
-        self.tree.delete(srId)
-        return f'"{seriesTitle}" series removed from the collection.'
-
-        raise Error(f'{_("Cannot remove series")}: "{seriesTitle}".')
-
-    def remove_series_with_books(self, srId):
-        """Delete a Series object with all its members.
-        
-        Return a message.
-        Raise the "Error" exception in case of error.
-        """
-        seriesTitle = self.series[srId].title
-        for bkId in self.tree.get_children(srId):
-            del self.books[bkId]
-        del(self.series[srId])
-        self.tree.delete(srId)
-        return f'"{seriesTitle}" series removed from the collection.'
-
-        raise Error(f'{_("Cannot remove series")}: "{seriesTitle}".')
-
     def _postprocess_xml_file(self, filePath):
         """Postprocess an xml file created by ElementTree.
         
@@ -312,9 +320,4 @@ class Collection:
                 f.write(f'{self.XML_HEADER}{text}')
         except:
             raise Error(f'{_("Cannot write file")}: "{norm_path(filePath)}".')
-
-    def reset_tree(self):
-        """Clear the displayed tree."""
-        for child in self.tree.get_children(''):
-            self.tree.delete(child)
 
