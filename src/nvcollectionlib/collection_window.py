@@ -460,7 +460,11 @@ class CollectionWindow(tk.Toplevel):
         if not initDir:
             initDir = './'
         if not fileName or not os.path.isfile(fileName):
-            fileName = filedialog.askopenfilename(filetypes=self._fileTypes, defaultextension=self._fileTypes[0][1], initialdir=initDir, parent=self)
+            fileName = filedialog.askopenfilename(
+                filetypes=self._fileTypes,
+                defaultextension=self._fileTypes[0][1],
+                initialdir=initDir, parent=self
+                )
         if not fileName:
             return ''
 
@@ -506,7 +510,10 @@ class CollectionWindow(tk.Toplevel):
         Display collection title and file path.
         Return True on success, otherwise return False.
         """
-        fileName = filedialog.asksaveasfilename(filetypes=self._fileTypes, defaultextension=self._fileTypes[0][1])
+        fileName = filedialog.asksaveasfilename(
+            filetypes=self._fileTypes,
+            defaultextension=self._fileTypes[0][1]
+            )
         self.lift()
         self.focus()
         if not fileName:
