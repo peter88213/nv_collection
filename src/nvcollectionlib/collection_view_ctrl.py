@@ -52,9 +52,9 @@ class CollectionViewCtrl(SubController):
                 self.configuration.settings[keyword] = self.kwargs[keyword]
         self.configuration.write(self.iniFile)
         try:
-            if self.collection is not None:
-                if self.isModified:
-                    self.collection.write()
+            if self.collection is not None and self.isModified:
+                if self._ui.ask_yes_no(_('Save changes?'), title=FEATURE, parent=self):
+                    self._save_collection()
         except Exception as ex:
             self._show_info(str(ex))
         finally:

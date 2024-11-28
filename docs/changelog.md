@@ -5,14 +5,16 @@
 ## Changelog
 
 
-### Version 5.0.2
+### Version 5.0.3
+
+- Always asking before saving.
 
 Library update:
 - Refactor the code for better maintainability.
 - Add missing German translations.
 
 API: 5.0
-Based on novelibre 5.0.11
+Based on novelibre 5.0.12
 
 ### Version 4.3.4
 
