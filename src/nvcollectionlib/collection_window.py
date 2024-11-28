@@ -75,7 +75,6 @@ class CollectionWindow(tk.Toplevel):
 
         #--- The collection itself.
         self.collection = None
-        self._fileTypes = [(_('novelibre collection'), Collection.EXTENSION)]
 
         #--- Tree for book selection.
         self.treeView = ttk.Treeview(self.treeWindow, selectmode='browse')
@@ -447,9 +446,6 @@ class CollectionWindow(tk.Toplevel):
         Positional arguments:
             fileName: str -- collection file path.
             
-        Optional arguments:
-            fileTypes -- list of tuples for file selection (display text, extension).
-
         Priority:
         1. use file name argument
         2. open file select dialog
@@ -460,9 +456,10 @@ class CollectionWindow(tk.Toplevel):
         if not initDir:
             initDir = './'
         if not fileName or not os.path.isfile(fileName):
+            fileTypes = [(_('novelibre collection'), Collection.EXTENSION)]
             fileName = filedialog.askopenfilename(
-                filetypes=self._fileTypes,
-                defaultextension=self._fileTypes[0][1],
+                filetypes=fileTypes,
+                defaultextension=fileTypes[0][1],
                 initialdir=initDir, parent=self
                 )
         if not fileName:
@@ -510,9 +507,10 @@ class CollectionWindow(tk.Toplevel):
         Display collection title and file path.
         Return True on success, otherwise return False.
         """
+        fileTypes = [(_('novelibre collection'), Collection.EXTENSION)]
         fileName = filedialog.asksaveasfilename(
-            filetypes=self._fileTypes,
-            defaultextension=self._fileTypes[0][1]
+            filetypes=fileTypes,
+            defaultextension=fileTypes[0][1]
             )
         self.lift()
         self.focus()
