@@ -19,7 +19,7 @@ import os
 from pathlib import Path
 import sys
 
-from nvcollectionlib.collection_window import CollectionWindow
+from nvcollectionlib.collection_view import CollectionView
 from nvcollectionlib.nvcollection_globals import FEATURE
 from nvcollectionlib.nvcollection_globals import _
 from nvcollectionlib.nvcollection_globals import open_help
@@ -97,6 +97,6 @@ class Plugin(PluginBase):
             configDir = f'{homeDir}/{self.INI_FILEPATH}'
         except:
             configDir = '.'
-        self._collectionManager = CollectionWindow(self._mdl, self._ui, self._ctrl, windowGeometry, configDir)
+        self._collectionManager = CollectionView(self._mdl, self._ui, self._ctrl, windowGeometry, configDir)
         self._collectionManager.iconphoto(False, self._icon)
 

@@ -3,9 +3,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 5.0.1\n"
-"POT-Creation-Date: 2024-11-25 17:57:32\n"
-"PO-Revision-Date: 2024-11-25 17:57:32\n"
+"Project-Id-Version: 5.0.2\n"
+"POT-Creation-Date: 2024-11-28 11:47:46\n"
+"PO-Revision-Date: 2024-11-28 11:47:46\n"
 "Last-Translator: Peter Triesberger\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -108,6 +108,9 @@ msgstr "Änderungen speichern?"
 
 msgid "Series"
 msgstr "Serie"
+
+msgid "Series removed from the collection"
+msgstr "Serie aus der Sammlung entfernt"
 
 msgid "The collection was created with a newer plugin version."
 msgstr "Die Sammlung wurde mit einer neueren Version des Plugins erstellt."

@@ -215,7 +215,7 @@ class Collection:
             self.tree.move(bookNode, '', 'end')
         del(self.series[srId])
         self.tree.delete(srId)
-        return f'"{seriesTitle}" series removed from the collection.'
+        return f'{_("Series removed from the collection")}: "{seriesTitle}".'
 
         raise Error(f'{_("Cannot remove series")}: "{seriesTitle}".')
 
@@ -230,7 +230,7 @@ class Collection:
             del self.books[bkId]
         del(self.series[srId])
         self.tree.delete(srId)
-        return f'"{seriesTitle}" series removed from the collection.'
+        return f'{_("Series removed from the collection")}: "{seriesTitle}".'
 
         raise Error(f'{_("Cannot remove series")}: "{seriesTitle}".')
 
