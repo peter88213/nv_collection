@@ -6,7 +6,6 @@ License: GNU GPLv3 (https://www.gnu.org/licenses/gpl-3.0.en.html)
 """
 import os
 from tkinter import filedialog
-from tkinter import messagebox
 
 from mvclib.controller.sub_controller import SubController
 from nvcollectionlib.collection import Collection
@@ -103,9 +102,9 @@ class CollectionViewCtrl(SubController):
     def _show_info(self, message):
         if message.startswith('!'):
             message = message.split('!', maxsplit=1)[1].strip()
-            messagebox.showerror(FEATURE, message=message, parent=self)
+            self._ui.show_error(message, title=FEATURE, parent=self)
         else:
-            messagebox.showinfo(FEATURE, message=message, parent=self)
+            self._ui.show_info(message, title=FEATURE, parent=self)
         self.lift()
         self.focus()
 
@@ -236,7 +235,7 @@ class CollectionViewCtrl(SubController):
             message = ''
             try:
                 if nodeId.startswith(BOOK_PREFIX):
-                    if messagebox.askyesno(FEATURE, message=f'{_("Remove selected book from the collection")}?', parent=self):
+                    if self._ui.ask_yes_no(f'{_("Remove selected book from the collection")}?', title=FEATURE, parent=self):
                         if self.collection.tree.prev(nodeId):
                             self.collection.tree.selection_set(self.collection.tree.prev(nodeId))
                         elif self.collection.tree.parent(nodeId):
@@ -274,7 +273,7 @@ class CollectionViewCtrl(SubController):
             message = ''
             try:
                 if nodeId.startswith(SERIES_PREFIX):
-                    if messagebox.askyesno(FEATURE, message=f'{_("Remove selected series but keep the books")}?', parent=self):
+                    if self._ui.ask_yes_no(f'{_("Remove selected series but keep the books")}?', title=FEATURE, parent=self):
                         if self.collection.tree.prev(nodeId):
                             self.collection.tree.selection_set(self.collection.tree.prev(nodeId))
                         elif self.collection.tree.parent(nodeId):
@@ -297,7 +296,7 @@ class CollectionViewCtrl(SubController):
             message = ''
             try:
                 if nodeId.startswith(SERIES_PREFIX):
-                    if messagebox.askyesno(FEATURE, message=f'{_("Remove selected series and books")}?', parent=self):
+                    if self._ui.ask_yes_no(f'{_("Remove selected series and books")}?', title=FEATURE, parent=self):
                         if self.collection.tree.prev(nodeId):
                             self.collection.tree.selection_set(self.collection.tree.prev(nodeId))
                         elif self.collection.tree.parent(nodeId):
@@ -433,7 +432,7 @@ class CollectionViewCtrl(SubController):
         
         To be extended by subclasses.
         """
-        if self.isModified and self._ui.ask_yes_no(_('Save changes?')):
+        if self.isModified and self._ui.ask_yes_no(_('Save changes?'), title=FEATURE, parent=self):
             self._save_collection()
         self._get_element_view()
         self.indexCard.title.set('')
