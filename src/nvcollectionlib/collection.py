@@ -78,7 +78,7 @@ class Collection:
             self._filePath = filePath
             self.title, __ = os.path.splitext(os.path.basename(self.filePath))
 
-    def add_new_book(self, book, parent='', index='end'):
+    def add_book(self, book, parent='', index='end'):
         """Add an existing project file as book to the collection. 
         
         Return the book ID, if book is added to the collection.
@@ -101,7 +101,7 @@ class Collection:
         self.tree.insert(parent, index, bkId, text=self.books[bkId].title, open=True)
         return bkId
 
-    def add_new_series(self, seriesTitle, index='end'):
+    def add_series(self, seriesTitle, index='end'):
         """Instantiate a Series object.
         
         Return the series ID.

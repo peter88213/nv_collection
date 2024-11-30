@@ -191,7 +191,7 @@ class CollectionViewCtrl(SubController):
             index = 0
         if book is not None:
             try:
-                bkId = self.collection.add_new_book(book, parent, index)
+                bkId = self.collection.add_book(book, parent, index)
                 self.isModified = True
             except Error as ex:
                 self._set_status(f'!{str(ex)}')
@@ -262,7 +262,7 @@ class CollectionViewCtrl(SubController):
         if selection.startswith(SERIES_PREFIX):
             index = self.collection.tree.index(selection) + 1
         try:
-            self.collection.add_new_series(title, index)
+            self.collection.add_series(title, index)
             self.isModified = True
         except Error as ex:
             self._set_status(str(ex))
