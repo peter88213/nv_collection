@@ -6,10 +6,10 @@ License: GNU GPLv3 (https://www.gnu.org/licenses/gpl-3.0.en.html)
 """
 import platform
 
-from nvcollectionlib.platform.generic_keys import GenericKeys
-from nvcollectionlib.platform.generic_mouse import GenericMouse
-from nvcollectionlib.platform.mac_keys import MacKeys
-from nvcollectionlib.platform.windows_keys import WindowsKeys
+from nvcollection.platform.generic_keys import GenericKeys
+from nvcollection.platform.generic_mouse import GenericMouse
+from nvcollection.platform.mac_keys import MacKeys
+from nvcollection.platform.windows_keys import WindowsKeys
 
 if platform.system() == 'Windows':
     PLATFORM = 'win'

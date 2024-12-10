@@ -2,11 +2,18 @@
 <!DOCTYPE COLLECTION SYSTEM "nvcx_1_0.dtd">
 <?xml-stylesheet href="collection.css" type="text/css"?>
 <COLLECTION version="1.0">
-  <BOOK id="bk1">
-    <Title>Fatale Wahl</Title>
-    <Desc>
-      <p>Die Partei "Freunde des Volkes" steht kurz vor dem Wahlsieg. Durch Zufall gerät der kleine Angestellte Martin Falters in eine Versammlung, wo ihre Pläne zur Errichtung einer Diktatur besprochen werden. Mit Hilfe eines Handy-Videos will Martin die Öffentlichkeit warnen, doch er wird zunächst nicht ernst genommen. Dann geschehen seltsame Dinge. Computer stürzen ab, Daten gehen verloren, tödliche Unfälle ereignen sich, Wohnungen gehen in Flammen auf, Menschen verschwinden. Etwas Unglaubliches passiert: Eine schöne Frau taucht aus dem Nichts auf und zieht bei Martin ein.</p>
-    </Desc>
-    <Path>C:/Users/Peter/git/novxlib/test/work/Fehler.novx</Path>
-  </BOOK>
+  <SERIES id="sr1">
+    <Title>Weltklimaallianz</Title>
+    <BOOK id="bk1">
+      <Title>Das dritte Auge des Polypen</Title>
+      <Desc>
+        <p>Die Welt im Jahr 2053. Seit dreißig Jahren regiert die Weltklimaallianz, ein Zusammenschluss der Großmächte USA, China und Russland, um die Erwärmung der Erdatmosphäre aufzuhalten. Das aktuelle Geoengineeringprojekt besteht darin, die Sonneneinstrahlung zu verringern, indem Karbonatpartikel in die Stratosphäre eingebracht werden. Dazu müssen weltweit große Mengen von Karbonat hergestellt werden. Intern konkurrieren die Großmächte: Während China die Atomkraft weiterentwickelt, setzt Russland auf Solarzellenproduktion.</p>
+        <p />
+        <p>In Deutschland regiert die Bundeskanzlerin durch Verordnungen. Das Infektionsschutzgesetz verbietet Bundestagssitzungen. Es gibt eine Menge konkurrierender Ministerien, welche die oft widersprüchlichen Verordnungen der Kanzlerin umsetzen müssen; Entscheidungen trifft die Kanzlerin in Audienzen.</p>
+        <p />
+        <p>Linus Fester, Kriminalkommissar in Groß-Wolfenbüttel, will in einer Welt voller Katastrophen und Bedrohungen Ruhe und Ordnung aufrechterhalten. Er ist ein ehemaliger Sympathisant von Klimaaktivisten, der nun, da die Weltklimaallianz an der Macht ist, die Obrigkeit mit voller Überzeugung unterstützt. Doch der Klimawandel dauert an, und extremistische Gruppen formieren sich, um immer radikalere Aktionen durchzuführen und die Projekte der Regierung sowie die Pläne ihrer Rivalen zu bekämpfen. Bei seinen gefahrvollen und verlustreichen Ermittlungen gegen Entführer und Attentäter kommt Linus Fester einer Verschwörung auf die Spur, welche die Geschichte der Menschheit in eine völlig neue Bahn lenken will. Am Ende muss Linus einsehen, dass sich Natur und Menschen jeder Kontrolle entziehen.</p>
+      </Desc>
+      <Path>C:/Users/Peter/Documents/schreiben/Projekte/Das dritte Auge des Polypen/Das dritte Auge des Polypen.novx</Path>
+    </BOOK>
+  </SERIES>
 </COLLECTION>

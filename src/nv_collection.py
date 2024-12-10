@@ -19,10 +19,10 @@ import os
 from pathlib import Path
 import sys
 
-from nvcollectionlib.collection_view import CollectionView
-from nvcollectionlib.nvcollection_globals import FEATURE
-from nvcollectionlib.nvcollection_globals import _
-from nvcollectionlib.nvcollection_globals import open_help
+from nvcollection.collection_view import CollectionView
+from nvcollection.nvcollection_globals import FEATURE
+from nvcollection.nvcollection_help import NvcollectionHelp
+from nvcollection.nvcollection_locale import _
 from nvlib.controller.plugin.plugin_base import PluginBase
 import tkinter as tk
 
@@ -54,12 +54,15 @@ class Plugin(PluginBase):
         self._collectionManager = None
 
         # Create a submenu.
-        self._ui.fileMenu.insert_command(0, label=FEATURE, command=self._start_manager)
+        self._ui.fileMenu.insert_command(0, label=FEATURE, command=self.start_manager)
         self._ui.fileMenu.insert_separator(1)
         self._ui.fileMenu.entryconfig(FEATURE, state='normal')
 
         # Add an entry to the Help menu.
-        self._ui.helpMenu.add_command(label=_('Collection plugin Online help'), command=open_help)
+        self._ui.helpMenu.add_command(
+            label=_('Collection plugin Online help'),
+            command=self.open_help
+            )
 
         # Set window icon.
         self.sectionEditors = {}
@@ -80,7 +83,10 @@ class Plugin(PluginBase):
             if self._collectionManager.isOpen:
                 self._collectionManager.on_quit()
 
-    def _start_manager(self):
+    def open_help(self, event=None):
+        NvcollectionHelp.open_help_page()
+
+    def start_manager(self):
         if self._collectionManager:
             if self._collectionManager.isOpen:
                 if self._collectionManager.state() == 'iconic':

@@ -6,17 +6,17 @@ License: GNU GPLv3 (https://www.gnu.org/licenses/gpl-3.0.en.html)
 """
 import os
 
+from nvcollection.book import Book
+from nvcollection.nvcollection_globals import BOOK_PREFIX
+from nvcollection.nvcollection_globals import SERIES_PREFIX
+from nvcollection.nvcollection_locale import _
+from nvcollection.series import Series
 from nvlib.model.data.id_generator import new_id
 from nvlib.model.xml.xml_filter import strip_illegal_characters
 from nvlib.model.xml.xml_indent import indent
 from nvlib.model.xml.xml_open import get_xml_root
-from nvcollectionlib.book import Book
-from nvcollectionlib.nvcollection_globals import BOOK_PREFIX
-from nvcollectionlib.nvcollection_globals import Error
-from nvcollectionlib.nvcollection_globals import SERIES_PREFIX
-from nvcollectionlib.nvcollection_globals import _
-from nvcollectionlib.nvcollection_globals import norm_path
-from nvcollectionlib.series import Series
+from nvlib.novx_globals import Error
+from nvlib.novx_globals import norm_path
 import tkinter.font as tkFont
 import xml.etree.ElementTree as ET
 

@@ -1,4 +1,4 @@
-"""Provide global variables and functions.
+"""Locale settings for nv_collection.
 
 Copyright (c) 2024 Peter Triesberger
 For further information see https://github.com/peter88213/nv_collection
@@ -8,13 +8,6 @@ import gettext
 import locale
 import os
 import sys
-import webbrowser
-
-
-class Error(Exception):
-    """Base class for exceptions."""
-    pass
-
 
 # Initialize localization.
 LOCALE_PATH = f'{os.path.dirname(sys.argv[0])}/locale/'
@@ -31,18 +24,3 @@ except:
     def _(message):
         return message
 
-FEATURE = _('Collection')
-SERIES_PREFIX = 'sr'
-BOOK_PREFIX = 'bk'
-HELP_URL = f'{_("https://peter88213.github.io/nvhelp-en")}/nv_collection/'
-
-
-def norm_path(path):
-    if path is None:
-        path = ''
-    return os.path.normpath(path)
-
-
-def open_help(event=None):
-    """Show the online help page specified by HELP_URL."""
-    webbrowser.open(HELP_URL)
