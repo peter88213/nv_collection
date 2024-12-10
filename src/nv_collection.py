@@ -35,7 +35,14 @@ class Plugin(PluginBase):
     URL = 'https://github.com/peter88213/nv_collection'
     ICON = 'cLogo32'
 
+    INI_FILENAME = 'collection.ini'
     INI_FILEPATH = '.novx/config'
+    SETTINGS = dict(
+        last_open='',
+        tree_width='260',
+        window_size='600x300',
+    )
+    OPTIONS = {}
 
     def install(self, model, view, controller):
         """Add a submenu to the 'File' menu.
@@ -45,13 +52,26 @@ class Plugin(PluginBase):
             view -- reference to the main view instance of the application.
             controller -- reference to the main controller instance of the application.
 
-        Optional arguments:
-            prefs -- deprecated. Please use controller.get_preferences() instead.
-        
         Extends the superclass method.
         """
         super().install(model, view, controller)
         self._collectionManager = None
+
+        #--- Load configuration.
+        try:
+            homeDir = str(Path.home()).replace('\\', '/')
+            configDir = f'{homeDir}/{self.INI_FILEPATH}'
+        except:
+            configDir = '.'
+        self.iniFile = f'{configDir}/{self.INI_FILENAME}'
+        self.configuration = self._mdl.nvService.new_configuration(
+            settings=self.SETTINGS,
+            options=self.OPTIONS
+            )
+        self.configuration.read(self.iniFile)
+        self.prefs = {}
+        self.prefs.update(self.configuration.settings)
+        self.prefs.update(self.configuration.options)
 
         # Create a submenu.
         self._ui.fileMenu.insert_command(0, label=FEATURE, command=self.start_manager)
@@ -83,6 +103,14 @@ class Plugin(PluginBase):
             if self._collectionManager.isOpen:
                 self._collectionManager.on_quit()
 
+        #--- Save configuration
+        for keyword in self.prefs:
+            if keyword in self.configuration.options:
+                self.configuration.options[keyword] = self.prefs[keyword]
+            elif keyword in self.configuration.settings:
+                self.configuration.settings[keyword] = self.prefs[keyword]
+        self.configuration.write(self.iniFile)
+
     def open_help(self, event=None):
         NvcollectionHelp.open_help_page()
 
@@ -98,11 +126,6 @@ class Plugin(PluginBase):
         __, x, y = self._ui.root.geometry().split('+')
         offset = 100
         windowPosition = f'+{int(x)+offset}+{int(y)+offset}'
-        try:
-            homeDir = str(Path.home()).replace('\\', '/')
-            configDir = f'{homeDir}/{self.INI_FILEPATH}'
-        except:
-            configDir = '.'
-        self._collectionManager = CollectionView(self._mdl, self._ui, self._ctrl, windowPosition, configDir)
+        self._collectionManager = CollectionView(self._mdl, self._ui, self._ctrl, windowPosition, self.prefs)
         self._collectionManager.iconphoto(False, self._icon)
 

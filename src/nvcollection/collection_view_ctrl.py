@@ -9,7 +9,6 @@ from tkinter import filedialog
 
 from mvclib.controller.sub_controller import SubController
 from nvcollection.collection import Collection
-from nvcollection.configuration import Configuration
 from nvcollection.nvcollection_globals import BOOK_PREFIX
 from nvcollection.nvcollection_globals import FEATURE
 from nvcollection.nvcollection_globals import SERIES_PREFIX
@@ -20,14 +19,6 @@ from nvlib.novx_globals import norm_path
 
 
 class CollectionViewCtrl(SubController):
-
-    INI_FILENAME = 'collection.ini'
-    SETTINGS = dict(
-        last_open='',
-        tree_width='260',
-        window_size='600x300',
-    )
-    OPTIONS = {}
 
     def add_current_project(self, event=None):
         self.apply_changes()
@@ -113,17 +104,10 @@ class CollectionViewCtrl(SubController):
         self.lift()
         self.focus()
 
-    def initialize_controller(self, model, view, controller, configDir):
+    def initialize_controller(self, model, view, controller, prefs):
         super().initialize_controller(model, view, controller)
 
-        #--- Load configuration.
-        self.iniFile = f'{configDir}/{self.INI_FILENAME}'
-        self.configuration = Configuration(self.SETTINGS, self.OPTIONS)
-        self.configuration.read(self.iniFile)
-        self.kwargs = {}
-        self.kwargs.update(self.configuration.settings)
-        # Read the file path from the configuration file.
-
+        self.prefs = prefs
         self.isModified = False
         self.element = None
         self.nodeId = None
@@ -164,7 +148,7 @@ class CollectionViewCtrl(SubController):
             self.close_collection()
 
         self.collection = Collection(fileName, self.treeView)
-        self.kwargs['last_open'] = fileName
+        self.prefs['last_open'] = fileName
         self._show_path(f'{norm_path(self.collection.filePath)}')
         self._set_title()
         self.fileMenu.entryconfig(_('Save'), state='normal')
@@ -173,16 +157,8 @@ class CollectionViewCtrl(SubController):
 
     def on_quit(self, event=None):
         self.apply_changes()
-        self.kwargs['tree_width'] = self.treeWindow.sashpos(0)
-        self.kwargs['window_size'] = self.winfo_geometry().split('+')[0]
-
-        #--- Save project specific configuration
-        for keyword in self.kwargs:
-            if keyword in self.configuration.options:
-                self.configuration.options[keyword] = self.kwargs[keyword]
-            elif keyword in self.configuration.settings:
-                self.configuration.settings[keyword] = self.kwargs[keyword]
-        self.configuration.write(self.iniFile)
+        self.prefs['tree_width'] = self.treeWindow.sashpos(0)
+        self.prefs['window_size'] = self.winfo_geometry().split('+')[0]
         try:
             if self.collection is not None and self.isModified:
                 if self._ui.ask_yes_no(_('Save changes?'), title=FEATURE, parent=self):
@@ -239,7 +215,7 @@ class CollectionViewCtrl(SubController):
         if self.collection is not None:
             self.close_collection()
 
-        self.kwargs['last_open'] = fileName
+        self.prefs['last_open'] = fileName
         self.collection = Collection(fileName, self.treeView)
         try:
             self.collection.read()
@@ -259,7 +235,7 @@ class CollectionViewCtrl(SubController):
         NvcollectionHelp.open_help_page()
 
     def open_last_collection(self):
-        if self.open_collection(fileName=self.kwargs['last_open']):
+        if self.open_collection(fileName=self.prefs['last_open']):
             self.isOpen = True
 
     def remove_book(self, event=None):
@@ -406,7 +382,7 @@ class CollectionViewCtrl(SubController):
 
         On error, return an empty string.
         """
-        initDir = os.path.dirname(self.kwargs['last_open'])
+        initDir = os.path.dirname(self.prefs['last_open'])
         if not initDir:
             initDir = './'
         if not fileName or not os.path.isfile(fileName):

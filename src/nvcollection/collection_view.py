@@ -18,14 +18,14 @@ import tkinter as tk
 
 class CollectionView(tk.Toplevel, CollectionViewCtrl):
 
-    def __init__(self, model, view, controller, position, configDir):
+    def __init__(self, model, view, controller, windowPosition, prefs):
         super().__init__()
-        self.initialize_controller(model, view, controller, configDir)
+        self.initialize_controller(model, view, controller, prefs)
 
         self.title(FEATURE)
         self.statusText = ''
 
-        self.geometry(f"{self.kwargs['window_size']}{position}")
+        self.geometry(f"{self.prefs['window_size']}{windowPosition}")
         self.lift()
         self.focus()
 
@@ -68,7 +68,7 @@ class CollectionView(tk.Toplevel, CollectionViewCtrl):
 
         # Adjust the tree width.
         self.treeWindow.update()
-        self.treeWindow.sashpos(0, self.kwargs['tree_width'])
+        self.treeWindow.sashpos(0, self.prefs['tree_width'])
 
         # Status bar.
         self.statusBar = tk.Label(self, text='', anchor='w', padx=5, pady=2)

@@ -5,7 +5,7 @@
 ## Changelog
 
 
-### Version 5.0.5
+### Version 5.0.6
 
 - Always asking before saving.
 - Restoring the windows size of the last session.
