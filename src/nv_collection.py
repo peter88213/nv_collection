@@ -96,13 +96,13 @@ class Plugin(PluginBase):
                 return
 
         __, x, y = self._ui.root.geometry().split('+')
-        offset = 300
-        windowGeometry = f'+{int(x)+offset}+{int(y)+offset}'
+        offset = 100
+        windowPosition = f'+{int(x)+offset}+{int(y)+offset}'
         try:
             homeDir = str(Path.home()).replace('\\', '/')
             configDir = f'{homeDir}/{self.INI_FILEPATH}'
         except:
             configDir = '.'
-        self._collectionManager = CollectionView(self._mdl, self._ui, self._ctrl, windowGeometry, configDir)
+        self._collectionManager = CollectionView(self._mdl, self._ui, self._ctrl, windowPosition, configDir)
         self._collectionManager.iconphoto(False, self._icon)
 

@@ -24,7 +24,8 @@ class CollectionViewCtrl(SubController):
     INI_FILENAME = 'collection.ini'
     SETTINGS = dict(
         last_open='',
-        tree_width='300',
+        tree_width='260',
+        window_size='600x300',
     )
     OPTIONS = {}
 
@@ -173,6 +174,7 @@ class CollectionViewCtrl(SubController):
     def on_quit(self, event=None):
         self.apply_changes()
         self.kwargs['tree_width'] = self.treeWindow.sashpos(0)
+        self.kwargs['window_size'] = self.winfo_geometry().split('+')[0]
 
         #--- Save project specific configuration
         for keyword in self.kwargs:

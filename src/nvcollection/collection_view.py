@@ -25,7 +25,7 @@ class CollectionView(tk.Toplevel, CollectionViewCtrl):
         self.title(FEATURE)
         self.statusText = ''
 
-        self.geometry(position)
+        self.geometry(f"{self.kwargs['window_size']}{position}")
         self.lift()
         self.focus()
 

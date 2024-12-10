@@ -5,11 +5,10 @@
 ## Changelog
 
 
-### Version 5.0.4
+### Version 5.0.5
 
 - Always asking before saving.
-
-Library update:
+- Restoring the windows size of the last session.
 - Refactor the code for better maintainability.
 - Add missing German translations.
 
