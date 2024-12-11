@@ -90,9 +90,9 @@ class Plugin(PluginBase):
             path = os.path.dirname(sys.argv[0])
             if not path:
                 path = '.'
-            self._icon = tk.PhotoImage(file=f'{path}/icons/{self.ICON}.png')
+            self.icon = tk.PhotoImage(file=f'{path}/icons/{self.ICON}.png')
         except:
-            self._icon = None
+            self.icon = None
 
     def on_quit(self):
         """Write back the configuration file.
@@ -127,5 +127,5 @@ class Plugin(PluginBase):
         offset = 100
         windowPosition = f'+{int(x)+offset}+{int(y)+offset}'
         self._collectionManager = CollectionView(self._mdl, self._ui, self._ctrl, windowPosition, self.prefs)
-        self._collectionManager.iconphoto(False, self._icon)
+        self._collectionManager.iconphoto(False, self.icon)
 
