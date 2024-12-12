@@ -5,7 +5,7 @@
 ## Changelog
 
 
-### Version 5.0.6
+### Version 5.0.7
 
 - Always asking before saving.
 - Restoring the windows size of the last session.
@@ -13,7 +13,7 @@
 - Add missing German translations.
 
 API: 5.0
-Based on novelibre 5.0.24
+Based on novelibre 5.0.26
 
 ### Version 4.3.4
 
