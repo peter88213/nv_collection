@@ -1,0 +1,7 @@
+/build/
+/build-ref/
+/test/temp/
+/test/work/
+/test/nv_collection.py
+*.pyc
+*.bak

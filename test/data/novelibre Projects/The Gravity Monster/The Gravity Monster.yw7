@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<YWRITER7>
+  <PROJECT>
+    <Ver>7</Ver>
+    <Title><![CDATA[The Gravity Monster]]></Title>
+    <AuthorName><![CDATA[Monty Grubber]]></AuthorName>
+    <Bio />
+    <Desc><![CDATA[At the center of the galaxy, a strange force is at work. Having already thrown thousands of stars out into the void, it is now attracting the attention of all the tabloids of the United Solar Systems. The government must take action. Elections are coming up and time is running out. An expedition is being prepared. The commander-in-chief (and only member): Rick Starlift, youngest cadet of the glorious Space Patrol. The ship: The Arcada, a hastily converted robot freighter. The mission: Get the problem out of the picture, keep the costs down and--under any circumstances--cause no trouble with the Star Empire. Not too difficult a job for a highly motivated, ambitious officer candidate, you might think ...]]></Desc>
+    <FieldTitle1><![CDATA[Relevance]]></FieldTitle1>
+    <FieldTitle2><![CDATA[Tension]]></FieldTitle2>
+    <FieldTitle3><![CDATA[Humour]]></FieldTitle3>
+    <FieldTitle4><![CDATA[Quality]]></FieldTitle4>
+    <LastFullBackup>2020-01-18</LastFullBackup>
+    <WordTarget>0</WordTarget>
+    <WordTargetStartDate>0001-01-01</WordTargetStartDate>
+    <WordTargetEndDate>0001-01-01</WordTargetEndDate>
+    <WordCountStart>0</WordCountStart>
+    <EndFrontMatterChID>0</EndFrontMatterChID>
+    <EndMiddleChID>0</EndMiddleChID>
+    <EndBeginningChID>0</EndBeginningChID>
+    <LatexSingleQuotes>0</LatexSingleQuotes>
+    <LatexSuppressChapterTitles>0</LatexSuppressChapterTitles>
+    <LatexSceneDivider />
+    <HtmlSceneDivider />
+    <HtmlEncoding>utf8</HtmlEncoding>
+    <HtmlUnicode>-1</HtmlUnicode>
+    <LaTeXHeaderFile />
+    <MRUSpecificDate>0001-01-01</MRUSpecificDate>
+    <MRUSpecificTime>00:00:00</MRUSpecificTime>
+    <LastViewedScID>1</LastViewedScID>
+    <DeadlineDate1>0001-01-01</DeadlineDate1>
+    <DeadlineDate2>0001-01-01</DeadlineDate2>
+    <DeadlineDate3>0001-01-01</DeadlineDate3>
+    <DeadlineDate4>0001-01-01</DeadlineDate4>
+    <DeadlineDate5>0001-01-01</DeadlineDate5>
+    <DeadlineStartDate1>0001-01-01</DeadlineStartDate1>
+    <DeadlineStartDate2>0001-01-01</DeadlineStartDate2>
+    <DeadlineStartDate3>0001-01-01</DeadlineStartDate3>
+    <DeadlineStartDate4>0001-01-01</DeadlineStartDate4>
+    <DeadlineStartDate5>0001-01-01</DeadlineStartDate5>
+    <Fields>
+		</Fields>
+  </PROJECT>
+  <LOCATIONS>
+	</LOCATIONS>
+  <ITEMS>
+	</ITEMS>
+  <CHARACTERS>
+	</CHARACTERS>
+  <PROJECTVARS>
+    <PROJECTVAR>
+      <ID>1</ID>
+      <Title><![CDATA[Language]]></Title>
+      <Desc><![CDATA[de]]></Desc>
+      <Tags><![CDATA[0]]></Tags>
+    </PROJECTVAR>
+    <PROJECTVAR>
+      <ID>2</ID>
+      <Title><![CDATA[Country]]></Title>
+      <Desc><![CDATA[DE]]></Desc>
+      <Tags><![CDATA[0]]></Tags>
+    </PROJECTVAR>
+  </PROJECTVARS>
+  <PROJECTEXPS>
+	</PROJECTEXPS>
+  <SCENES>
+	</SCENES>
+  <CHAPTERS>
+    <CHAPTER>
+      <ID>1</ID>
+      <Title><![CDATA[Chapter 1]]></Title>
+      <Desc><![CDATA[After having the]]></Desc>
+      <SortOrder>1</SortOrder>
+      <Fields>
+        <Field_SuppressChapterTitle>0</Field_SuppressChapterTitle>
+        <Field_SuppressChapterBreak>0</Field_SuppressChapterBreak>
+      </Fields>
+      <Type>0</Type>
+      <ChapterType>0</ChapterType>
+    </CHAPTER>
+  </CHAPTERS>
+  <WCLog>
+    <WC>
+      <Date>2020-01-16</Date>
+      <Count>315</Count>
+      <TotalCount>315</TotalCount>
+    </WC>
+    <WC>
+      <Date>2020-01-18</Date>
+      <Count>315</Count>
+      <TotalCount>315</TotalCount>
+    </WC>
+  </WCLog>
+</YWRITER7>

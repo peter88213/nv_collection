@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<YWRITER7>
+  <PROJECT>
+    <Ver>7</Ver>
+    <Title><![CDATA[The Refugee Ship]]></Title>
+    <AuthorName><![CDATA[Monty Grubber]]></AuthorName>
+    <Bio />
+    <Desc><![CDATA[A giant alien spaceship appears in the border area of the United Solar Systems. On board: thousands of souls, persecuted for religious and political reasons, as they say. However, the mighty Star Empire calls them pirates and terrorists, and demands their return. It is said that a kidnapped princess is being held hostage on board. The Space Patrol cruiser Armadillo is to find out the truth, taking the alien ship over. Member of the boarding party: Rick Starlift, officer candidate, who must not attract negative attention from his superior once again ...]]></Desc>
+    <FieldTitle1><![CDATA[Relevance]]></FieldTitle1>
+    <FieldTitle2><![CDATA[Tension]]></FieldTitle2>
+    <FieldTitle3><![CDATA[Humour]]></FieldTitle3>
+    <FieldTitle4><![CDATA[Quality]]></FieldTitle4>
+    <LastFullBackup>2020-01-18</LastFullBackup>
+    <WordTarget>0</WordTarget>
+    <WordTargetStartDate>0001-01-01</WordTargetStartDate>
+    <WordTargetEndDate>0001-01-01</WordTargetEndDate>
+    <WordCountStart>0</WordCountStart>
+    <EndFrontMatterChID>0</EndFrontMatterChID>
+    <EndMiddleChID>0</EndMiddleChID>
+    <EndBeginningChID>0</EndBeginningChID>
+    <LatexSingleQuotes>0</LatexSingleQuotes>
+    <LatexSuppressChapterTitles>0</LatexSuppressChapterTitles>
+    <LatexSceneDivider />
+    <HtmlSceneDivider />
+    <HtmlEncoding>utf8</HtmlEncoding>
+    <HtmlUnicode>-1</HtmlUnicode>
+    <LaTeXHeaderFile />
+    <MRUSpecificDate>0001-01-01</MRUSpecificDate>
+    <MRUSpecificTime>00:00:00</MRUSpecificTime>
+    <LastViewedScID>1</LastViewedScID>
+    <DeadlineDate1>0001-01-01</DeadlineDate1>
+    <DeadlineDate2>0001-01-01</DeadlineDate2>
+    <DeadlineDate3>0001-01-01</DeadlineDate3>
+    <DeadlineDate4>0001-01-01</DeadlineDate4>
+    <DeadlineDate5>0001-01-01</DeadlineDate5>
+    <DeadlineStartDate1>0001-01-01</DeadlineStartDate1>
+    <DeadlineStartDate2>0001-01-01</DeadlineStartDate2>
+    <DeadlineStartDate3>0001-01-01</DeadlineStartDate3>
+    <DeadlineStartDate4>0001-01-01</DeadlineStartDate4>
+    <DeadlineStartDate5>0001-01-01</DeadlineStartDate5>
+    <Fields>
+		</Fields>
+  </PROJECT>
+  <LOCATIONS>
+	</LOCATIONS>
+  <ITEMS>
+	</ITEMS>
+  <CHARACTERS>
+	</CHARACTERS>
+  <PROJECTVARS>
+    <PROJECTVAR>
+      <ID>1</ID>
+      <Title><![CDATA[Language]]></Title>
+      <Desc><![CDATA[de]]></Desc>
+      <Tags><![CDATA[0]]></Tags>
+    </PROJECTVAR>
+    <PROJECTVAR>
+      <ID>2</ID>
+      <Title><![CDATA[Country]]></Title>
+      <Desc><![CDATA[DE]]></Desc>
+      <Tags><![CDATA[0]]></Tags>
+    </PROJECTVAR>
+  </PROJECTVARS>
+  <PROJECTEXPS>
+	</PROJECTEXPS>
+  <SCENES>
+	</SCENES>
+  <CHAPTERS>
+    <CHAPTER>
+      <ID>1</ID>
+      <Title><![CDATA[Chapter 1]]></Title>
+      <SortOrder>1</SortOrder>
+      <Fields>
+        <Field_SuppressChapterTitle>0</Field_SuppressChapterTitle>
+        <Field_SuppressChapterBreak>0</Field_SuppressChapterBreak>
+      </Fields>
+      <Type>0</Type>
+      <ChapterType>0</ChapterType>
+    </CHAPTER>
+  </CHAPTERS>
+  <WCLog>
+    <WC>
+      <Date>2020-01-16</Date>
+      <Count>483</Count>
+      <TotalCount>483</TotalCount>
+    </WC>
+    <WC>
+      <Date>2020-01-18</Date>
+      <Count>483</Count>
+      <TotalCount>483</TotalCount>
+    </WC>
+  </WCLog>
+</YWRITER7>

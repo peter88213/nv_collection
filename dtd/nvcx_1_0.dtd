@@ -1,0 +1,16 @@
+<!ELEMENT COLLECTION (SERIES*, BOOK*)>
+    <!ATTLIST COLLECTION 
+        version NMTOKEN #FIXED "1.0"
+        >
+    <!ELEMENT SERIES (Title?, Desc?, BOOK*)>
+        <!ATTLIST SERIES 
+            id ID #REQUIRED 
+            >
+        <!ELEMENT Title (#PCDATA)>
+        <!ELEMENT Desc (p*)>
+            <!ELEMENT p (#PCDATA)>     
+	        <!ELEMENT BOOK (Title?, Desc?, Path)>
+	        <!ATTLIST BOOK 
+	            id ID #REQUIRED 
+	            >
+	        <!ELEMENT Path (#PCDATA)>
