@@ -12,7 +12,7 @@ from shutil import rmtree
 from tkinter import ttk
 import unittest
 
-from nvcollectionlib.collection import Collection
+from nvcollection.collection import Collection
 from nvlib.model.data.novel import Novel
 from nvlib.model.data.nv_tree import NvTree
 from nvlib.model.novx.novx_file import NovxFile
