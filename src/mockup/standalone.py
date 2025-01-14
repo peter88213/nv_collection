@@ -3,7 +3,7 @@
 For further information see https://github.com/peter88213/nv_collection
 License: GNU GPLv3 (https://www.gnu.org/licenses/gpl-3.0.en.html)
 """
-from mvclib.user_interface.main_tk import MainTk
+from nvlib.gui.user_interface.main_tk import MainTk
 from nv_collection import Plugin
 from nvlib.nv_locale import _
 import tkinter as tk
