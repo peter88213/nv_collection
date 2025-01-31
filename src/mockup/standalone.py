@@ -3,7 +3,7 @@
 For further information see https://github.com/peter88213/nv_collection
 License: GNU GPLv3 (https://www.gnu.org/licenses/gpl-3.0.en.html)
 """
-from nvlib.gui.user_interface.main_tk import MainTk
+from nvlib.gui.user_interface.simple_gui import SimpleGui
 from nv_collection import Plugin
 from nvlib.nv_locale import _
 import tkinter as tk
@@ -11,7 +11,7 @@ import tkinter as tk
 APPLICATION = 'Collection'
 
 
-class CollectionTk(MainTk):
+class CollectionTk(SimpleGui):
 
     def __init__(self):
         kwargs = {

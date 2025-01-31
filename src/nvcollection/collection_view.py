@@ -6,13 +6,13 @@ License: GNU GPLv3 (https://www.gnu.org/licenses/gpl-3.0.en.html)
 """
 from tkinter import ttk
 
-from mvclib.widgets.index_card import IndexCard
 from nvcollection.collection_view_ctrl import CollectionViewCtrl
 from nvcollection.nvcollection_globals import FEATURE
 from nvcollection.nvcollection_locale import _
 from nvcollection.platform.platform_settings import KEYS
 from nvcollection.platform.platform_settings import MOUSE
 from nvcollection.platform.platform_settings import PLATFORM
+from nvlib.gui.widgets.index_card import IndexCard
 import tkinter as tk
 
 

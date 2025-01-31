@@ -8,8 +8,8 @@ import os
 from pathlib import Path
 import sys
 
-from mvclib.controller.sub_controller import SubController
 from nvcollection.collection_view import CollectionView
+from nvlib.controller.sub_controller import SubController
 import tkinter as tk
 
 

@@ -7,13 +7,13 @@ License: GNU GPLv3 (https://www.gnu.org/licenses/gpl-3.0.en.html)
 import os
 from tkinter import filedialog
 
-from mvclib.controller.sub_controller import SubController
 from nvcollection.collection import Collection
 from nvcollection.nvcollection_globals import BOOK_PREFIX
 from nvcollection.nvcollection_globals import FEATURE
 from nvcollection.nvcollection_globals import SERIES_PREFIX
 from nvcollection.nvcollection_help import NvcollectionHelp
 from nvcollection.nvcollection_locale import _
+from nvlib.controller.sub_controller import SubController
 from nvlib.novx_globals import Error
 from nvlib.novx_globals import norm_path
 
