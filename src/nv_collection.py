@@ -15,9 +15,9 @@ but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 """
+from nvcollection.nvcollection_locale import _
 from nvcollection.nvcollection_globals import FEATURE
 from nvcollection.nvcollection_help import NvcollectionHelp
-from nvcollection.nvcollection_locale import _
 from nvlib.controller.plugin.plugin_base import PluginBase
 from nvcollection.collection_service import CollectionService
 
