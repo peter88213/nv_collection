@@ -248,7 +248,7 @@ class Collection:
         """
 
         def walk_tree(node, xmlNode):
-            """Transform the Treeview nodes to XML Elementtree nodes."""
+            # Transform the Treeview nodes to XML Elementtree nodes.
             for elementId in self.tree.get_children(node):
                 if elementId.startswith(BOOK_PREFIX):
                     xmlBook = ET.SubElement(xmlNode, 'BOOK')
