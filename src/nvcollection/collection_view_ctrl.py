@@ -164,7 +164,7 @@ class CollectionViewCtrl(SubController):
                 if self._ui.ask_yes_no(_('Save changes?'), title=FEATURE, parent=self):
                     self.save_collection()
         except Exception as ex:
-            self._show_info(str(ex))
+            self._show_cannot_save_error(str(ex))
         finally:
             self.destroy()
             self.isOpen = False
@@ -334,7 +334,7 @@ class CollectionViewCtrl(SubController):
                 if self.isModified:
                     self.collection.write()
         except Exception as ex:
-            self._show_info(str(ex))
+            self._show_cannot_save_error(str(ex))
             return
 
         self.isModified = False
@@ -435,12 +435,12 @@ class CollectionViewCtrl(SubController):
             collectionTitle = _('Untitled collection')
         self.title(f'{collectionTitle} - {FEATURE}')
 
-    def _show_info(self, message):
-        if message.startswith('!'):
-            message = message.split('!', maxsplit=1)[1].strip()
-            self._ui.show_error(message, title=FEATURE, parent=self)
-        else:
-            self._ui.show_info(message, title=FEATURE, parent=self)
+    def _show_cannot_save_error(self, message):
+        self._ui.show_error(
+            message=_('Cannot save the collection'),
+            detail=message,
+            parent=self
+            )
         self.lift()
         self.focus()
 

@@ -1,11 +1,11 @@
 # nv_collection Dictionary (English-German)
-# Copyright (C) 2022 Peter Triesberger
+# Copyright (C) 2025 Peter Triesberger
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 5.0.7\n"
-"POT-Creation-Date: 2024-12-12 13:46:32\n"
-"PO-Revision-Date: 2024-12-12 13:46:32\n"
+"Project-Id-Version: 5.1.0\n"
+"POT-Creation-Date: 2025-03-19 22:25:44\n"
+"PO-Revision-Date: 2025-03-19 22:25:44\n"
 "Last-Translator: Peter Triesberger\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -43,6 +43,9 @@ msgstr "Kann Buch nicht entfernen"
 msgid "Cannot remove series"
 msgstr "Kann Serie nicht entfernen"
 
+msgid "Cannot save the collection"
+msgstr "Kann die Sammlung nicht speichern"
+
 msgid "Cannot write file"
 msgstr "Kann Datei nicht schreiben"
 
@@ -69,6 +72,12 @@ msgstr "Datei"
 
 msgid "Help"
 msgstr "Hilfe"
+
+msgid "Major Character"
+msgstr "Hauptfigur"
+
+msgid "Minor Character"
+msgstr "Nebenfigur"
 
 msgid "New"
 msgstr "Neu"
