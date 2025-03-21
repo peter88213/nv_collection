@@ -5,6 +5,16 @@
 ## Changelog
 
 
+### Version 5.1.1
+
+- Fix a bug where the collection is erroneously flagged modified when
+aborting a command.
+- Updated the messaging.
+- Prevent the footer bars from shrinking when resizing the window.
+
+API: 5.17
+Based on novelibre 5.17.3
+
 ### Version 5.0.7
 
 - Always asking before saving.
