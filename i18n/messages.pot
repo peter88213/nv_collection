@@ -3,8 +3,8 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 5.1.0\n"
-"POT-Creation-Date: 2025-03-19 22:25:44\n"
+"Project-Id-Version: 5.1.1\n"
+"POT-Creation-Date: 2025-03-21 19:19:30\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: LANGUAGE\n"
@@ -104,10 +104,19 @@ msgstr ""
 msgid "Remove selected book from the collection"
 msgstr ""
 
+msgid "Remove selected book from the collection?"
+msgstr ""
+
 msgid "Remove selected series and books"
 msgstr ""
 
+msgid "Remove selected series and books?"
+msgstr ""
+
 msgid "Remove selected series but keep the books"
+msgstr ""
+
+msgid "Remove selected series but keep the books?"
 msgstr ""
 
 msgid "Save"
@@ -126,6 +135,9 @@ msgid "The collection was created with a newer plugin version."
 msgstr ""
 
 msgid "The collection was created with an outdated plugin version."
+msgstr ""
+
+msgid "There are unsaved changes"
 msgstr ""
 
 msgid "There is no file for the current project. Please save first."

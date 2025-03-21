@@ -3,9 +3,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 5.1.0\n"
-"POT-Creation-Date: 2025-03-19 22:25:44\n"
-"PO-Revision-Date: 2025-03-19 22:25:44\n"
+"Project-Id-Version: 5.1.1\n"
+"POT-Creation-Date: 2025-03-21 19:19:30\n"
+"PO-Revision-Date: 2025-03-21 19:19:30\n"
 "Last-Translator: Peter Triesberger\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -103,11 +103,20 @@ msgstr "Beenden"
 msgid "Remove selected book from the collection"
 msgstr "Ausgewähltes Buch aus der Sammlung entfernen"
 
+msgid "Remove selected book from the collection?"
+msgstr "Ausgewähltes Buch aus der Sammlung entfernen?"
+
 msgid "Remove selected series and books"
 msgstr "Ausgewählte Serie mitsamt den Büchern entfernen"
 
+msgid "Remove selected series and books?"
+msgstr "Ausgewählte Serie mitsamt den Büchern entfernen?"
+
 msgid "Remove selected series but keep the books"
 msgstr "Ausgewählte Serie entfernen, aber die Bücher behalten"
+
+msgid "Remove selected series but keep the books?"
+msgstr "Ausgewählte Serie entfernen, aber die Bücher behalten?"
 
 msgid "Save"
 msgstr "Speichern"
@@ -126,6 +135,9 @@ msgstr "Die Sammlung wurde mit einer neueren Version des Plugins erstellt."
 
 msgid "The collection was created with an outdated plugin version."
 msgstr "Die Sammlung wurde mit einer veralteten Version des Plugins erstellt."
+
+msgid "There are unsaved changes"
+msgstr "Es gibt ungesicherte Änderungen"
 
 msgid "There is no file for the current project. Please save first."
 msgstr "Es gibt keine Datei für das aktuelle Projekt. Bitte zuerst speichern."

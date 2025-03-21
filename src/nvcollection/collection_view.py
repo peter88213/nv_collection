@@ -33,6 +33,15 @@ class CollectionView(tk.Toplevel, CollectionViewCtrl):
         self.mainMenu = tk.Menu(self)
         self.config(menu=self.mainMenu)
 
+        #--- Path bar.
+        self.pathBar = tk.Label(self, text='', anchor='w', padx=5, pady=3)
+        self.pathBar.pack(expand=False, fill='both', side='bottom')
+
+        #--- Status bar.
+        self.statusBar = tk.Label(self, text='', anchor='w', padx=5, pady=2)
+        self.statusBar.pack(expand=False, fill='both', side='bottom')
+        self.statusBar.bind(MOUSE.LEFT_CLICK, self.restore_status)
+
         #--- Main window.
         self.mainWindow = ttk.Frame(self)
         self.mainWindow.pack(fill='both', padx=2, pady=2, expand=True)
@@ -69,15 +78,6 @@ class CollectionView(tk.Toplevel, CollectionViewCtrl):
         # Adjust the tree width.
         self.treeWindow.update()
         self.treeWindow.sashpos(0, self.prefs['tree_width'])
-
-        # Status bar.
-        self.statusBar = tk.Label(self, text='', anchor='w', padx=5, pady=2)
-        self.statusBar.pack(expand=False, fill='both')
-        self.statusBar.bind(MOUSE.LEFT_CLICK, self.restore_status)
-
-        # Path bar.
-        self.pathBar = tk.Label(self, text='', anchor='w', padx=5, pady=3)
-        self.pathBar.pack(expand=False, fill='both')
 
         #--- Add menu entries.
         # File menu.
