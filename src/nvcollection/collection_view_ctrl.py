@@ -89,7 +89,12 @@ class CollectionViewCtrl(SubController):
         
         To be extended by subclasses.
         """
-        if self.isModified and self._ui.ask_yes_no(_('Save changes?'), title=FEATURE, parent=self):
+        if self.isModified and self._ui.ask_yes_no(
+            message=_('Save changes?'),
+            detail=_('There are unsaved changes'),
+            title=FEATURE,
+            parent=self
+            ):
             self.save_collection()
         self.apply_changes()
         self.indexCard.title.set('')
@@ -161,10 +166,15 @@ class CollectionViewCtrl(SubController):
         self.prefs['window_size'] = self.winfo_geometry().split('+')[0]
         try:
             if self.collection is not None and self.isModified:
-                if self._ui.ask_yes_no(_('Save changes?'), title=FEATURE, parent=self):
+                if self._ui.ask_yes_no(
+                    message=_('Save changes?'),
+                    detail=_('There are unsaved changes'),
+                    title=FEATURE,
+                    parent=self
+                    ):
                     self.save_collection()
         except Exception as ex:
-            self._show_info(str(ex))
+            self._show_cannot_save_error(str(ex))
         finally:
             self.destroy()
             self.isOpen = False
@@ -215,6 +225,7 @@ class CollectionViewCtrl(SubController):
         if self.collection is not None:
             self.close_collection()
 
+        self.isModified = False
         self.prefs['last_open'] = fileName
         self.collection = Collection(fileName, self.treeView)
         try:
@@ -242,25 +253,25 @@ class CollectionViewCtrl(SubController):
         self.apply_changes()
         try:
             nodeId = self.collection.tree.selection()[0]
-            message = ''
-            try:
-                if nodeId.startswith(BOOK_PREFIX):
-                    if self._ui.ask_yes_no(f'{_("Remove selected book from the collection")}?', title=FEATURE, parent=self):
-                        if self.collection.tree.prev(nodeId):
-                            self.collection.tree.selection_set(self.collection.tree.prev(nodeId))
-                        elif self.collection.tree.parent(nodeId):
-                            self.collection.tree.selection_set(self.collection.tree.parent(nodeId))
-                        message = self.collection.remove_book(nodeId)
-                        self.isModified = True
-                        self.lift()
-                        self.focus()
-            except Error as ex:
-                self._set_status(str(ex))
-            else:
-                if message:
-                    self._set_status(message)
         except IndexError:
-            pass
+            return
+
+        try:
+            if nodeId.startswith(BOOK_PREFIX):
+                if self._ui.ask_yes_no(
+                    message=_('Remove selected book from the collection?'),
+                    detail=self.collection.books[nodeId].title,
+                    title=FEATURE,
+                    parent=self
+                    ):
+                    if self.collection.tree.prev(nodeId):
+                        self.collection.tree.selection_set(self.collection.tree.prev(nodeId))
+                    elif self.collection.tree.parent(nodeId):
+                        self.collection.tree.selection_set(self.collection.tree.parent(nodeId))
+                    self._set_status(self.collection.remove_book(nodeId))
+                    self.isModified = True
+        except Error as ex:
+            self._set_status(str(ex))
 
     def remove_node(self, event=None):
         self.apply_changes()
@@ -270,7 +281,6 @@ class CollectionViewCtrl(SubController):
                 self.remove_series()
             elif nodeId.startswith(BOOK_PREFIX):
                 self.remove_book()
-            self.isModified = True
         except IndexError:
             pass
 
@@ -278,49 +288,50 @@ class CollectionViewCtrl(SubController):
         self.apply_changes()
         try:
             nodeId = self.collection.tree.selection()[0]
-            message = ''
-            try:
-                if nodeId.startswith(SERIES_PREFIX):
-                    if self._ui.ask_yes_no(f'{_("Remove selected series but keep the books")}?', title=FEATURE, parent=self):
-                        if self.collection.tree.prev(nodeId):
-                            self.collection.tree.selection_set(self.collection.tree.prev(nodeId))
-                        elif self.collection.tree.parent(nodeId):
-                            self.collection.tree.selection_set(self.collection.tree.parent(nodeId))
-                        message = self.collection.remove_series(nodeId)
-                        self.isModified = True
-                        self.lift()
-                        self.focus()
-            except Error as ex:
-                self._set_status(str(ex))
-            else:
-                if message:
-                    self._set_status(message)
+
         except IndexError:
-            pass
+            return
+
+        try:
+            if nodeId.startswith(SERIES_PREFIX):
+                if self._ui.ask_yes_no(
+                    message=_('Remove selected series but keep the books?'),
+                    detail=self.collection.series[nodeId].title,
+                    title=FEATURE,
+                    parent=self
+                    ):
+                    if self.collection.tree.prev(nodeId):
+                        self.collection.tree.selection_set(self.collection.tree.prev(nodeId))
+                    elif self.collection.tree.parent(nodeId):
+                        self.collection.tree.selection_set(self.collection.tree.parent(nodeId))
+                    self._set_status(self.collection.remove_series(nodeId))
+                    self.isModified = True
+        except Error as ex:
+            self._set_status(str(ex))
 
     def remove_series_with_books(self, event=None):
         self.apply_changes()
         try:
             nodeId = self.collection.tree.selection()[0]
-            message = ''
-            try:
-                if nodeId.startswith(SERIES_PREFIX):
-                    if self._ui.ask_yes_no(f'{_("Remove selected series and books")}?', title=FEATURE, parent=self):
-                        if self.collection.tree.prev(nodeId):
-                            self.collection.tree.selection_set(self.collection.tree.prev(nodeId))
-                        elif self.collection.tree.parent(nodeId):
-                            self.collection.tree.selection_set(self.collection.tree.parent(nodeId))
-                        message = self.collection.remove_series_with_books(nodeId)
-                        self.isModified = True
-                        self.lift()
-                        self.focus()
-            except Error as ex:
-                self._set_status(str(ex))
-            else:
-                if message:
-                    self._set_status(message)
         except IndexError:
-            pass
+            return
+
+        try:
+            if nodeId.startswith(SERIES_PREFIX):
+                if self._ui.ask_yes_no(
+                    message=_('Remove selected series and books?'),
+                    detail=self.collection.series[nodeId].title,
+                    title=FEATURE,
+                    parent=self
+                    ):
+                    if self.collection.tree.prev(nodeId):
+                        self.collection.tree.selection_set(self.collection.tree.prev(nodeId))
+                    elif self.collection.tree.parent(nodeId):
+                        self.collection.tree.selection_set(self.collection.tree.parent(nodeId))
+                    self._set_status(self.collection.remove_series_with_books(nodeId))
+                    self.isModified = True
+        except Error as ex:
+            self._set_status(str(ex))
 
     def restore_status(self, event=None):
         """Overwrite error message with the status before."""
@@ -334,7 +345,7 @@ class CollectionViewCtrl(SubController):
                 if self.isModified:
                     self.collection.write()
         except Exception as ex:
-            self._show_info(str(ex))
+            self._show_cannot_save_error(str(ex))
             return
 
         self.isModified = False
@@ -405,23 +416,23 @@ class CollectionViewCtrl(SubController):
         if self.element.title:
             self.indexCard.title.set(self.element.title)
 
-    def _set_status(self, message):
+    def _set_status(self, statusMsg):
         """Show how the converter is doing.
         
         Positional arguments:
-            message -- message to be displayed. 
+            statusMsg -- Status message to be displayed. 
             
-        Display the message at the status bar.
+        Display the status message at the status bar.
         Overrides the superclass method.
         """
-        if message.startswith('!'):
+        if statusMsg.startswith('!'):
             self.statusBar.config(bg='red')
             self.statusBar.config(fg='white')
-            self.infoHowText = message.split('!', maxsplit=1)[1].strip()
+            self.infoHowText = statusMsg.split('!', maxsplit=1)[1].strip()
         else:
             self.statusBar.config(bg='green')
             self.statusBar.config(fg='white')
-            self.infoHowText = message
+            self.infoHowText = statusMsg
         self.statusBar.config(text=self.infoHowText)
 
     def _set_title(self):
@@ -435,23 +446,23 @@ class CollectionViewCtrl(SubController):
             collectionTitle = _('Untitled collection')
         self.title(f'{collectionTitle} - {FEATURE}')
 
-    def _show_info(self, message):
-        if message.startswith('!'):
-            message = message.split('!', maxsplit=1)[1].strip()
-            self._ui.show_error(message, title=FEATURE, parent=self)
-        else:
-            self._ui.show_info(message, title=FEATURE, parent=self)
+    def _show_cannot_save_error(self, errorMsg):
+        self._ui.show_error(
+            message=_('Cannot save the collection'),
+            detail=errorMsg,
+            parent=self
+            )
         self.lift()
         self.focus()
 
-    def _show_path(self, message):
+    def _show_path(self, pathStr):
         """Put text on the path bar."""
-        self.pathBar.config(text=message)
+        self.pathBar.config(text=pathStr)
 
-    def _show_status(self, message):
+    def _show_status(self, statusMsg):
         """Put text on the status bar."""
-        self.statusText = message
+        self.statusText = statusMsg
         self.statusBar.config(bg=self.cget('background'))
         self.statusBar.config(fg='black')
-        self.statusBar.config(text=message)
+        self.statusBar.config(text=statusMsg)
 
