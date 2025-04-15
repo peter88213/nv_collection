@@ -161,8 +161,8 @@ class Collection:
             raise Error(_('The collection was created with a newer plugin version.'))
 
         self.reset_tree()
-        self.books = {}
-        self.series = {}
+        self.books.clear()
+        self.series.clear()
         for xmlElement in xmlRoot:
             if xmlElement.tag == 'BOOK':
                 get_book('', xmlElement)
