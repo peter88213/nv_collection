@@ -5,6 +5,13 @@
 ## Changelog
 
 
+### Version 5.1.2
+
+- Refactored the code for better performance.
+
+API: 5.17
+Based on novelibre 5.19.1
+
 ### Version 5.1.1
 
 - Fix a bug where the collection is erroneously flagged modified when
