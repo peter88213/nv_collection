@@ -22,6 +22,8 @@ class CollectionView(tk.Toplevel, CollectionViewCtrl):
     def __init__(self, model, view, controller, windowPosition, prefs):
         super().__init__()
         self.initialize_controller(model, view, controller, prefs)
+        windowSize = self.prefs['window_size'].split('+')[0]
+        self.geometry(f"{windowSize}{windowPosition}")
 
         self.title(FEATURE)
         self.statusText = ''
@@ -121,7 +123,6 @@ class CollectionView(tk.Toplevel, CollectionViewCtrl):
 
         # Restore last window size.
         self.update_idletasks()
-        windowSize = self.prefs['window_size'].split('+')[0]
         self.geometry(f"{windowSize}{windowPosition}")
 
         self.open_last_collection()
