@@ -5,6 +5,14 @@
 ## Changelog
 
 
+### Version 5.1.3
+
+- Fixed a bug where the window shrinks each time when opened.
+
+API: 5.17
+Based on novelibre 5.24.3
+
+
 ### Version 5.1.2
 
 - Refactored the code for better performance.

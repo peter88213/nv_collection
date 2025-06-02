@@ -17,6 +17,7 @@ import tkinter as tk
 
 
 class CollectionView(tk.Toplevel, CollectionViewCtrl):
+    HEIGHT_BIAS = 20
 
     def __init__(self, model, view, controller, windowPosition, prefs):
         super().__init__()
@@ -25,7 +26,6 @@ class CollectionView(tk.Toplevel, CollectionViewCtrl):
         self.title(FEATURE)
         self.statusText = ''
 
-        self.geometry(f"{self.prefs['window_size']}{windowPosition}")
         self.lift()
         self.focus()
 
@@ -118,5 +118,10 @@ class CollectionView(tk.Toplevel, CollectionViewCtrl):
             self.bind(KEYS.QUIT_PROGRAM[0], self.on_quit)
         self.bind(KEYS.OPEN_HELP[0], self.open_help)
         self.bind('<Escape>', self.restore_status)
+
+        # Restore last window size.
+        self.update_idletasks()
+        windowSize = self.prefs['window_size'].split('+')[0]
+        self.geometry(f"{windowSize}{windowPosition}")
 
         self.open_last_collection()
