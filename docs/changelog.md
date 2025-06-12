@@ -5,7 +5,7 @@
 ## Changelog
 
 
-### Version 5.2.0
+### Version 5.2.1
 
 - Refactored the code for better maintainability:
   Reintegrated the controller mixin class into the view class.

@@ -25,7 +25,9 @@ class CollectionService(SubController):
     ICON = 'cLogo32'
 
     def __init__(self, model, view, controller):
-        super().initialize_controller(model, view, controller)
+        self._mdl = model
+        self._ui = view
+        self._ctrl = controller
 
         #--- Load configuration.
         try:
@@ -88,7 +90,7 @@ class CollectionService(SubController):
             self._ui,
             self._ctrl,
             windowPosition,
-            self.prefs
-            )
+            self.prefs,
+        )
         self.collectionView.iconphoto(False, self.icon)
 
