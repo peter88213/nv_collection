@@ -46,105 +46,202 @@ class CollectionView(tk.Toplevel, SubController):
         self.focus()
 
         #--- Main menu.
-        self.mainMenu = tk.Menu(self)
-        self.config(menu=self.mainMenu)
+        self._mainMenu = tk.Menu(self)
+        self.config(menu=self._mainMenu)
 
         #--- Path bar.
-        self.pathBar = tk.Label(self, text='', anchor='w', padx=5, pady=3)
-        self.pathBar.pack(expand=False, fill='both', side='bottom')
+        self._pathBar = tk.Label(
+            self,
+            text='',
+            anchor='w',
+            padx=5,
+            pady=3,
+        )
+        self._pathBar.pack(expand=False, fill='both', side='bottom')
 
         #--- Status bar.
-        self.statusBar = tk.Label(self, text='', anchor='w', padx=5, pady=2)
-        self.statusBar.pack(expand=False, fill='both', side='bottom')
-        self.statusBar.bind(MOUSE.LEFT_CLICK, self.restore_status)
+        self._statusBar = tk.Label(
+            self,
+            text='',
+            anchor='w',
+            padx=5,
+            pady=2,
+        )
+        self._statusBar.pack(expand=False, fill='both', side='bottom')
+        self._statusBar.bind(MOUSE.LEFT_CLICK, self._restore_status)
 
         #--- Main window.
-        self.mainWindow = ttk.Frame(self)
-        self.mainWindow.pack(fill='both', padx=2, pady=2, expand=True)
+        self._mainWindow = ttk.Frame(self)
+        self._mainWindow.pack(fill='both', padx=2, pady=2, expand=True)
 
         #--- Paned window displaying the tree and an "index card".
-        self.treeWindow = ttk.Panedwindow(self.mainWindow, orient='horizontal')
-        self.treeWindow.pack(fill='both', expand=True)
+        self._treeWindow = ttk.Panedwindow(
+            self._mainWindow,
+            orient='horizontal',
+        )
+        self._treeWindow.pack(fill='both', expand=True)
 
         #--- The collection itself.
-        self.collection = None
+        self._collection = None
 
         #--- Tree for book selection.
-        self.treeView = ttk.Treeview(self.treeWindow, selectmode='browse')
-        scrollY = ttk.Scrollbar(self.treeView, orient='vertical', command=self.treeView.yview)
-        self.treeView.configure(yscrollcommand=scrollY.set)
+        self._treeView = ttk.Treeview(self._treeWindow, selectmode='browse')
+        scrollY = ttk.Scrollbar(
+            self._treeView,
+            orient='vertical',
+            command=self._treeView.yview,
+        )
+        self._treeView.configure(yscrollcommand=scrollY.set)
         scrollY.pack(side='right', fill='y')
-        self.treeView.pack(side='left')
-        self.treeWindow.add(self.treeView)
-        self.treeView.bind('<<TreeviewSelect>>', self.on_select_node)
-        self.treeView.bind('<<TreeviewSelect>>', self.on_select_node)
-        self.treeView.bind('<Double-1>', self.open_book)
-        self.treeView.bind('<Return>', self.open_book)
-        self.treeView.bind('<Delete>', self.remove_node)
-        self.treeView.bind('<Shift-Delete>', self.remove_series_with_books)
-        self.treeView.bind(MOUSE.MOVE_NODE, self.move_node)
+        self._treeView.pack(side='left')
+        self._treeWindow.add(self._treeView)
+        self._treeView.bind('<<TreeviewSelect>>', self._on_select_node)
+        self._treeView.bind('<<TreeviewSelect>>', self._on_select_node)
+        self._treeView.bind('<Double-1>', self._open_book)
+        self._treeView.bind('<Return>', self._open_book)
+        self._treeView.bind('<Delete>', self._remove_node)
+        self._treeView.bind('<Shift-Delete>', self._remove_series_with_books)
+        self._treeView.bind(MOUSE.MOVE_NODE, self._move_node)
 
         #--- "Index card" in the right frame.
-        self._indexCard = IndexCard(self.treeWindow, bd=2, relief='ridge')
+        self._indexCard = IndexCard(self._treeWindow, bd=2, relief='ridge')
         self._indexCard.pack(side='right')
-        self.treeWindow.add(self._indexCard)
-        self._indexCard.titleEntry.bind('<Return>', self.apply_changes)
-        self._indexCard.titleEntry.bind('<FocusOut>', self.apply_changes)
+        self._treeWindow.add(self._indexCard)
+        self._indexCard.titleEntry.bind('<Return>', self._apply_changes)
+        self._indexCard.titleEntry.bind('<FocusOut>', self._apply_changes)
 
         # Adjust the tree width.
-        self.treeWindow.update()
-        self.treeWindow.sashpos(0, self.prefs['tree_width'])
+        self._treeWindow.update()
+        self._treeWindow.sashpos(0, self.prefs['tree_width'])
 
         #--- Add menu entries.
         # File menu.
-        self.fileMenu = tk.Menu(self.mainMenu, tearoff=0)
-        self.mainMenu.add_cascade(label=_('File'), menu=self.fileMenu)
-        self.fileMenu.add_command(label=_('New'), command=self.new_collection)
-        self.fileMenu.add_command(label=_('Open...'), command=self.open_collection)
-        self.fileMenu.add_command(label=_('Save'), state='disabled', command=self.save_collection)
-        self.fileMenu.add_command(label=_('Close'), state='disabled', command=self.close_collection)
+        self._fileMenu = tk.Menu(self._mainMenu, tearoff=0)
+        self._mainMenu.add_cascade(
+            label=_('File'),
+            menu=self._fileMenu,
+        )
+        self._fileMenu.add_command(
+            label=_('New'),
+            command=self._create_new_collection,
+        )
+        self._fileMenu.add_command(
+            label=_('Open...'),
+            command=self._open_collection,
+        )
+        self._fileMenu.add_command(
+            label=_('Save'),
+            state='disabled',
+            command=self._save_collection,
+        )
+        self._fileMenu.add_command(
+            label=_('Close'),
+            state='disabled',
+            command=self._close_collection,
+            )
         if PLATFORM == 'win':
-            self.fileMenu.add_command(label=_('Exit'), accelerator=KEYS.QUIT_PROGRAM[1], command=self.on_quit)
+            self._fileMenu.add_command(
+                label=_('Exit'),
+                accelerator=KEYS.QUIT_PROGRAM[1],
+                command=self.on_quit,
+            )
         else:
-            self.fileMenu.add_command(label=_('Quit'), accelerator=KEYS.QUIT_PROGRAM[1], command=self.on_quit)
+            self._fileMenu.add_command(
+                label=_('Quit'),
+                accelerator=KEYS.QUIT_PROGRAM[1],
+                command=self.on_quit,
+            )
 
         # Series menu.
-        self.seriesMenu = tk.Menu(self.mainMenu, tearoff=0)
-        self.mainMenu.add_cascade(label=_('Series'), menu=self.seriesMenu)
-        self.seriesMenu.add_command(label=_('Add'), command=self.add_series)
-        self.seriesMenu.add_command(label=_('Remove selected series but keep the books'), command=self.remove_series)
-        self.seriesMenu.add_command(label=_('Remove selected series and books'), command=self.remove_series_with_books)
+        self._seriesMenu = tk.Menu(self._mainMenu, tearoff=0)
+        self._mainMenu.add_cascade(
+            label=_('Series'),
+            menu=self._seriesMenu,
+        )
+        self._seriesMenu.add_command(
+            label=_('Add'),
+            command=self._add_series,
+        )
+        self._seriesMenu.add_command(
+            label=_('Remove selected series but keep the books'),
+            command=self._remove_series,
+        )
+        self._seriesMenu.add_command(
+            label=_('Remove selected series and books'),
+            command=self._remove_series_with_books,
+        )
 
         # Book menu.
-        self.bookMenu = tk.Menu(self.mainMenu, tearoff=0)
-        self.mainMenu.add_cascade(label=_('Book'), menu=self.bookMenu)
-        self.bookMenu.add_command(label=_('Add current project to the collection'), command=self.add_current_project)
-        self.bookMenu.add_command(label=_('Remove selected book from the collection'), command=self.remove_book)
-        self.bookMenu.add_command(label=_('Update book data from the current project'), command=self.update_collection)
-        self.bookMenu.add_command(label=_('Update project data from the selected book'), command=self.update_project)
+        self._bookMenu = tk.Menu(self._mainMenu, tearoff=0)
+        self._mainMenu.add_cascade(
+            label=_('Book'),
+            menu=self._bookMenu,
+        )
+        self._bookMenu.add_command(
+            label=_('Add current project to the collection'),
+            command=self._add_current_project,
+        )
+        self._bookMenu.add_command(
+            label=_('Remove selected book from the collection'),
+            command=self._remove_book,
+        )
+        self._bookMenu.add_command(
+            label=_('Update book data from the current project'),
+            command=self._update_collection,
+        )
+        self._bookMenu.add_command(
+            label=_('Update project data from the selected book'),
+            command=self._update_project,
+        )
 
         # Help
-        self.helpMenu = tk.Menu(self.mainMenu, tearoff=0)
-        self.mainMenu.add_cascade(label=_('Help'), menu=self.helpMenu)
-        self.helpMenu.add_command(label=_('Online help'), accelerator='F1', command=self.open_help)
+        self._helpMenu = tk.Menu(self._mainMenu, tearoff=0)
+        self._mainMenu.add_cascade(
+            label=_('Help'),
+            menu=self._helpMenu,
+        )
+        self._helpMenu.add_command(
+            label=_('Online help'),
+            accelerator='F1',
+            command=self._open_help,
+        )
 
         #--- Event bindings.
         self.protocol("WM_DELETE_WINDOW", self.on_quit)
         if PLATFORM != 'win':
             self.bind(KEYS.QUIT_PROGRAM[0], self.on_quit)
-        self.bind(KEYS.OPEN_HELP[0], self.open_help)
-        self.bind('<Escape>', self.restore_status)
+        self.bind(KEYS.OPEN_HELP[0], self._open_help)
+        self.bind('<Escape>', self._restore_status)
 
         # Restore last window size.
         self.update_idletasks()
         self.geometry(f"{windowSize}{windowPosition}")
 
-        self.open_last_collection()
+        self._open_last_collection()
 
-    def add_current_project(self, event=None):
-        self.apply_changes()
+    def on_quit(self, event=None):
+        self._apply_changes()
+        self.prefs['tree_width'] = self._treeWindow.sashpos(0)
+        self.prefs['window_size'] = self.winfo_geometry().split('+')[0]
         try:
-            selection = self.collection.tree.selection()[0]
+            if self._collection is not None and self.isModified:
+                if self._ui.ask_yes_no(
+                    message=_('Save changes?'),
+                    detail=_('There are unsaved changes'),
+                    title=FEATURE,
+                    parent=self,
+                ):
+                    self._save_collection()
+        except Exception as ex:
+            self._show_cannot_save_error(str(ex))
+        finally:
+            self.destroy()
+            self.isOpen = False
+
+    def _add_current_project(self, event=None):
+        self._apply_changes()
+        try:
+            selection = self._collection.tree.selection()[0]
         except:
             selection = ''
         book = self._mdl.prjFile
@@ -154,8 +251,8 @@ class CollectionView(tk.Toplevel, SubController):
 
         parent = ''
         if selection.startswith(BOOK_PREFIX):
-            parent = self.collection.tree.parent(selection)
-            index = self.collection.tree.index(selection) + 1
+            parent = self._collection.tree.parent(selection)
+            index = self._collection.tree.index(selection) + 1
         elif selection.startswith(SERIES_PREFIX):
             parent = selection
             index = 'end'
@@ -164,40 +261,46 @@ class CollectionView(tk.Toplevel, SubController):
             index = 0
         if book is not None:
             try:
-                bkId = self.collection.add_book(book, parent, index)
+                bkId = self._collection.add_book(book, parent, index)
                 self.isModified = True
             except Error as ex:
                 self._set_status(f'!{str(ex)}')
             else:
                 if bkId is not None:
-                    self._set_status(f'{_("Book added to the collection")}: "{book.novel.title}".')
+                    self._set_status(
+                        f'{_("Book added to the collection")}: "{book.novel.title}".'
+                    )
                 else:
-                    self._set_status(f'!{_("Book already exists")}: "{book.novel.title}".')
+                    self._set_status(
+                        f'!{_("Book already exists")}: "{book.novel.title}".'
+                    )
 
-    def add_series(self, event=None):
-        self.apply_changes()
+    def _add_series(self, event=None):
+        self._apply_changes()
         try:
-            selection = self.collection.tree.selection()[0]
+            selection = self._collection.tree.selection()[0]
         except:
             selection = ''
         title = _('New Series')
         index = 0
         if selection.startswith(SERIES_PREFIX):
-            index = self.collection.tree.index(selection) + 1
+            index = self._collection.tree.index(selection) + 1
         try:
-            self.collection.add_series(title, index)
+            self._collection.add_series(title, index)
             self.isModified = True
         except Error as ex:
             self._set_status(str(ex))
 
-    def apply_changes(self, event=None):
-        """Apply changes."""
+    def _apply_changes(self, event=None):
         try:
             title = self._indexCard.title.get()
             if title or self.element.title:
                 if self.element.title != title:
                     self.element.title = title.strip()
-                    self.collection.tree.item(self.nodeId, text=self.element.title)
+                    self._collection.tree.item(
+                        self.nodeId,
+                        text=self.element.title,
+                    )
                     self.isModified = True
             if self._indexCard.bodyBox.hasChanged:
                 self.element.desc = self._indexCard.bodyBox.get_text()
@@ -205,101 +308,81 @@ class CollectionView(tk.Toplevel, SubController):
         except AttributeError:
             pass
 
-    def close_collection(self, event=None):
-        """Close the collection without saving and reset the user interface.
-        
-        To be extended by subclasses.
-        """
+    def _close_collection(self, event=None):
+        # Close the collection without saving and reset the user interface.
         if self.isModified and self._ui.ask_yes_no(
             message=_('Save changes?'),
             detail=_('There are unsaved changes'),
             title=FEATURE,
-            parent=self
-            ):
-            self.save_collection()
-        self.apply_changes()
+            parent=self,
+        ):
+            self._save_collection()
+        self._apply_changes()
         self._indexCard.title.set('')
         self._indexCard.bodyBox.clear()
-        self.collection.reset_tree()
-        self.collection = None
+        self._collection.reset_tree()
+        self._collection = None
         self.title('')
         self._show_status('')
         self._show_path('')
-        self.fileMenu.entryconfig(_('Save'), state='disabled')
-        self.fileMenu.entryconfig(_('Close'), state='disabled')
+        self._fileMenu.entryconfig(_('Save'), state='disabled')
+        self._fileMenu.entryconfig(_('Close'), state='disabled')
         self.lift()
         self.focus()
 
-    def move_node(self, event):
-        """Move a selected node in the collection tree."""
+    def _create_new_collection(self, event=None):
+        # Create a collection.
+        # Display collection title and file path.
+        # Return True on success, otherwise return False.
+        self._apply_changes()
+        fileTypes = [
+            (_('novelibre collection'), Collection.EXTENSION),
+        ]
+        fileName = filedialog.asksaveasfilename(
+            filetypes=fileTypes,
+            defaultextension=fileTypes[0][1],
+        )
+        self.lift()
+        self.focus()
+        if not fileName:
+            return False
+
+        if self._collection is not None:
+            self._close_collection()
+
+        self._collection = Collection(fileName, self._treeView)
+        self.prefs['last_open'] = fileName
+        self._show_path(f'{norm_path(self._collection.filePath)}')
+        self._set_title()
+        self._fileMenu.entryconfig(_('Save'), state='normal')
+        self._fileMenu.entryconfig(_('Close'), state='normal')
+        return True
+
+    def _move_node(self, event):
+        # Move a selected node in the collection tree.
         tv = event.widget
         node = tv.selection()[0]
         targetNode = tv.identify_row(event.y)
         if node[:2] == targetNode[:2]:
             tv.move(node, tv.parent(targetNode), tv.index(targetNode))
             self.isModified = True
-        elif node.startswith(BOOK_PREFIX) and targetNode.startswith(SERIES_PREFIX):
+        elif (node.startswith(BOOK_PREFIX)
+              and targetNode.startswith(SERIES_PREFIX)
+        ):
             if tv.get_children(targetNode):
                 tv.move(node, tv.parent(targetNode), tv.index(targetNode))
             else:
                 tv.move(node, targetNode, 0)
             self.isModified = True
 
-    def new_collection(self, event=None):
-        """Create a collection.
-
-        Display collection title and file path.
-        Return True on success, otherwise return False.
-        """
-        self.apply_changes()
-        fileTypes = [(_('novelibre collection'), Collection.EXTENSION)]
-        fileName = filedialog.asksaveasfilename(
-            filetypes=fileTypes,
-            defaultextension=fileTypes[0][1]
-            )
-        self.lift()
-        self.focus()
-        if not fileName:
-            return False
-
-        if self.collection is not None:
-            self.close_collection()
-
-        self.collection = Collection(fileName, self.treeView)
-        self.prefs['last_open'] = fileName
-        self._show_path(f'{norm_path(self.collection.filePath)}')
-        self._set_title()
-        self.fileMenu.entryconfig(_('Save'), state='normal')
-        self.fileMenu.entryconfig(_('Close'), state='normal')
-        return True
-
-    def on_quit(self, event=None):
-        self.apply_changes()
-        self.prefs['tree_width'] = self.treeWindow.sashpos(0)
-        self.prefs['window_size'] = self.winfo_geometry().split('+')[0]
+    def _on_select_node(self, event=None):
+        self._apply_changes()
         try:
-            if self.collection is not None and self.isModified:
-                if self._ui.ask_yes_no(
-                    message=_('Save changes?'),
-                    detail=_('There are unsaved changes'),
-                    title=FEATURE,
-                    parent=self
-                    ):
-                    self.save_collection()
-        except Exception as ex:
-            self._show_cannot_save_error(str(ex))
-        finally:
-            self.destroy()
-            self.isOpen = False
-
-    def on_select_node(self, event=None):
-        self.apply_changes()
-        try:
-            self.nodeId = self.collection.tree.selection()[0]
+            self.nodeId = self._collection.tree.selection()[0]
             if self.nodeId.startswith(BOOK_PREFIX):
-                self.element = self.collection.books[self.nodeId]
+                self.element = self._collection.books[self.nodeId]
             elif self.nodeId.startswith(SERIES_PREFIX):
-                self.element = self.collection.series[self.nodeId]
+                self.element = self._collection.series[self.nodeId]
         except IndexError:
             pass
         except AttributeError:
@@ -307,18 +390,20 @@ class CollectionView(tk.Toplevel, SubController):
         else:
             self._set_element_view()
 
-    def open_book(self, event=None):
+    def _open_book(self, event=None):
         """Make the application open the selected book's project."""
-        self.apply_changes()
+        self._apply_changes()
         try:
-            nodeId = self.collection.tree.selection()[0]
+            nodeId = self._collection.tree.selection()[0]
             if nodeId.startswith(BOOK_PREFIX):
-                self._ctrl.open_project(filePath=self.collection.books[nodeId].filePath)
+                self._ctrl.open_project(
+                    filePath=self._collection.books[nodeId].filePath,
+                )
         except IndexError:
             pass
         self.focus_set()
 
-    def open_collection(self, fileName='', event=None):
+    def _open_collection(self, fileName='', event=None):
         """Create a Collection instance and read the file.
 
         Optional arguments:
@@ -327,7 +412,7 @@ class CollectionView(tk.Toplevel, SubController):
         Display collection title and file path.
         Return True on success, otherwise return False.
         """
-        self.apply_changes()
+        self._apply_changes()
         self._show_status(self.statusText)
         fileName = self._select_collection(fileName)
         self.lift()
@@ -335,37 +420,37 @@ class CollectionView(tk.Toplevel, SubController):
         if not fileName:
             return False
 
-        if self.collection is not None:
-            self.close_collection()
+        if self._collection is not None:
+            self._close_collection()
 
         self.isModified = False
         self.prefs['last_open'] = fileName
-        self.collection = Collection(fileName, self.treeView)
+        self._collection = Collection(fileName, self._treeView)
         try:
-            self.collection.read()
+            self._collection.read()
         except Error as ex:
-            self.close_collection()
+            self._close_collection()
             self._set_status(f'!{str(ex)}')
             return False
 
-        self._show_path(f'{norm_path(self.collection.filePath)}')
+        self._show_path(f'{norm_path(self._collection.filePath)}')
         self._set_title()
-        self.fileMenu.entryconfig(_('Save'), state='normal')
-        self.fileMenu.entryconfig(_('Close'), state='normal')
+        self._fileMenu.entryconfig(_('Save'), state='normal')
+        self._fileMenu.entryconfig(_('Close'), state='normal')
         return True
 
-    def open_help(self, event=None):
-        self.apply_changes()
+    def _open_help(self, event=None):
+        self._apply_changes()
         NvcollectionHelp.open_help_page()
 
-    def open_last_collection(self):
-        if self.open_collection(fileName=self.prefs['last_open']):
+    def _open_last_collection(self):
+        if self._open_collection(fileName=self.prefs['last_open']):
             self.isOpen = True
 
-    def remove_book(self, event=None):
-        self.apply_changes()
+    def _remove_book(self, event=None):
+        self._apply_changes()
         try:
-            nodeId = self.collection.tree.selection()[0]
+            nodeId = self._collection.tree.selection()[0]
         except IndexError:
             return
 
@@ -373,34 +458,38 @@ class CollectionView(tk.Toplevel, SubController):
             if nodeId.startswith(BOOK_PREFIX):
                 if self._ui.ask_yes_no(
                     message=_('Remove selected book from the collection?'),
-                    detail=self.collection.books[nodeId].title,
+                    detail=self._collection.books[nodeId].title,
                     title=FEATURE,
-                    parent=self
-                    ):
-                    if self.collection.tree.prev(nodeId):
-                        self.collection.tree.selection_set(self.collection.tree.prev(nodeId))
-                    elif self.collection.tree.parent(nodeId):
-                        self.collection.tree.selection_set(self.collection.tree.parent(nodeId))
-                    self._set_status(self.collection.remove_book(nodeId))
+                    parent=self,
+                ):
+                    if self._collection.tree.prev(nodeId):
+                        self._collection.tree.selection_set(
+                            self._collection.tree.prev(nodeId)
+                        )
+                    elif self._collection.tree.parent(nodeId):
+                        self._collection.tree.selection_set(
+                            self._collection.tree.parent(nodeId)
+                        )
+                    self._set_status(self._collection._remove_book(nodeId))
                     self.isModified = True
         except Error as ex:
             self._set_status(str(ex))
 
-    def remove_node(self, event=None):
-        self.apply_changes()
+    def _remove_node(self, event=None):
+        self._apply_changes()
         try:
-            nodeId = self.collection.tree.selection()[0]
+            nodeId = self._collection.tree.selection()[0]
             if nodeId.startswith(SERIES_PREFIX):
-                self.remove_series()
+                self._remove_series()
             elif nodeId.startswith(BOOK_PREFIX):
-                self.remove_book()
+                self._remove_book()
         except IndexError:
             pass
 
-    def remove_series(self, event=None):
-        self.apply_changes()
+    def _remove_series(self, event=None):
+        self._apply_changes()
         try:
-            nodeId = self.collection.tree.selection()[0]
+            nodeId = self._collection.tree.selection()[0]
 
         except IndexError:
             return
@@ -409,23 +498,27 @@ class CollectionView(tk.Toplevel, SubController):
             if nodeId.startswith(SERIES_PREFIX):
                 if self._ui.ask_yes_no(
                     message=_('Remove selected series but keep the books?'),
-                    detail=self.collection.series[nodeId].title,
+                    detail=self._collection.series[nodeId].title,
                     title=FEATURE,
-                    parent=self
-                    ):
-                    if self.collection.tree.prev(nodeId):
-                        self.collection.tree.selection_set(self.collection.tree.prev(nodeId))
-                    elif self.collection.tree.parent(nodeId):
-                        self.collection.tree.selection_set(self.collection.tree.parent(nodeId))
-                    self._set_status(self.collection.remove_series(nodeId))
+                    parent=self,
+                ):
+                    if self._collection.tree.prev(nodeId):
+                        self._collection.tree.selection_set(
+                            self._collection.tree.prev(nodeId)
+                        )
+                    elif self._collection.tree.parent(nodeId):
+                        self._collection.tree.selection_set(
+                            self._collection.tree.parent(nodeId)
+                        )
+                    self._set_status(self._collection.remove_series(nodeId))
                     self.isModified = True
         except Error as ex:
             self._set_status(str(ex))
 
-    def remove_series_with_books(self, event=None):
-        self.apply_changes()
+    def _remove_series_with_books(self, event=None):
+        self._apply_changes()
         try:
-            nodeId = self.collection.tree.selection()[0]
+            nodeId = self._collection.tree.selection()[0]
         except IndexError:
             return
 
@@ -433,66 +526,42 @@ class CollectionView(tk.Toplevel, SubController):
             if nodeId.startswith(SERIES_PREFIX):
                 if self._ui.ask_yes_no(
                     message=_('Remove selected series and books?'),
-                    detail=self.collection.series[nodeId].title,
+                    detail=self._collection.series[nodeId].title,
                     title=FEATURE,
-                    parent=self
-                    ):
-                    if self.collection.tree.prev(nodeId):
-                        self.collection.tree.selection_set(self.collection.tree.prev(nodeId))
-                    elif self.collection.tree.parent(nodeId):
-                        self.collection.tree.selection_set(self.collection.tree.parent(nodeId))
-                    self._set_status(self.collection.remove_series_with_books(nodeId))
+                    parent=self,
+                ):
+                    if self._collection.tree.prev(nodeId):
+                        self._collection.tree.selection_set(
+                            self._collection.tree.prev(nodeId)
+                        )
+                    elif self._collection.tree.parent(nodeId):
+                        self._collection.tree.selection_set(
+                            self._collection.tree.parent(nodeId)
+                        )
+                    self._set_status(
+                        self._collection.remove_series_with_books(nodeId)
+                    )
                     self.isModified = True
         except Error as ex:
             self._set_status(str(ex))
 
-    def restore_status(self, event=None):
-        """Overwrite error message with the status before."""
+    def _restore_status(self, event=None):
+        # Overwrite error message with the status before."""
         self._show_status(self.statusText)
 
-    def save_collection(self, event=None):
+    def _save_collection(self, event=None):
         """Save the collection."""
-        self.apply_changes()
+        self._apply_changes()
         try:
-            if self.collection is not None:
+            if self._collection is not None:
                 if self.isModified:
-                    self.collection.write()
+                    self._collection.write()
         except Exception as ex:
             self._show_cannot_save_error(str(ex))
             return
 
         self.isModified = False
         self._set_status(_('Collection saved.'))
-
-    def update_collection(self, event=None):
-        self.apply_changes()
-        if self._mdl.novel is None:
-            return
-
-        if self.nodeId is None:
-            return
-
-        if self.collection.books[self.nodeId].filePath != self._mdl.prjFile.filePath:
-            return
-
-        self._ui.refresh()
-        if self.collection.books[self.nodeId].pull_metadata(self._mdl.novel):
-            self.isModified = True
-            self._set_element_view()
-
-    def update_project(self, event=None):
-        self.apply_changes()
-        if self._mdl.novel is None:
-            return
-
-        if self.nodeId is None:
-            return
-
-        if self.collection.books[self.nodeId].filePath != self._mdl.prjFile.filePath:
-            return
-
-        self.apply_changes()
-        self.collection.books[self.nodeId].push_metadata(self._mdl.novel)
 
     def _select_collection(self, fileName):
         # Return a collection file path.
@@ -505,12 +574,15 @@ class CollectionView(tk.Toplevel, SubController):
         if not initDir:
             initDir = './'
         if not fileName or not os.path.isfile(fileName):
-            fileTypes = [(_('novelibre collection'), Collection.EXTENSION)]
+            fileTypes = [
+                (_('novelibre collection'), Collection.EXTENSION),
+            ]
             fileName = filedialog.askopenfilename(
                 filetypes=fileTypes,
                 defaultextension=fileTypes[0][1],
-                initialdir=initDir, parent=self
-                )
+                initialdir=initDir,
+                parent=self,
+            )
         if not fileName:
             return ''
 
@@ -527,18 +599,18 @@ class CollectionView(tk.Toplevel, SubController):
     def _set_status(self, statusMsg):
         # Display the status message at the status bar.
         if statusMsg.startswith('!'):
-            self.statusBar.config(bg='red')
-            self.statusBar.config(fg='white')
+            self._statusBar.config(bg='red')
+            self._statusBar.config(fg='white')
             self.infoHowText = statusMsg.split('!', maxsplit=1)[1].strip()
         else:
-            self.statusBar.config(bg='green')
-            self.statusBar.config(fg='white')
+            self._statusBar.config(bg='green')
+            self._statusBar.config(fg='white')
             self.infoHowText = statusMsg
-        self.statusBar.config(text=self.infoHowText)
+        self._statusBar.config(text=self.infoHowText)
 
     def _set_title(self):
-        if self.collection.title:
-            collectionTitle = self.collection.title
+        if self._collection.title:
+            collectionTitle = self._collection.title
         else:
             collectionTitle = _('Untitled collection')
         self.title(f'{collectionTitle} - {FEATURE}')
@@ -547,19 +619,53 @@ class CollectionView(tk.Toplevel, SubController):
         self._ui.show_error(
             message=_('Cannot save the collection'),
             detail=errorMsg,
-            parent=self
-            )
+            parent=self,
+        )
         self.lift()
         self.focus()
 
     def _show_path(self, pathStr):
         # Put text on the path bar.
-        self.pathBar.config(text=pathStr)
+        self._pathBar.config(text=pathStr)
 
     def _show_status(self, statusMsg):
         # Put text on the status bar.
         self.statusText = statusMsg
-        self.statusBar.config(bg=self.cget('background'))
-        self.statusBar.config(fg='black')
-        self.statusBar.config(text=statusMsg)
+        self._statusBar.config(bg=self.cget('background'))
+        self._statusBar.config(fg='black')
+        self._statusBar.config(text=statusMsg)
+
+    def _update_collection(self, event=None):
+        self._apply_changes()
+        if self._mdl.novel is None:
+            return
+
+        if self.nodeId is None:
+            return
+
+        if (self._collection.books[self.nodeId].filePath
+            != self._mdl.prjFile.filePath
+        ):
+            return
+
+        self._ui.refresh()
+        if self._collection.books[self.nodeId].pull_metadata(self._mdl.novel):
+            self.isModified = True
+            self._set_element_view()
+
+    def _update_project(self, event=None):
+        self._apply_changes()
+        if self._mdl.novel is None:
+            return
+
+        if self.nodeId is None:
+            return
+
+        if (self._collection.books[self.nodeId].filePath
+            != self._mdl.prjFile.filePath
+        ):
+            return
+
+        self._apply_changes()
+        self._collection.books[self.nodeId].push_metadata(self._mdl.novel)
 
