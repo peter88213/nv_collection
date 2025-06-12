@@ -495,17 +495,12 @@ class CollectionView(tk.Toplevel, SubController):
         self.collection.books[self.nodeId].push_metadata(self._mdl.novel)
 
     def _select_collection(self, fileName):
-        """Return a collection file path.
-
-        Positional arguments:
-            fileName: str -- collection file path.
-            
-        Priority:
-        1. use file name argument
-        2. open file select dialog
-
-        On error, return an empty string.
-        """
+        # Return a collection file path.
+        #    fileName: str -- collection file path.
+        # Priority:
+        # 1. use file name argument
+        # 2. open file select dialog
+        # On error, return an empty string.
         initDir = os.path.dirname(self.prefs['last_open'])
         if not initDir:
             initDir = './'
@@ -522,7 +517,7 @@ class CollectionView(tk.Toplevel, SubController):
         return fileName
 
     def _set_element_view(self, event=None):
-        """View the selected element's title and description."""
+        # View the selected element's title and description.
         self._indexCard.bodyBox.clear()
         if self.element.desc:
             self._indexCard.bodyBox.set_text(self.element.desc)
@@ -530,14 +525,7 @@ class CollectionView(tk.Toplevel, SubController):
             self._indexCard.title.set(self.element.title)
 
     def _set_status(self, statusMsg):
-        """Show how the converter is doing.
-        
-        Positional arguments:
-            statusMsg -- Status message to be displayed. 
-            
-        Display the status message at the status bar.
-        Overrides the superclass method.
-        """
+        # Display the status message at the status bar.
         if statusMsg.startswith('!'):
             self.statusBar.config(bg='red')
             self.statusBar.config(fg='white')
@@ -549,10 +537,6 @@ class CollectionView(tk.Toplevel, SubController):
         self.statusBar.config(text=self.infoHowText)
 
     def _set_title(self):
-        """Set the main window title. 
-        
-        'Collection title - application'
-        """
         if self.collection.title:
             collectionTitle = self.collection.title
         else:
@@ -569,11 +553,11 @@ class CollectionView(tk.Toplevel, SubController):
         self.focus()
 
     def _show_path(self, pathStr):
-        """Put text on the path bar."""
+        # Put text on the path bar.
         self.pathBar.config(text=pathStr)
 
     def _show_status(self, statusMsg):
-        """Put text on the status bar."""
+        # Put text on the status bar.
         self.statusText = statusMsg
         self.statusBar.config(bg=self.cget('background'))
         self.statusBar.config(fg='black')
