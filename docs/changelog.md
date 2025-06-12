@@ -7,7 +7,8 @@
 
 ### Version 5.2.0
 
-- Refactored the code for better maintainability.
+- Refactored the code for better maintainability:
+  Reintegrated the controller mixin classes into the view class.
 
 API: 5.17
 Based on novelibre 5.26.1
