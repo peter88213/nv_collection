@@ -14,7 +14,6 @@ from nvcollection.series import Series
 from nvlib.model.data.id_generator import new_id
 from nvlib.model.xml.xml_filter import strip_illegal_characters
 from nvlib.model.xml.xml_indent import indent
-from nvlib.model.xml.xml_open import get_xml_root
 from nvlib.novx_globals import Error
 from nvlib.novx_globals import norm_path
 import tkinter.font as tkFont
@@ -140,7 +139,13 @@ class Collection:
                         self.books[bkId].desc = '\n'.join(paragraphs)
                     self.tree.insert(parent, 'end', bkId, text=self.books[bkId].title, open=True)
 
-        xmlRoot = get_xml_root(self.filePath)
+        try:
+            xmlRoot = ET.parse(self.filePath).getroot()
+        except Exception as ex:
+            raise Error(
+                f'{_("Cannot process file")}: "{norm_path(self.filePath)}" - {str(ex)}'
+            )
+
         if not xmlRoot.tag == 'COLLECTION':
             raise Error(f'{_("No collection found in file")}: "{norm_path(self.filePath)}".')
 
