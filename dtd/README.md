@@ -1,11 +1,8 @@
 # The nvcx DTD
 
-If you want to validate a *.nvcx* file, you can copy the latest DTD file
+If you want to validate a `.nvcx` file, you can copy the latest DTD file
 into your project directory.
 
-Since the XML parser used with *nv_collection* is not validating, the DTD is not 
-associated with *.nvcx* files by a DOCTYPE statement. 
-
-The DTD file provided here is for information only. However, the DTD major 
-and minor version numbers are used as an element attribute, so any application 
-can use them for compatibility checks. 
+**Note:** Since the *nv_collection* plugin does not validate the collection files, 
+this DTD is not needed for your daily work. However, it can be useful developing
+of third-party applications and tools that read or write `.nvcx` files.
