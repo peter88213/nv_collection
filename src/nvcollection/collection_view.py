@@ -470,7 +470,7 @@ class CollectionView(tk.Toplevel, SubController):
                         self._collection.tree.selection_set(
                             self._collection.tree.parent(nodeId)
                         )
-                    self._set_status(self._collection._remove_book(nodeId))
+                    self._set_status(self._collection.remove_book(nodeId))
                     self.isModified = True
         except Error as ex:
             self._set_status(str(ex))
@@ -551,17 +551,21 @@ class CollectionView(tk.Toplevel, SubController):
 
     def _save_collection(self, event=None):
         """Save the collection."""
-        self._apply_changes()
-        try:
-            if self._collection is not None:
-                if self.isModified:
-                    self._collection.write()
-        except Exception as ex:
-            self._show_cannot_save_error(str(ex))
+        if self._collection is None:
             return
 
-        self.isModified = False
-        self._set_status(_('Collection saved.'))
+        if not self.isModified:
+            self._set_status(f"{_('No changes to save')}.")
+            return
+
+        self._apply_changes()
+        try:
+            self._collection.write()
+        except Exception as ex:
+            self._show_cannot_save_error(str(ex))
+        else:
+            self.isModified = False
+            self._set_status(f"{_('Collection saved')}.")
 
     def _select_collection(self, fileName):
         # Return a collection file path.

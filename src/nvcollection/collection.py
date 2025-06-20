@@ -10,6 +10,7 @@ from nvcollection.book import Book
 from nvcollection.nvcollection_globals import BOOK_PREFIX
 from nvcollection.nvcollection_globals import SERIES_PREFIX
 from nvcollection.nvcollection_locale import _
+from nvcollection.nvcx_opener import NvcxOpener
 from nvcollection.series import Series
 from nvlib.model.data.id_generator import new_id
 from nvlib.model.xml.xml_filter import strip_illegal_characters
@@ -29,15 +30,16 @@ class Collection:
     The collection data is saved in an XML file.
     """
     MAJOR_VERSION = 1
-    MINOR_VERSION = 0
+    MINOR_VERSION = 1
     # DTD version.
 
-    XML_HEADER = '''<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE COLLECTION SYSTEM "nvcx_1_0.dtd">
-<?xml-stylesheet href="collection.css" type="text/css"?>
+    XML_HEADER = f'''<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE nvcx SYSTEM "nvcx_{MAJOR_VERSION}_{MINOR_VERSION}.dtd">
 '''
 
     EXTENSION = 'nvcx'
+
+    fileOpener = NvcxOpener
 
     def __init__(self, filePath, tree):
         """Initialize the instance variables.
@@ -112,7 +114,7 @@ class Collection:
         return srId
 
     def read(self):
-        """Parse the pwc XML file located at filePath, fetching the Collection attributes.
+        """Parse the nvcx XML file located at filePath, fetching the Collection attributes.
         
         Return a message.
         Raise the "Error" exception in case of error.
@@ -139,32 +141,11 @@ class Collection:
                         self.books[bkId].desc = '\n'.join(paragraphs)
                     self.tree.insert(parent, 'end', bkId, text=self.books[bkId].title, open=True)
 
-        try:
-            xmlRoot = ET.parse(self.filePath).getroot()
-        except Exception as ex:
-            raise Error(
-                f'{_("Cannot process file")}: "{norm_path(self.filePath)}" - {str(ex)}'
-            )
-
-        if not xmlRoot.tag == 'COLLECTION':
-            raise Error(f'{_("No collection found in file")}: "{norm_path(self.filePath)}".')
-
-        try:
-            majorVersionStr, minorVersionStr = xmlRoot.attrib['version'].split('.')
-            majorVersion = int(majorVersionStr)
-            minorVersion = int(minorVersionStr)
-        except:
-            raise Error(f'{_("No valid version found in file")}: "{norm_path(self.filePath)}".')
-
-        if majorVersion > self.MAJOR_VERSION:
-            raise Error(_('The collection was created with a newer plugin version.'))
-
-        elif majorVersion < self.MAJOR_VERSION:
-            raise Error(_('The collection was created with an outdated plugin version.'))
-
-        elif minorVersion > self.MINOR_VERSION:
-            raise Error(_('The collection was created with a newer plugin version.'))
-
+        xmlRoot = self.fileOpener.get_xml_root(
+            self.filePath,
+            self.MAJOR_VERSION,
+            self.MINOR_VERSION,
+        )
         self.reset_tree()
         self.books.clear()
         self.series.clear()
@@ -245,7 +226,7 @@ class Collection:
             self.tree.delete(child)
 
     def write(self):
-        """Write the collection's attributes to a pwc XML file located at filePath. 
+        """Write the collection's attributes to a nvcx XML file located at filePath. 
         
         Overwrite existing file without confirmation.
         Return a message.
@@ -279,8 +260,10 @@ class Collection:
                             ET.SubElement(xmlSeriesDesc, 'p').text = paragraph.strip()
                     walk_tree(elementId, xmlSeries)
 
-        xmlRoot = ET.Element('COLLECTION')
+        print('Writing')
+        xmlRoot = ET.Element('nvcx')
         xmlRoot.set('version', f'{self.MAJOR_VERSION}.{self.MINOR_VERSION}')
+        print('version', f'{self.MAJOR_VERSION}.{self.MINOR_VERSION}')
         walk_tree('', xmlRoot)
 
         indent(xmlRoot)

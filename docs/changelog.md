@@ -5,6 +5,22 @@
 ## Changelog
 
 
+### Version 5.3.0
+
+The file format has been upgraded to version 1.1.
+*.nvcx* files created with *nv_collection* version 5.3+ 
+cannot be read with older *nv_collection* versions.
+
+- Fixed a regression from version 5.2.0 where trying to remove 
+  a book from the collection raises an exception.
+- Refactored the nvcx XML file reader.
+    - The xml_open helper module is replaced by the NvcxOpener class
+      that can be delegated at runtime.
+
+API: 5.17
+Based on novelibre 5.27.3
+
+
 ### Version 5.2.2
 
 Refactored the code for better maintainability.

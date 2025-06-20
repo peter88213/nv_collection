@@ -3,9 +3,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 5.2.2\n"
-"POT-Creation-Date: 2025-06-19 10:56:22\n"
-"PO-Revision-Date: 2025-06-19 10:56:22\n"
+"Project-Id-Version: 5.3.0\n"
+"POT-Creation-Date: 2025-06-20 11:03:51\n"
+"PO-Revision-Date: 2025-06-20 11:03:51\n"
 "Last-Translator: Peter Triesberger\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -58,8 +58,8 @@ msgstr "Sammlung"
 msgid "Collection plugin Online help"
 msgstr "Sammlung-Plugin Online-Hilfe"
 
-msgid "Collection saved."
-msgstr "Sammlung gespeichert."
+msgid "Collection saved"
+msgstr "Sammlung gespeichert"
 
 msgid "Ctrl"
 msgstr "Strg"
@@ -85,11 +85,14 @@ msgstr "Neu"
 msgid "New Series"
 msgstr "Neue Serie"
 
-msgid "No collection found in file"
-msgstr "Keine Sammlung gefunden in Datei"
+msgid "No changes to save"
+msgstr "Keine Änderungen zu speichern"
 
 msgid "No valid version found in file"
 msgstr "Keine gültige Versionsangabe in der Datei gefunden"
+
+msgid "No valid xml root element found in file"
+msgstr "Kein gültiges xml-Wurzelelement in der Datei gefunden"
 
 msgid "Online help"
 msgstr "Online-Hilfe"
@@ -130,11 +133,11 @@ msgstr "Serie"
 msgid "Series removed from the collection"
 msgstr "Serie aus der Sammlung entfernt"
 
-msgid "The collection was created with a newer plugin version."
-msgstr "Die Sammlung wurde mit einer neueren Version des Plugins erstellt."
+msgid "The collection \"{}\" was created with a newer plugin version."
+msgstr "Die Sammlung \"{}\" wurde mit einer neueren Version des Plugins erstellt."
 
-msgid "The collection was created with an outdated plugin version."
-msgstr "Die Sammlung wurde mit einer veralteten Version des Plugins erstellt."
+msgid "The collection \"{}\" was created with an outdated plugin version."
+msgstr "Die Sammlung \"{}\" wurde mit einer veralteten Version des Plugins erstellt."
 
 msgid "There are unsaved changes"
 msgstr "Es gibt ungesicherte Änderungen"

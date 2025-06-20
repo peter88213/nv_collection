@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE COLLECTION SYSTEM "nvcx_1_0.dtd">
-<?xml-stylesheet href="collection.css" type="text/css"?>
-<COLLECTION version="1.0">
+<!DOCTYPE nvcx SYSTEM "nvcx_1_1.dtd">
+<nvcx version="1.1">
   <SERIES id="sr1">
     <Title>Rick Starlift</Title>
     <Desc>
@@ -22,4 +21,4 @@
       <Path>novelibre Projects/The Refugee Ship/The Refugee Ship.novx</Path>
     </BOOK>
   </SERIES>
-</COLLECTION>
+</nvcx>

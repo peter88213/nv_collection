@@ -3,8 +3,8 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 5.2.2\n"
-"POT-Creation-Date: 2025-06-19 10:56:22\n"
+"Project-Id-Version: 5.3.0\n"
+"POT-Creation-Date: 2025-06-20 11:03:51\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: LANGUAGE\n"
@@ -59,7 +59,7 @@ msgstr ""
 msgid "Collection plugin Online help"
 msgstr ""
 
-msgid "Collection saved."
+msgid "Collection saved"
 msgstr ""
 
 msgid "Ctrl"
@@ -86,10 +86,13 @@ msgstr ""
 msgid "New Series"
 msgstr ""
 
-msgid "No collection found in file"
+msgid "No changes to save"
 msgstr ""
 
 msgid "No valid version found in file"
+msgstr ""
+
+msgid "No valid xml root element found in file"
 msgstr ""
 
 msgid "Online help"
@@ -131,10 +134,10 @@ msgstr ""
 msgid "Series removed from the collection"
 msgstr ""
 
-msgid "The collection was created with a newer plugin version."
+msgid "The collection \"{}\" was created with a newer plugin version."
 msgstr ""
 
-msgid "The collection was created with an outdated plugin version."
+msgid "The collection \"{}\" was created with an outdated plugin version."
 msgstr ""
 
 msgid "There are unsaved changes"
