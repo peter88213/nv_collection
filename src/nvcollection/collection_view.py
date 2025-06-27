@@ -268,7 +268,10 @@ class CollectionView(tk.Toplevel, SubController):
             else:
                 if bkId is not None:
                     self._set_status(
-                        f'{_("Book added to the collection")}: "{book.novel.title}".'
+                        (
+                            f'{_("Book added to the collection")}: '
+                            f'"{book.novel.title}".'
+                        )
                     )
                 else:
                     self._set_status(

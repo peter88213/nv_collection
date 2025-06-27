@@ -24,7 +24,10 @@ class NvcxOpener:
             xmlTree = ET.parse(filePath)
         except Exception as ex:
             raise Error(
-                f'{_("Cannot process file")}: "{norm_path(filePath)}" - {str(ex)}'
+                (
+                    f'{_("Cannot process file")}: '
+                    f'"{norm_path(filePath)}" - {str(ex)}'
+                )
             )
 
         xmlRoot = xmlTree.getroot()

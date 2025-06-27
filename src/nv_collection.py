@@ -43,7 +43,11 @@ class Plugin(PluginBase):
         self.collectionService = CollectionService(model, view, controller)
 
         # Create a submenu.
-        self._ui.fileMenu.insert_command(0, label=FEATURE, command=self.start_manager)
+        self._ui.fileMenu.insert_command(
+            0,
+            label=FEATURE,
+            command=self.start_manager,
+        )
         self._ui.fileMenu.insert_separator(1)
         self._ui.fileMenu.entryconfig(FEATURE, state='normal')
 

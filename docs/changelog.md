@@ -5,6 +5,15 @@
 ## Changelog
 
 
+### Version 5.3.1
+
+- Removed debugging code.
+- Reformatted the code acc. to PEP-8.
+
+API: 5.17
+Based on novelibre 5.28.3
+
+
 ### Version 5.3.0
 
 The file format has been upgraded to version 1.1.

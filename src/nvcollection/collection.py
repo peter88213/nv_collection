@@ -33,12 +33,12 @@ class Collection:
     MINOR_VERSION = 1
     # DTD version.
 
-    XML_HEADER = f'''<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE nvcx SYSTEM "nvcx_{MAJOR_VERSION}_{MINOR_VERSION}.dtd">
-'''
-
     EXTENSION = 'nvcx'
 
+    XML_HEADER = (
+        '<?xml version="1.0" encoding="utf-8"?>\n'
+        f'<!DOCTYPE nvcx SYSTEM "nvcx_{MAJOR_VERSION}_{MINOR_VERSION}.dtd">\n'
+    )
     fileOpener = NvcxOpener
 
     def __init__(self, filePath, tree):
@@ -87,7 +87,9 @@ class Collection:
         Raise the "Error" exception in case of error.
         """
         if book.filePath is None:
-            raise Error(_('There is no file for the current project. Please save first.'))
+            raise Error(
+                _('There is no file for the current project. Please save first.')
+            )
 
         if not os.path.isfile(book.filePath):
             raise Error(f'"{norm_path(book.filePath)}" not found.')
@@ -99,7 +101,13 @@ class Collection:
         bkId = new_id(self.books, prefix=BOOK_PREFIX)
         self.books[bkId] = Book(book.filePath)
         self.books[bkId].pull_metadata(book.novel)
-        self.tree.insert(parent, index, bkId, text=self.books[bkId].title, open=True)
+        self.tree.insert(
+            parent,
+            index,
+            bkId,
+            text=self.books[bkId].title,
+            open=True,
+        )
         return bkId
 
     def add_series(self, seriesTitle, index='end'):
@@ -110,12 +118,20 @@ class Collection:
         srId = new_id(self.series, prefix=SERIES_PREFIX)
         self.series[srId] = Series()
         self.series[srId].title = seriesTitle
-        self.tree.insert('', index, srId, text=self.series[srId].title, tags='SERIES', open=True)
+        self.tree.insert(
+            '',
+            index,
+            srId,
+            text=self.series[srId].title,
+            tags='SERIES',
+            open=True,
+        )
         return srId
 
     def read(self):
-        """Parse the nvcx XML file located at filePath, fetching the Collection attributes.
+        """Parse the nvcx XML file located at filePath.
         
+        Fetch the Collection attributes.
         Return a message.
         Raise the "Error" exception in case of error.
         """
@@ -139,7 +155,13 @@ class Collection:
                             if xmlParagraph.text:
                                 paragraphs.append(xmlParagraph.text)
                         self.books[bkId].desc = '\n'.join(paragraphs)
-                    self.tree.insert(parent, 'end', bkId, text=self.books[bkId].title, open=True)
+                    self.tree.insert(
+                        parent,
+                        'end',
+                        bkId,
+                        text=self.books[bkId].title,
+                        open=True,
+                    )
 
         xmlRoot = self.fileOpener.get_xml_root(
             self.filePath,
@@ -167,12 +189,22 @@ class Collection:
                         if xmlParagraph.text:
                             paragraphs.append(xmlParagraph.text)
                     self.series[srId].desc = '\n'.join(paragraphs)
-                self.tree.insert('', 'end', srId, text=self.series[srId].title, tags='SERIES', open=True)
+                self.tree.insert(
+                    '',
+                    'end',
+                    srId,
+                    text=self.series[srId].title,
+                    tags='SERIES',
+                    open=True,
+                )
                 for xmlBook in xmlElement.iter('BOOK'):
                     get_book(srId, xmlBook)
         if not xmlRoot.attrib.get('version', None):
             self.write()
-        return f'{len(self.books)} Books found in "{norm_path(self.filePath)}".'
+        return (
+            f'{len(self.books)} Books found '
+            f'in "{norm_path(self.filePath)}".'
+        )
 
     def remove_book(self, bkId):
         """Remove a book from the collection.
@@ -185,7 +217,10 @@ class Collection:
             bookTitle = self.books[bkId].title
             del self.books[bkId]
             self.tree.delete(bkId)
-            message = f'{_("Book removed from the collection")}: "{bookTitle}".'
+            message = (
+                f'{_("Book removed from the collection")}: '
+                f'"{bookTitle}".'
+            )
             return message
         except:
             raise Error(f'{_("Cannot remove book")}: "{bookTitle}".')
@@ -226,8 +261,9 @@ class Collection:
             self.tree.delete(child)
 
     def write(self):
-        """Write the collection's attributes to a nvcx XML file located at filePath. 
+        """Write the collection's attributes to a nvcx XML file. 
         
+        The nvcx file is located at filePath. 
         Overwrite existing file without confirmation.
         Return a message.
         Raise the "Error" exception in case of error.
@@ -244,8 +280,12 @@ class Collection:
                         xmlBookTitle.text = self.books[elementId].title
                     if self.books[elementId].desc:
                         xmlBookDesc = ET.SubElement(xmlBook, 'Desc')
-                        for paragraph in self.books[elementId].desc.split('\n'):
-                            ET.SubElement(xmlBookDesc, 'p').text = paragraph.strip()
+                        for paragraph in self.books[elementId
+                                                    ].desc.split('\n'):
+                            ET.SubElement(
+                                xmlBookDesc,
+                                'p',
+                            ).text = paragraph.strip()
                     xmlBookPath = ET.SubElement(xmlBook, 'Path')
                     xmlBookPath.text = self.books[elementId].filePath
                 elif elementId.startswith(SERIES_PREFIX):
@@ -256,14 +296,16 @@ class Collection:
                         xmlSeriesTitle.text = self.series[elementId].title
                     if self.series[elementId].desc:
                         xmlSeriesDesc = ET.SubElement(xmlSeries, 'Desc')
-                        for paragraph in self.series[elementId].desc.split('\n'):
-                            ET.SubElement(xmlSeriesDesc, 'p').text = paragraph.strip()
+                        for paragraph in self.series[elementId
+                                                     ].desc.split('\n'):
+                            ET.SubElement(
+                                xmlSeriesDesc,
+                                'p',
+                            ).text = paragraph.strip()
                     walk_tree(elementId, xmlSeries)
 
-        print('Writing')
         xmlRoot = ET.Element('nvcx')
         xmlRoot.set('version', f'{self.MAJOR_VERSION}.{self.MINOR_VERSION}')
-        print('version', f'{self.MAJOR_VERSION}.{self.MINOR_VERSION}')
         walk_tree('', xmlRoot)
 
         indent(xmlRoot)
@@ -273,7 +315,12 @@ class Collection:
             try:
                 os.replace(self.filePath, f'{self.filePath}.bak')
             except:
-                raise Error(f'{_("Cannot overwrite file")}: "{norm_path(self.filePath)}".')
+                raise Error(
+                    (
+                        f'{_("Cannot overwrite file")}: '
+                        f'"{norm_path(self.filePath)}".'
+                    )
+                )
             else:
                 backedUp = True
         try:
@@ -284,7 +331,12 @@ class Collection:
         except:
             if backedUp:
                 os.replace(f'{self.filePath}.bak', self.filePath)
-            raise Error(f'{_("Cannot write file")}: "{norm_path(self.filePath)}".')
+            raise Error(
+                (
+                    f'{_("Cannot write file")}: '
+                    f'"{norm_path(self.filePath)}".'
+                )
+            )
 
         return f'"{norm_path(self.filePath)}" written.'
 
@@ -298,7 +350,8 @@ class Collection:
         Raise the "Error" exception in case of error. 
         
         Note: The path is given as an argument rather than using self.filePath. 
-        So this routine can be used for novelibre-generated xml files other than .nvcx as well. 
+        So this routine can be used for novelibre-generated xml files 
+        other than .nvcx as well. 
         """
         with open(filePath, 'r', encoding='utf-8') as f:
             text = f.read()
