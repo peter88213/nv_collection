@@ -21,6 +21,13 @@ class PluginBuilder(PackageBuilder):
     LOCAL_LIB = 'nvcollection'
     GERMAN_TRANSLATION = True
 
+    def __init__(self, version):
+        super().__init__(version)
+        self.iconDir = '../icons'
+
+    def add_extras(self):
+        self.add_icons()
+
 
 def main():
     pb = PluginBuilder(VERSION)
