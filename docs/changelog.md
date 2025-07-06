@@ -5,6 +5,14 @@
 ## Changelog
 
 
+### Version 5.3.2
+
+- Fixed a bug where an unhandled exception is raised if the logo file is missing.
+
+API: 5.17
+Based on novelibre 5.29.0
+
+
 ### Version 5.3.1
 
 - Removed debugging code.

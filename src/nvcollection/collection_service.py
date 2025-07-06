@@ -92,5 +92,6 @@ class CollectionService(SubController):
             windowPosition,
             self.prefs,
         )
-        self.collectionView.iconphoto(False, self.icon)
+        if self.icon:
+            self.collectionView.iconphoto(False, self.icon)
 
