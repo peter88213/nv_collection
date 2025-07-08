@@ -96,7 +96,6 @@ class CollectionView(tk.Toplevel, SubController):
         self._treeView.pack(side='left')
         self._treeWindow.add(self._treeView)
         self._treeView.bind('<<TreeviewSelect>>', self._on_select_node)
-        self._treeView.bind('<<TreeviewSelect>>', self._on_select_node)
         self._treeView.bind('<Double-1>', self._open_book)
         self._treeView.bind('<Return>', self._open_book)
         self._treeView.bind('<Delete>', self._remove_node)
