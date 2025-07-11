@@ -27,7 +27,7 @@ import tkinter as tk
 class CollectionView(tk.Toplevel, SubController):
     HEIGHT_BIAS = 20
 
-    def __init__(self, model, view, controller, windowPosition, prefs):
+    def __init__(self, model, view, controller, prefs):
         super().__init__()
         self._mdl = model
         self._ui = view
@@ -36,8 +36,7 @@ class CollectionView(tk.Toplevel, SubController):
         self.isModified = False
         self.element = None
         self.nodeId = None
-        windowSize = self.prefs['window_size'].split('+')[0]
-        self.geometry(f"{windowSize}{windowPosition}")
+        self.geometry(f"{self.prefs['window_geometry']}")
 
         self.title(FEATURE)
         self.statusText = ''
@@ -72,20 +71,21 @@ class CollectionView(tk.Toplevel, SubController):
 
         #--- Main window.
         self._mainWindow = ttk.Frame(self)
-        self._mainWindow.pack(fill='both', padx=2, pady=2, expand=True)
-
-        #--- Paned window displaying the tree and an "index card".
-        self._treeWindow = ttk.Panedwindow(
-            self._mainWindow,
-            orient='horizontal',
+        self._mainWindow.pack(
+            fill='both',
+            padx=2,
+            pady=2,
+            expand=True,
         )
-        self._treeWindow.pack(fill='both', expand=True)
 
         #--- The collection itself.
         self._collection = None
 
         #--- Tree for book selection.
-        self._treeView = ttk.Treeview(self._treeWindow, selectmode='browse')
+        self._treeView = ttk.Treeview(
+            self._mainWindow,
+            selectmode='browse',
+        )
         scrollY = ttk.Scrollbar(
             self._treeView,
             orient='vertical',
@@ -93,8 +93,11 @@ class CollectionView(tk.Toplevel, SubController):
         )
         self._treeView.configure(yscrollcommand=scrollY.set)
         scrollY.pack(side='right', fill='y')
-        self._treeView.pack(side='left')
-        self._treeWindow.add(self._treeView)
+        self._treeView.pack(
+            side='left',
+            expand=True,
+            fill='both',
+        )
         self._treeView.bind('<<TreeviewSelect>>', self._on_select_node)
         self._treeView.bind('<Double-1>', self._open_book)
         self._treeView.bind('<Return>', self._open_book)
@@ -103,15 +106,19 @@ class CollectionView(tk.Toplevel, SubController):
         self._treeView.bind(MOUSE.MOVE_NODE, self._move_node)
 
         #--- "Index card" in the right frame.
-        self._indexCard = IndexCard(self._treeWindow, bd=2, relief='ridge')
-        self._indexCard.pack(side='right')
-        self._treeWindow.add(self._indexCard)
+        self._indexCard = IndexCard(self._mainWindow,
+            bd=2,
+            relief='ridge',
+            width=prefs['right_frame_width'],
+        )
+        self._indexCard.pack(
+            side='right',
+            expand=False,
+            fill='both',
+        )
+        self._indexCard.pack_propagate(0)
         self._indexCard.titleEntry.bind('<Return>', self._apply_changes)
         self._indexCard.titleEntry.bind('<FocusOut>', self._apply_changes)
-
-        # Adjust the tree width.
-        self._treeWindow.update()
-        self._treeWindow.sashpos(0, self.prefs['tree_width'])
 
         #--- Add menu entries.
         # File menu.
@@ -211,17 +218,12 @@ class CollectionView(tk.Toplevel, SubController):
             self.bind(KEYS.QUIT_PROGRAM[0], self.on_quit)
         self.bind(KEYS.OPEN_HELP[0], self._open_help)
         self.bind('<Escape>', self._restore_status)
-
-        # Restore last window size.
-        self.update_idletasks()
-        self.geometry(f"{windowSize}{windowPosition}")
-
         self._open_last_collection()
 
     def on_quit(self, event=None):
         self._apply_changes()
-        self.prefs['tree_width'] = self._treeWindow.sashpos(0)
-        self.prefs['window_size'] = self.winfo_geometry().split('+')[0]
+        self.update_idletasks()
+        self.prefs['window_geometry'] = self.winfo_geometry()
         try:
             if self._collection is not None and self.isModified:
                 if self._ui.ask_yes_no(
