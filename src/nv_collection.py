@@ -15,6 +15,8 @@ but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 """
+from pathlib import Path
+
 from nvcollection.nvcollection_locale import _
 from nvcollection.nvcollection_globals import FEATURE
 from nvcollection.nvcollection_help import NvcollectionHelp
@@ -41,11 +43,14 @@ class Plugin(PluginBase):
         """
         super().install(model, view, controller)
         self.collectionService = CollectionService(model, view, controller)
+        self._icon = self._get_icon('collection.png')
 
         # Create a submenu.
         self._ui.fileMenu.insert_command(
             0,
             label=FEATURE,
+            image=self._icon,
+            compound='left',
             command=self.start_manager,
         )
         self._ui.fileMenu.insert_separator(1)
@@ -54,6 +59,8 @@ class Plugin(PluginBase):
         # Add an entry to the Help menu.
         self._ui.helpMenu.add_command(
             label=_('Collection plugin Online help'),
+            image=self._icon,
+            compound='left',
             command=self.open_help
             )
 
@@ -65,3 +72,19 @@ class Plugin(PluginBase):
 
     def start_manager(self):
         self.collectionService.start_manager()
+
+    def _get_icon(self, fileName):
+        # Return the icon for the main view.
+        if self._ctrl.get_preferences().get('large_icons', False):
+            size = 24
+        else:
+            size = 16
+        try:
+            homeDir = str(Path.home()).replace('\\', '/')
+            iconPath = f'{homeDir}/.novx/icons/{size}'
+            icon = tk.PhotoImage(file=f'{iconPath}/{fileName}')
+
+        except:
+            icon = None
+        return icon
+

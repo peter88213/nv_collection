@@ -3,15 +3,21 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 5.3.3\n"
-"POT-Creation-Date: 2025-07-11 12:51:20\n"
-"PO-Revision-Date: 2025-07-11 12:51:20\n"
+"Project-Id-Version: 5.4.0\n"
+"POT-Creation-Date: 2025-07-13 11:52:34\n"
+"PO-Revision-Date: 2025-07-13 11:52:34\n"
 "Last-Translator: Peter Triesberger\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+
+msgid "1st Edit"
+msgstr "1. Überarbeitung"
+
+msgid "2nd Edit"
+msgstr "2. Überarbeitung"
 
 msgid "Add"
 msgstr "Hinzufügen"
@@ -64,6 +70,12 @@ msgstr "Sammlung gespeichert"
 msgid "Ctrl"
 msgstr "Strg"
 
+msgid "Done"
+msgstr "Fertiggestellt"
+
+msgid "Draft"
+msgstr "Entwurf"
+
 msgid "Exit"
 msgstr "Beenden"
 
@@ -99,6 +111,9 @@ msgstr "Online-Hilfe"
 
 msgid "Open..."
 msgstr "Öffnen..."
+
+msgid "Outline"
+msgstr "Gliederung"
 
 msgid "Quit"
 msgstr "Beenden"

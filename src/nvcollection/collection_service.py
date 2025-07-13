@@ -22,7 +22,7 @@ class CollectionService(SubController):
         right_frame_width=350,
     )
     OPTIONS = {}
-    ICON = 'cLogo32'
+    ICON = 'collection'
 
     def __init__(self, model, view, controller):
         self._mdl = model

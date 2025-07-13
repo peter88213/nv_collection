@@ -3,8 +3,8 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 5.3.3\n"
-"POT-Creation-Date: 2025-07-11 12:51:20\n"
+"Project-Id-Version: 5.4.0\n"
+"POT-Creation-Date: 2025-07-13 11:52:34\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: LANGUAGE\n"
@@ -13,6 +13,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: novxlib pgettext.py 0.3\n"
 
+
+msgid "1st Edit"
+msgstr ""
+
+msgid "2nd Edit"
+msgstr ""
 
 msgid "Add"
 msgstr ""
@@ -65,6 +71,12 @@ msgstr ""
 msgid "Ctrl"
 msgstr ""
 
+msgid "Done"
+msgstr ""
+
+msgid "Draft"
+msgstr ""
+
 msgid "Exit"
 msgstr ""
 
@@ -99,6 +111,9 @@ msgid "Online help"
 msgstr ""
 
 msgid "Open..."
+msgstr ""
+
+msgid "Outline"
 msgstr ""
 
 msgid "Quit"

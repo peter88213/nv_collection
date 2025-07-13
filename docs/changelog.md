@@ -5,15 +5,16 @@
 ## Changelog
 
 
-### Version 5.3.3
+### Version 5.4.0
 
 - Fixed a bug where an unhandled exception is raised if the logo file is missing.
 - Saving the position.
 - Made the index card width fixed. 
+- Added icons.
 - Reformatted the code acc. to PEP-8.
 
 API: 5.17
-Based on novelibre 5.29.5
+Based on novelibre 5.29.7
 
 
 ### Version 5.3.1
