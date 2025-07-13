@@ -22,6 +22,7 @@ from nvcollection.nvcollection_globals import FEATURE
 from nvcollection.nvcollection_help import NvcollectionHelp
 from nvlib.controller.plugin.plugin_base import PluginBase
 from nvcollection.collection_service import CollectionService
+import tkinter as tk
 
 
 class Plugin(PluginBase):
