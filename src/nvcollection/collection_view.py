@@ -6,11 +6,12 @@ License: GNU GPLv3 (https://www.gnu.org/licenses/gpl-3.0.en.html)
 """
 from tkinter import ttk
 
+from nvcollection.commands import Commands
 from nvcollection.nvcollection_globals import BOOK_PREFIX
 from nvcollection.nvcollection_globals import FEATURE
 from nvcollection.nvcollection_globals import SERIES_PREFIX
 from nvcollection.nvcollection_locale import _
-from nvcollection.commands import Commands
+from nvcollection.nvcollection_menu import NvcollectionMenu
 from nvcollection.platform.platform_settings import KEYS
 from nvcollection.platform.platform_settings import MOUSE
 from nvcollection.platform.platform_settings import PLATFORM
@@ -39,7 +40,7 @@ class CollectionView(tk.Toplevel, Commands):
         self.focus()
 
         #--- Main menu.
-        self._mainMenu = tk.Menu(self)
+        self._mainMenu = NvcollectionMenu(self)
         self.config(menu=self._mainMenu)
 
         #--- Path bar.
