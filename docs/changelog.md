@@ -14,7 +14,7 @@
 - Reformatted the code acc. to PEP-8.
 
 API: 5.17
-Based on novelibre 5.29.7
+Based on novelibre 5.29.7 (5.30.0)
 
 
 ### Version 5.3.1
