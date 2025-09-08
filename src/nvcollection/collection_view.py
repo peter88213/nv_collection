@@ -110,6 +110,8 @@ class CollectionView(tk.Toplevel, SubController):
             bd=2,
             relief='ridge',
             width=prefs['right_frame_width'],
+            fg=prefs['color_text_fg'],
+            bg=prefs['color_text_bg'],
         )
         self._indexCard.pack(
             side='right',

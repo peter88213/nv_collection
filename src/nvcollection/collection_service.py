@@ -44,6 +44,9 @@ class CollectionService(SubController):
         self.prefs = {}
         self.prefs.update(self.configuration.settings)
         self.prefs.update(self.configuration.options)
+        globalPrefs = self._ctrl.get_preferences()
+        self.prefs['color_text_fg'] = globalPrefs['color_text_fg']
+        self.prefs['color_text_bg'] = globalPrefs['color_text_bg']
 
         # Set window icon.
         try:

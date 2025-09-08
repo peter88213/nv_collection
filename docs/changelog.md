@@ -5,6 +5,14 @@
 ## Changelog
 
 
+### Version 5.5.0
+
+- Improved support for dark mode. 
+
+API: 5.36
+Based on novelibre 5.36.0
+
+
 ### Version 5.4.0
 
 - Fixed a bug where an unhandled exception is raised if the logo file is missing.
