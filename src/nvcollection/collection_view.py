@@ -36,7 +36,9 @@ class CollectionView(tk.Toplevel, SubController):
         self.isModified = False
         self.element = None
         self.nodeId = None
-        self.geometry(f"{self.prefs['window_geometry']}")
+        self.geometry(self.prefs['window_geometry'])
+        self.update_idletasks()
+        # this is necessary to preserve the window size
 
         self.title(FEATURE)
         self.statusText = ''

@@ -5,6 +5,14 @@
 ## Changelog
 
 
+### Version 5.5.1
+
+- Fixed a bug where the window shrinks a bit every time it is opened.
+
+API: 5.36
+Based on novelibre 5.37.0
+
+
 ### Version 5.5.0
 
 - Improved support for dark mode. 
