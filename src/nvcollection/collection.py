@@ -15,7 +15,6 @@ from nvcollection.series import Series
 from nvlib.model.data.id_generator import new_id
 from nvlib.model.xml.xml_filter import strip_illegal_characters
 from nvlib.model.xml.xml_indent import indent
-from nvlib.novx_globals import Error
 from nvlib.novx_globals import norm_path
 import tkinter.font as tkFont
 import xml.etree.ElementTree as ET
@@ -84,15 +83,15 @@ class Collection:
         
         Return the book ID, if book is added to the collection.
         Return None, if novel is already a member.
-        Raise the "Error" exception in case of error.
+        Raise the "RuntimeError" exception in case of error.
         """
         if book.filePath is None:
-            raise Error(
+            raise RuntimeError(
                 _('There is no file for the current project. Please save first.')
             )
 
         if not os.path.isfile(book.filePath):
-            raise Error(f'"{norm_path(book.filePath)}" not found.')
+            raise RuntimeError(f'"{norm_path(book.filePath)}" not found.')
 
         for bkId in self.books:
             if book.filePath == self.books[bkId].filePath:
@@ -133,7 +132,7 @@ class Collection:
         
         Fetch the Collection attributes.
         Return a message.
-        Raise the "Error" exception in case of error.
+        Raise the "RuntimeError" exception in case of error.
         """
 
         def get_book(parent, xmlBook):
@@ -210,7 +209,7 @@ class Collection:
         """Remove a book from the collection.
 
         Return a message.
-        Raise the "Error" exception in case of error.
+        Raise the "RuntimeError" exception in case of error.
         """
         bookTitle = bkId
         try:
@@ -223,13 +222,13 @@ class Collection:
             )
             return message
         except:
-            raise Error(f'{_("Cannot remove book")}: "{bookTitle}".')
+            raise RuntimeError(f'{_("Cannot remove book")}: "{bookTitle}".')
 
     def remove_series(self, srId):
         """Delete a Series object but keep the books.
         
         Return a message.
-        Raise the "Error" exception in case of error.
+        Raise the "RuntimeError" exception in case of error.
         """
         seriesTitle = self.series[srId].title
         for bookNode in self.tree.get_children(srId):
@@ -238,13 +237,13 @@ class Collection:
         self.tree.delete(srId)
         return f'{_("Series removed from the collection")}: "{seriesTitle}".'
 
-        raise Error(f'{_("Cannot remove series")}: "{seriesTitle}".')
+        raise RuntimeError(f'{_("Cannot remove series")}: "{seriesTitle}".')
 
     def remove_series_with_books(self, srId):
         """Delete a Series object with all its members.
         
         Return a message.
-        Raise the "Error" exception in case of error.
+        Raise the "RuntimeError" exception in case of error.
         """
         seriesTitle = self.series[srId].title
         for bkId in self.tree.get_children(srId):
@@ -253,7 +252,7 @@ class Collection:
         self.tree.delete(srId)
         return f'{_("Series removed from the collection")}: "{seriesTitle}".'
 
-        raise Error(f'{_("Cannot remove series")}: "{seriesTitle}".')
+        raise RuntimeError(f'{_("Cannot remove series")}: "{seriesTitle}".')
 
     def reset_tree(self):
         """Clear the displayed tree."""
@@ -266,7 +265,7 @@ class Collection:
         The nvcx file is located at filePath. 
         Overwrite existing file without confirmation.
         Return a message.
-        Raise the "Error" exception in case of error.
+        Raise the "RuntimeError" exception in case of error.
         """
 
         def walk_tree(node, xmlNode):
@@ -315,7 +314,7 @@ class Collection:
             try:
                 os.replace(self.filePath, f'{self.filePath}.bak')
             except:
-                raise Error(
+                raise RuntimeError(
                     (
                         f'{_("Cannot overwrite file")}: '
                         f'"{norm_path(self.filePath)}".'
@@ -331,7 +330,7 @@ class Collection:
         except:
             if backedUp:
                 os.replace(f'{self.filePath}.bak', self.filePath)
-            raise Error(
+            raise RuntimeError(
                 (
                     f'{_("Cannot write file")}: '
                     f'"{norm_path(self.filePath)}".'
@@ -347,7 +346,7 @@ class Collection:
             filePath -- str: path to xml file.
         
         Read the xml file, put a header on top. Overwrite the .nvcx xml file.
-        Raise the "Error" exception in case of error. 
+        Raise the "RuntimeError" exception in case of error. 
         
         Note: The path is given as an argument rather than using self.filePath. 
         So this routine can be used for novelibre-generated xml files 
@@ -360,5 +359,5 @@ class Collection:
             with open(filePath, 'w', encoding='utf-8') as f:
                 f.write(f'{self.XML_HEADER}{text}')
         except:
-            raise Error(f'{_("Cannot write file")}: "{norm_path(filePath)}".')
+            raise RuntimeError(f'{_("Cannot write file")}: "{norm_path(filePath)}".')
 

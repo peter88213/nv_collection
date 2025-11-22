@@ -19,7 +19,6 @@ from nvcollection.platform.platform_settings import MOUSE
 from nvcollection.platform.platform_settings import PLATFORM
 from nvlib.controller.sub_controller import SubController
 from nvlib.gui.widgets.index_card import IndexCard
-from nvlib.novx_globals import Error
 from nvlib.novx_globals import norm_path
 import tkinter as tk
 
@@ -268,15 +267,13 @@ class CollectionView(tk.Toplevel, SubController):
             try:
                 bkId = self._collection.add_book(book, parent, index)
                 self.isModified = True
-            except Error as ex:
+            except RuntimeError as ex:
                 self._set_status(f'!{str(ex)}')
             else:
                 if bkId is not None:
                     self._set_status(
-                        (
-                            f'{_("Book added to the collection")}: '
-                            f'"{book.novel.title}".'
-                        )
+                        f'{_("Book added to the collection")}: '
+                        f'"{book.novel.title}".'
                     )
                 else:
                     self._set_status(
@@ -296,7 +293,7 @@ class CollectionView(tk.Toplevel, SubController):
         try:
             self._collection.add_series(title, index)
             self.isModified = True
-        except Error as ex:
+        except RuntimeError as ex:
             self._set_status(str(ex))
 
     def _apply_changes(self, event=None):
@@ -436,7 +433,7 @@ class CollectionView(tk.Toplevel, SubController):
         self._collection = Collection(fileName, self._treeView)
         try:
             self._collection.read()
-        except Error as ex:
+        except RuntimeError as ex:
             self._close_collection()
             self._set_status(f'!{str(ex)}')
             return False
@@ -480,7 +477,7 @@ class CollectionView(tk.Toplevel, SubController):
                         )
                     self._set_status(self._collection.remove_book(nodeId))
                     self.isModified = True
-        except Error as ex:
+        except RuntimeError as ex:
             self._set_status(str(ex))
 
     def _remove_node(self, event=None):
@@ -520,7 +517,7 @@ class CollectionView(tk.Toplevel, SubController):
                         )
                     self._set_status(self._collection.remove_series(nodeId))
                     self.isModified = True
-        except Error as ex:
+        except RuntimeError as ex:
             self._set_status(str(ex))
 
     def _remove_series_with_books(self, event=None):
@@ -550,7 +547,7 @@ class CollectionView(tk.Toplevel, SubController):
                         self._collection.remove_series_with_books(nodeId)
                     )
                     self.isModified = True
-        except Error as ex:
+        except RuntimeError as ex:
             self._set_status(str(ex))
 
     def _restore_status(self, event=None):

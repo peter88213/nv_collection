@@ -4,7 +4,6 @@ Copyright (c) 2025 Peter Triesberger
 For further information see https://github.com/peter88213/nv_collection
 License: GNU GPLv3 (https://www.gnu.org/licenses/gpl-3.0.en.html)
 """
-from nvlib.novx_globals import Error
 from nvlib.novx_globals import norm_path
 from nvlib.nv_locale import _
 import xml.etree.ElementTree as ET
@@ -23,17 +22,15 @@ class NvcxOpener:
         try:
             xmlTree = ET.parse(filePath)
         except Exception as ex:
-            raise Error(
-                (
-                    f'{_("Cannot process file")}: '
-                    f'"{norm_path(filePath)}" - {str(ex)}'
-                )
+            raise RuntimeError(
+                f'{_("Cannot process file")}: '
+                f'"{norm_path(filePath)}" - {str(ex)}'
             )
 
         xmlRoot = xmlTree.getroot()
         if not xmlRoot.tag in ('nvcx', 'COLLECTION'):
             msg = _("No valid xml root element found in file")
-            raise Error(f'{msg}: "{norm_path(filePath)}".')
+            raise RuntimeError(f'{msg}: "{norm_path(filePath)}".')
 
         fileMajorVersion, fileMinorVersion = cls._get_file_version(
             xmlRoot,
@@ -66,15 +63,15 @@ class NvcxOpener:
         # is not compatible with the supported DTD.
         if fileMajorVersion > majorVersion:
             msg = _('The collection "{}" was created with a newer plugin version.')
-            raise Error(msg.format(norm_path(filePath)))
+            raise RuntimeError(msg.format(norm_path(filePath)))
 
         if fileMajorVersion < majorVersion:
             msg = _('The collection "{}" was created with an outdated plugin version.')
-            raise Error(msg.format(norm_path(filePath)))
+            raise RuntimeError(msg.format(norm_path(filePath)))
 
         if fileMinorVersion > minorVersion:
             msg = _('The collection "{}" was created with a newer plugin version.')
-            raise Error(msg.format(norm_path(filePath)))
+            raise RuntimeError(msg.format(norm_path(filePath)))
 
     @classmethod
     def _upgrade_file_version(
@@ -101,7 +98,7 @@ class NvcxOpener:
             fileMinorVersion = int(fileMinorVersionStr)
         except (KeyError, ValueError):
             msg = _("No valid version found in file")
-            raise Error(msg.format(norm_path(filePath)))
+            raise RuntimeError(msg.format(norm_path(filePath)))
 
         return fileMajorVersion, fileMinorVersion
 
