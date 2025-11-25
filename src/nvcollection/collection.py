@@ -279,8 +279,9 @@ class Collection:
                         xmlBookTitle.text = self.books[elementId].title
                     if self.books[elementId].desc:
                         xmlBookDesc = ET.SubElement(xmlBook, 'Desc')
-                        for paragraph in self.books[elementId
-                                                    ].desc.split('\n'):
+                        for paragraph in self.books[
+                            elementId
+                        ].desc.split('\n'):
                             ET.SubElement(
                                 xmlBookDesc,
                                 'p',
@@ -315,10 +316,8 @@ class Collection:
                 os.replace(self.filePath, f'{self.filePath}.bak')
             except:
                 raise RuntimeError(
-                    (
-                        f'{_("Cannot overwrite file")}: '
-                        f'"{norm_path(self.filePath)}".'
-                    )
+                    f'{_("Cannot overwrite file")}: '
+                    f'"{norm_path(self.filePath)}".'
                 )
             else:
                 backedUp = True
@@ -331,10 +330,8 @@ class Collection:
             if backedUp:
                 os.replace(f'{self.filePath}.bak', self.filePath)
             raise RuntimeError(
-                (
-                    f'{_("Cannot write file")}: '
-                    f'"{norm_path(self.filePath)}".'
-                )
+                f'{_("Cannot write file")}: '
+                f'"{norm_path(self.filePath)}".'
             )
 
         return f'"{norm_path(self.filePath)}" written.'
