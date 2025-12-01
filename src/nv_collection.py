@@ -15,14 +15,11 @@ but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 """
-from pathlib import Path
-
 from nvcollection.nvcollection_locale import _
 from nvcollection.nvcollection_globals import FEATURE
 from nvcollection.nvcollection_help import NvcollectionHelp
 from nvlib.controller.plugin.plugin_base import PluginBase
 from nvcollection.collection_service import CollectionService
-import tkinter as tk
 
 
 class Plugin(PluginBase):
@@ -46,24 +43,28 @@ class Plugin(PluginBase):
         self.collectionService = CollectionService(model, view, controller)
         self._icon = self._get_icon('collection.png')
 
+        #--- Configure the main menu.
+
         # Create a submenu.
+        label = FEATURE
         self._ui.fileMenu.insert_command(
             0,
-            label=FEATURE,
+            label=label,
             image=self._icon,
             compound='left',
             command=self.start_manager,
+            state='normal',
         )
         self._ui.fileMenu.insert_separator(1)
-        self._ui.fileMenu.entryconfig(FEATURE, state='normal')
 
         # Add an entry to the Help menu.
+        label = _('Collection plugin Online help')
         self._ui.helpMenu.add_command(
-            label=_('Collection plugin Online help'),
+            label=label,
             image=self._icon,
             compound='left',
             command=self.open_help
-            )
+        )
 
     def on_quit(self):
         self.collectionService.on_quit()
@@ -73,19 +74,4 @@ class Plugin(PluginBase):
 
     def start_manager(self):
         self.collectionService.start_manager()
-
-    def _get_icon(self, fileName):
-        # Return the icon for the main view.
-        if self._ctrl.get_preferences().get('large_icons', False):
-            size = 24
-        else:
-            size = 16
-        try:
-            homeDir = str(Path.home()).replace('\\', '/')
-            iconPath = f'{homeDir}/.novx/icons/{size}'
-            icon = tk.PhotoImage(file=f'{iconPath}/{fileName}')
-
-        except:
-            icon = None
-        return icon
 
