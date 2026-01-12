@@ -25,7 +25,7 @@ from nvcollection.collection_service import CollectionService
 class Plugin(PluginBase):
     """novelibre collection manager plugin class."""
     VERSION = '@release'
-    API_VERSION = '5.43'
+    API_VERSION = '5.50'
     DESCRIPTION = 'A book/series collection manager'
     URL = 'https://github.com/peter88213/nv_collection'
 
