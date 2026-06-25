@@ -9,4 +9,4 @@ from nvcollection.platform.generic_mouse import GenericMouse
 
 class MacMouse(GenericMouse):
 
-    MOVE_NODE = '<Option-B1-Motion>'
+    MOVE_NODE = '<B1-Motion>'

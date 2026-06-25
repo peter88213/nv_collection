@@ -5,6 +5,15 @@
 ## Changelog
 
 
+### Version 5.7.0
+
+- Changed keyboard settings to avoid `Alt`-mouseclick, which may be reserved by Linux desktops:
+  - Moving tree elements via dragging-and-droppping without holding down the `Alt` key.
+
+API: 5.50
+Based on novelibre 5.60.0
+
+
 ### Version 5.6.1
 
 - Mac keys: Replaced "Alt" with "Option".
