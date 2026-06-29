@@ -5,6 +5,15 @@
 ## Changelog
 
 
+### Version 5.7.1
+
+- Fixed a bug where changes are notified unintentionally 
+  due to overly sensitive drag detection.
+  
+API: 5.50
+Based on novelibre 5.61.1
+
+
 ### Version 5.7.0
 
 - Changed keyboard settings to avoid `Alt`-mouseclick, which may be reserved by Linux desktops:

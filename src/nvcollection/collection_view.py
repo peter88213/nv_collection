@@ -368,6 +368,9 @@ class CollectionView(tk.Toplevel, SubController):
         tv = event.widget
         node = tv.selection()[0]
         targetNode = tv.identify_row(event.y)
+        if node == targetNode:
+            return
+
         if node[:2] == targetNode[:2]:
             tv.move(node, tv.parent(targetNode), tv.index(targetNode))
             self.isModified = True
