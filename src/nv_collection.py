@@ -30,7 +30,7 @@ class Plugin(PluginBase):
     URL = 'https://github.com/peter88213/nv_collection'
 
     def install(self, model, view, controller):
-        """Add a submenu to the 'File' menu.
+        """Install the plugin at runtime.
         
         Positional arguments:
             model -- reference to the novelibre main model instance.
@@ -45,7 +45,7 @@ class Plugin(PluginBase):
 
         #--- Configure the main menu.
 
-        # Create a submenu.
+        # Add a submenu to the 'File' menu.
         label = FEATURE
         self._ui.fileMenu.insert_command(
             0,
