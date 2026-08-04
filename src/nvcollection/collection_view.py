@@ -12,7 +12,6 @@ from nvcollection.collection import Collection
 from nvcollection.nvcollection_globals import BOOK_PREFIX
 from nvcollection.nvcollection_globals import FEATURE
 from nvcollection.nvcollection_globals import SERIES_PREFIX
-from nvcollection.nvcollection_help import NvcollectionHelp
 from nvcollection.nvcollection_locale import _
 from nvcollection.platform.platform_settings import KEYS
 from nvcollection.platform.platform_settings import MOUSE
@@ -204,13 +203,8 @@ class CollectionView(tk.Toplevel, SubController):
         )
 
         # Help
-        self._helpMenu = tk.Menu(self._mainMenu, tearoff=0)
-        self._mainMenu.add_cascade(
+        self._mainMenu.add_command(
             label=_('Help'),
-            menu=self._helpMenu,
-        )
-        self._helpMenu.add_command(
-            label=_('Online help'),
             accelerator='F1',
             command=self._open_help,
         )
@@ -449,7 +443,7 @@ class CollectionView(tk.Toplevel, SubController):
 
     def _open_help(self, event=None):
         self._apply_changes()
-        NvcollectionHelp.open_help_page()
+        self._ctrl.helpService.open_help_page('nv_collection')
 
     def _open_last_collection(self):
         if self._open_collection(fileName=self.prefs['last_open']):

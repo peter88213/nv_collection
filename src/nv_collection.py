@@ -17,7 +17,6 @@ GNU General Public License for more details.
 """
 from nvcollection.nvcollection_locale import _
 from nvcollection.nvcollection_globals import FEATURE
-from nvcollection.nvcollection_help import NvcollectionHelp
 from nvlib.controller.plugin.plugin_base import PluginBase
 from nvcollection.collection_service import CollectionService
 
@@ -25,7 +24,7 @@ from nvcollection.collection_service import CollectionService
 class Plugin(PluginBase):
     """novelibre collection manager plugin class."""
     VERSION = '@release'
-    API_VERSION = '5.50'
+    API_VERSION = '5.63'
     DESCRIPTION = 'A book/series collection manager'
     URL = 'https://github.com/peter88213/nv_collection'
 
@@ -43,7 +42,13 @@ class Plugin(PluginBase):
         self.collectionService = CollectionService(model, view, controller)
         self._icon = self._get_icon('collection.png')
 
-        #--- Configure the main menu.
+        #--- Configure the user interface.
+
+        def open_help():
+            self._ctrl.helpService.open_help_page('nv_collection')
+
+        def start_manager():
+            self.collectionService.start_manager()
 
         # Add a submenu to the 'File' menu.
         label = FEATURE
@@ -52,26 +57,20 @@ class Plugin(PluginBase):
             label=label,
             image=self._icon,
             compound='left',
-            command=self.start_manager,
+            command=start_manager,
             state='normal',
         )
         self._ui.fileMenu.insert_separator(1)
 
         # Add an entry to the Help menu.
-        label = _('Collection plugin Online help')
+        label = _('Collection plugin help')
         self._ui.helpMenu.add_command(
             label=label,
             image=self._icon,
             compound='left',
-            command=self.open_help
+            command=open_help
         )
 
     def on_quit(self):
         self.collectionService.on_quit()
-
-    def open_help(self, event=None):
-        NvcollectionHelp.open_help_page()
-
-    def start_manager(self):
-        self.collectionService.start_manager()
 
