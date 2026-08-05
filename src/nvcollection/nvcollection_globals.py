@@ -9,4 +9,4 @@ from nvcollection.nvcollection_locale import _
 FEATURE = _('Collection')
 SERIES_PREFIX = 'sr'
 BOOK_PREFIX = 'bk'
-
+HELP_PAGE = 'nv_collection'

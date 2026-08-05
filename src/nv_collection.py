@@ -17,6 +17,7 @@ GNU General Public License for more details.
 """
 from nvcollection.nvcollection_locale import _
 from nvcollection.nvcollection_globals import FEATURE
+from nvcollection.nvcollection_globals import HELP_PAGE
 from nvlib.controller.plugin.plugin_base import PluginBase
 from nvcollection.collection_service import CollectionService
 
@@ -27,6 +28,7 @@ class Plugin(PluginBase):
     API_VERSION = '5.63'
     DESCRIPTION = 'A book/series collection manager'
     URL = 'https://github.com/peter88213/nv_collection'
+    HELP_PAGE = HELP_PAGE
 
     def install(self, model, view, controller):
         """Install the plugin at runtime.
@@ -44,9 +46,6 @@ class Plugin(PluginBase):
 
         #--- Configure the user interface.
 
-        def open_help():
-            self._ctrl.helpService.open_help_page('nv_collection')
-
         def start_manager():
             self.collectionService.start_manager()
 
@@ -62,14 +61,7 @@ class Plugin(PluginBase):
         )
         self._ui.fileMenu.insert_separator(1)
 
-        # Add an entry to the Help menu.
-        label = _('Collection plugin help')
-        self._ui.helpMenu.add_command(
-            label=label,
-            image=self._icon,
-            compound='left',
-            command=open_help
-        )
+        self._add_help_menu_entry(_('Collection plugin help'))
 
     def on_quit(self):
         self.collectionService.on_quit()

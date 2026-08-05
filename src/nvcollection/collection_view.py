@@ -11,6 +11,7 @@ from tkinter import ttk
 from nvcollection.collection import Collection
 from nvcollection.nvcollection_globals import BOOK_PREFIX
 from nvcollection.nvcollection_globals import FEATURE
+from nvcollection.nvcollection_globals import HELP_PAGE
 from nvcollection.nvcollection_globals import SERIES_PREFIX
 from nvcollection.nvcollection_locale import _
 from nvcollection.platform.platform_settings import KEYS
@@ -443,7 +444,7 @@ class CollectionView(tk.Toplevel, SubController):
 
     def _open_help(self, event=None):
         self._apply_changes()
-        self._ctrl.helpService.open_help_page('nv_collection')
+        self._ctrl.helpService.open_help_page(HELP_PAGE)
 
     def _open_last_collection(self):
         if self._open_collection(fileName=self.prefs['last_open']):
