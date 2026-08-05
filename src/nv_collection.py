@@ -46,9 +46,6 @@ class Plugin(PluginBase):
 
         #--- Configure the user interface.
 
-        def start_manager():
-            self.collectionService.start_manager()
-
         # Add a submenu to the 'File' menu.
         label = FEATURE
         self._ui.fileMenu.insert_command(
@@ -56,7 +53,7 @@ class Plugin(PluginBase):
             label=label,
             image=self._icon,
             compound='left',
-            command=start_manager,
+            command=self.collectionService.start_manager,
             state='normal',
         )
         self._ui.fileMenu.insert_separator(1)

@@ -5,7 +5,7 @@
 ## Changelog
 
 
-### Version 5.8.1
+### Version 5.8.2
 
 - Using the novelibre 5.63+ help service.
 - Refactored the code
