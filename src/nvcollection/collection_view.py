@@ -444,7 +444,7 @@ class CollectionView(tk.Toplevel, SubController):
 
     def _open_help(self, event=None):
         self._apply_changes()
-        self._ctrl.helpService.open_help_page(HELP_PAGE)
+        self._ctrl.open_help(page=HELP_PAGE)
 
     def _open_last_collection(self):
         if self._open_collection(fileName=self.prefs['last_open']):
