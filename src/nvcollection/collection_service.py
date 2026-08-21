@@ -18,7 +18,7 @@ class CollectionService(SubController):
     INI_FILEPATH = '.novx/config'
     SETTINGS = dict(
         last_open='',
-        window_geometry='600x300',
+        window_geometry='610x300',
         right_frame_width=350,
     )
     OPTIONS = {}

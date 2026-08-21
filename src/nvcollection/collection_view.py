@@ -24,6 +24,9 @@ import tkinter as tk
 
 
 class CollectionView(tk.Toplevel, SubController):
+
+    MIN_HEIGHT = 300
+    MIN_WIDTH = 610
     HEIGHT_BIAS = 20
 
     def __init__(self, model, view, controller, prefs):
@@ -36,6 +39,7 @@ class CollectionView(tk.Toplevel, SubController):
         self.element = None
         self.nodeId = None
         self.geometry(self.prefs['window_geometry'])
+        self.minsize(self.MIN_WIDTH, self.MIN_HEIGHT)
         self.update_idletasks()
         # this is necessary to preserve the window size
 
