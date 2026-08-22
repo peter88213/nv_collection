@@ -4,6 +4,13 @@
 
 ## Changelog
 
+### Version 5.8.4
+
+- Resizing the collection manager window is now limited.
+
+API: 5.63
+Based on novelibre 5.65.1
+
 
 ### Version 5.8.3
 
