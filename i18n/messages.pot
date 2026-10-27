@@ -3,8 +3,8 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 5.8.4\n"
-"POT-Creation-Date: 2026-08-22 18:27:00\n"
+"Project-Id-Version: 5.8.5\n"
+"POT-Creation-Date: 2026-10-27 18:04:44\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: LANGUAGE\n"
@@ -180,6 +180,9 @@ msgid "There is no file for the current project. Please save first."
 msgstr ""
 
 msgid "This project has no title"
+msgstr ""
+
+msgid "Undefined"
 msgstr ""
 
 msgid "Untitled"
