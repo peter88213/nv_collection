@@ -4,6 +4,14 @@
 
 ## Changelog
 
+### Version 5.8.6
+
+- Fixed a bug where the file selection dialog does not work under Linux Mint (Cinnamon).
+
+API: 5.63
+Based on novelibre 5.66.9
+
+
 ### Version 5.8.5
 
 - Rebuilt the plugin using the improved IndexCard from novelibre 5.66.8.
