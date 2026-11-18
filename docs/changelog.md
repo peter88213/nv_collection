@@ -4,6 +4,18 @@
 
 ## Changelog
 
+
+### Version 5.9.0
+
+The keyboard settings have been changed to prevent accidental movement of tree elements 
+(the changes from version 5.7.0 have been reversed).
+
+  - Moving tree elements via dragging-and-droppping while holding down the `Alt` key.
+
+API: 5.63
+Based on novelibre 5.68.0
+
+
 ### Version 5.8.6
 
 - Fixed a bug where the file selection dialog does not work under Linux Mint (Cinnamon).
